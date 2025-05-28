@@ -12,3 +12,8 @@ export const CLIENT_URI = getEnv(
   "NEXT_PUBLIC_CLIENT_URI",
   "http://localhost:3000"
 );
+
+export const BACKEND_URI = getEnv(
+  "NEXT_PUBLIC_BACKEND_URI",
+  "http://localhost:8000"
+);
