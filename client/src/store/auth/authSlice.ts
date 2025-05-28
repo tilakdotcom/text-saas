@@ -1,3 +1,6 @@
+"use client"
+
+
 import {
   registerUserRequest,
   loginUserRequest,
@@ -12,6 +15,7 @@ import {
 } from "@/common/types/authSlice";
 import API from "@/common/config/axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { persistUser } from "@/lib/localStorage";
 
 export const loginUser = createAsyncThunk(
   "loginUser/Data",
@@ -113,7 +117,7 @@ export const loginWithGoogleUser = createAsyncThunk(
 const initialState: initialStateProps = {
   isAuthenticated: false,
   isLoading: false,
-  user: JSON.parse(localStorage.getItem("user") || "null"),
+  user: null,
   error: null,
 };
 
@@ -124,7 +128,7 @@ const authSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
       state.isAuthenticated = true;
-      localStorage.setItem("user", JSON.stringify(action.payload));
+      persistUser(state.user);
     },
     setAuthenticated: (state, action) => {
       state.isAuthenticated = action.payload;
@@ -153,14 +157,13 @@ const authSlice = createSlice({
         state.isAuthenticated = true;
         // console.log("action", action.payload.data);
         state.user = action.payload.data;
-        localStorage.setItem("user", JSON.stringify(state.user));
-        localStorage.removeItem("publicAccessWithLimit");
+        persistUser(state.user);
       })
       .addCase(loginUser.rejected, (state, action) => {
         console.log("action at error", action);
         state.isLoading = false;
         state.user = null;
-        localStorage.setItem("user", JSON.stringify(state.user));
+        persistUser(state.user);
         state.error = action.error.message || "failled to login user";
       })
       //check auth
@@ -175,7 +178,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isAuthenticated = false;
         state.user = null;
-        localStorage.setItem("user", JSON.stringify(state.user));
+        persistUser(state.user);
       })
       //logout user
       .addCase(logoutUser.pending, (state) => {
@@ -185,7 +188,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isAuthenticated = false;
         state.user = null;
-        localStorage.setItem("user", JSON.stringify(state.user));
+        persistUser(state.user);
       })
       .addCase(logoutUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -199,14 +202,13 @@ const authSlice = createSlice({
         state.isAuthenticated = true;
         // console.log("action", action.payload.data);
         state.user = action.payload.data;
-        localStorage.setItem("user", JSON.stringify(state.user));
-        localStorage.removeItem("publicAccessWithLimit");
+        persistUser(state.user);
       })
       .addCase(loginWithGoogleUser.rejected, (state, action) => {
         console.log("action at error", action);
         state.isLoading = false;
         state.user = null;
-        localStorage.setItem("user", JSON.stringify(state.user));
+        persistUser(state.user);
         state.error = action.error.message || "failled to login user";
       });
   },
