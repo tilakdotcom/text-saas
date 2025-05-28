@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { CLIENT_URI } from "@/common/constants/getEvn";
 import { MainLayout } from "@/components/layout/MainLayout";
+import { Provider } from "react-redux";
+import store from "@/store/store";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,12 +39,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <MainLayout>{children}</MainLayout>
-      </body>
-    </html>
+    <Provider store={store}>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <MainLayout>{children}</MainLayout>
+        </body>
+      </html>
+    </Provider>
   );
 }
