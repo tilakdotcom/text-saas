@@ -42,7 +42,13 @@ export default function GoogleAuth() {
         isLoading ? "cursor-not-allowed" : ""
       }`}
     >
-      <Image src={""} alt="goofle" className="size-4 sm:size-5" />
+      <Image
+        src={"./google-icon.svg"}
+        alt="goofle"
+        height={20}
+        width={20}
+        className="size-4 sm:size-5"
+      />
       Continue with Google
     </button>
   );
