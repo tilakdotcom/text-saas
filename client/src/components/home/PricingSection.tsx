@@ -2,10 +2,10 @@ import {
   containerVariants,
   itemVariants,
   pricingPlans,
-} from '@/common/constants/defaultValues';
-import { MotionDiv, MotionSection } from '@/components/common/FramerMotion';
-import PricingCardPro from '../pricing/pricing-card-pro';
-import PricingCardBasic from '../cards/pricing-card/PricingCardBasic';
+} from "@/common/constants/defaultValues";
+import { MotionDiv, MotionSection } from "@/components/common/FramerMotion";
+import PricingCardBasic from "../cards/pricing-card/PricingCardBasic";
+import PricingCardPro from "../cards/pricing-card/PricingCardPro";
 
 export default function PricingSection() {
   return (
@@ -13,7 +13,7 @@ export default function PricingSection() {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-100px' }}
+      viewport={{ once: true, margin: "-100px" }}
       className="relative overflow-hidden"
       id="pricing"
     >
@@ -28,8 +28,8 @@ export default function PricingSection() {
           </h2>
         </MotionDiv>
         <div className="relative flex flex-col items-center justify-center gap-8 lg:flex-row lg:items-stretch">
-          <PricingCardPro key={'pro'} {...pricingPlans[1]} />
-          <PricingCardBasic key={'basic'} {...pricingPlans[0]} />
+          <PricingCardPro key={"pro"} {...pricingPlans[1]} />
+          <PricingCardBasic key={"basic"} {...pricingPlans[0]} />
         </div>
       </div>
     </MotionSection>
