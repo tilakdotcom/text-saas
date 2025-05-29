@@ -3,8 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { CLIENT_URI } from "@/common/constants/getEvn";
 import { MainLayout } from "@/components/layout/MainLayout";
-import BgGradient from "@/components/common/BGGradient";
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin-ext"],
@@ -40,9 +38,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <BgGradient />
         <MainLayout>{children}</MainLayout>
       </body>
     </html>

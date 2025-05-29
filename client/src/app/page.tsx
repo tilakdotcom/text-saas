@@ -1,9 +1,14 @@
-import Loading from "@/components/app-ui/Loading";
+import BgGradient from "@/components/common/BGGradient";
 
 export default function Home() {
   return (
     <>
-      <Loading />
+      <div className="relative">
+        <BgGradient />
+        <div className="flex flex-col">
+          
+        </div>
+      </div>
     </>
   );
 }
