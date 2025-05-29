@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { CLIENT_URI } from "@/common/constants/getEvn";
+import { CLIENT_ID, CLIENT_URI } from "@/common/constants/getEvn";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Preloader } from "@/components/app-ui/Loading";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin-ext"],
@@ -37,13 +38,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Preloader />
-        <MainLayout>{children}</MainLayout>
-      </body>
-    </html>
+    <GoogleOAuthProvider clientId={CLIENT_ID}>
+      {" "}
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <Preloader />
+          <MainLayout>{children}</MainLayout>
+        </body>
+      </html>
+    </GoogleOAuthProvider>
   );
 }

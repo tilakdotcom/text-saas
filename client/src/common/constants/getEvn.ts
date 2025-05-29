@@ -17,3 +17,5 @@ export const BACKEND_URI = getEnv(
   "NEXT_PUBLIC_BACKEND_URI",
   "http://localhost:8000"
 );
+
+export const CLIENT_ID = getEnv("NEXT_PUBLIC_CLIENT_ID");

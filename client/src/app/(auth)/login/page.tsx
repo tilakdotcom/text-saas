@@ -19,6 +19,7 @@ import { loginUser } from "@/store/auth/authSlice";
 import toast from "react-hot-toast";
 import { MotionSection } from "@/components/common/FramerMotion";
 import Link from "next/link";
+import GoogleAuth from "@/components/common/GoogleAuth";
 
 export default function LoginPage() {
   const { isLoading } = useTypeSelector((state) => state.auth);
@@ -53,6 +54,11 @@ export default function LoginPage() {
         <div className="flex flex-col justify-center items-center p-8 w-full">
           <h2 className="text-3xl font-semibold text-gray-900">Login</h2>
           <p className="text-gray-700 mb-6 text-sm">Join us and get started!</p>
+
+
+          <div className="py-4">
+            <GoogleAuth />
+          </div>
 
           <Form {...form}>
             <form
