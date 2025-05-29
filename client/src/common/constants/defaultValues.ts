@@ -25,7 +25,7 @@ export const pricingPlans = [
   },
 ];
 
-export const demoText = `# SOMMAIRE: AI-Powered Document Summarizer 🧠📄
+export const demoText :  string = `# SOMMAIRE: AI-Powered Document Summarizer 🧠📄
 🎯 SOMMAIRE is an intelligent, web - based tool that simplifies complex documents into clear, concise summaries—powered by state - of - the - art AI.
 
 # Website Details

@@ -1,24 +1,24 @@
-export const parseSection = (section) => {
-  const [title, ...content] = section.split('\n');
+export const parseSection = (section: string) => {
+  const [title, ...content] = section.split("\n");
 
-  const cleanTitle = title.startsWith('#')
+  const cleanTitle = title.startsWith("#")
     ? title.substring(1).trim()
     : title.trim();
 
   const points = [];
 
-  let currentPoint = '';
+  let currentPoint = "";
 
   content.forEach((line) => {
     const trimedLine = line.trim();
-    if (trimedLine.startsWith('•')) {
+    if (trimedLine.startsWith("•")) {
       if (currentPoint) points.push(currentPoint.trim());
       currentPoint = trimedLine;
     } else if (!trimedLine) {
       if (currentPoint) points.push(currentPoint.trim());
-      currentPoint = '';
+      currentPoint = "";
     } else {
-      currentPoint += ' ' + trimedLine;
+      currentPoint += " " + trimedLine;
     }
   });
 
@@ -27,12 +27,12 @@ export const parseSection = (section) => {
   return {
     title: cleanTitle,
     points: points.filter(
-      (point) => point && !point.startsWith('#') && !point.startsWith('[Choose')
+      (point) => point && !point.startsWith("#") && !point.startsWith("[Choose")
     ),
   };
 };
 
-export function parsePoint(point) {
+export function parsePoint(point: string) {
   const isNumbered = /^d+\./.test(point);
   const isMainPoint = /^•/.test(point);
   const emojiRegex = /[\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]/u;
@@ -41,11 +41,11 @@ export function parsePoint(point) {
   return { isNumbered, isMainPoint, hasEmoji, isEmpty };
 }
 
-export function parseEmojiPoint(content) {
-  const cleanContent = content.replace(/^[•]\s*/, '').trim();
+export function parseEmojiPoint(content: string) {
+  const cleanContent = content.replace(/^[•]\s*/, "").trim();
   const match = cleanContent.match(/^(\p{Emoji}+)(.+)$/u);
   if (!match) return null;
-  const [_, emoji, text] = match;
+  const [, emoji, text] = match;
   return {
     emoji: emoji.trim(),
     text: text.trim(),

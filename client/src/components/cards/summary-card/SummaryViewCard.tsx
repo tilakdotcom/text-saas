@@ -6,8 +6,9 @@ import NavigationControl from "./NavigationControl";
 import ProgressBar from "./ProgressBar";
 import { MotionDiv } from "../../common/FramerMotion";
 import ContentSection from "./SummaryContentSection";
+import { parseSection } from "@/lib/summaryHelper";
 
-const SectionTitle = ({ title }) => {
+const SectionTitle = ({ title }: { title: string }) => {
   return (
     <div className="bg-background/80 sticky top-0 z-10 mb-6 flex flex-col gap-2 pt-2 pb-4 backdrop-blur-xs">
       <h2 className="flex items-center justify-center gap-2 text-center text-3xl font-bold lg:text-4xl">
@@ -17,7 +18,7 @@ const SectionTitle = ({ title }) => {
   );
 };
 
-export default function SummaryViewCard({ summary }) {
+export default function SummaryViewCard({ summary }: { summary: string }) {
   const [currentSection, setCurrentSection] = useState(0);
 
   const handleNext = () =>

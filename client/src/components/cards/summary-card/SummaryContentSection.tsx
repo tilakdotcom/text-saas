@@ -1,9 +1,11 @@
-import { containerVariants, itemVariants } from "@/common/constants/defaultValues";
-import { parseEmojiPoint } from "@/lib/summaryHelper";
+import {
+  containerVariants,
+  itemVariants,
+} from "@/common/constants/defaultValues";
+import { parseEmojiPoint, parsePoint } from "@/lib/summaryHelper";
 import { MotionDiv } from "../../common/FramerMotion";
 
-
-const EmojiPoint = ({ point }) => {
+const EmojiPoint = ({ point }: { point: string }) => {
   const { emoji, text } = parseEmojiPoint(point) ?? {};
   return (
     <MotionDiv
@@ -22,7 +24,7 @@ const EmojiPoint = ({ point }) => {
   );
 };
 
-const RegularPoint = ({ point }) => {
+const RegularPoint = ({ point }: { point: string }) => {
   return (
     <MotionDiv
       viewport={{ once: true }}
@@ -37,18 +39,18 @@ const RegularPoint = ({ point }) => {
   );
 };
 
-export default function ContentSection({ points }) {
+export default function ContentSection({ points }: { points: string[] }) {
   return (
     <MotionDiv
       viewport={{ once: true }}
       variants={containerVariants}
-      key={points.join('')}
+      key={points.join("")}
       initial="hidden"
       animate="visible"
       exit="exit"
       className="space-y-4"
     >
-      {points.map((point, index) => {
+      {points.map((point: string, index: number) => {
         const { isMainPoint, hasEmoji, isEmpty } = parsePoint(point);
 
         if (isEmpty) return null;
