@@ -1,25 +1,27 @@
+import { HoverHandlers, Variants } from "framer-motion";
+
 export const pricingPlans = [
   {
-    id: 'basic',
-    name: 'Basic',
-    price: 'Free',
-    description: 'Perfect for occasional users',
-    items: ['5 PDF summaries', 'Standard processing speed', 'Email support'],
-    paymentLink: '/upload',
-    priceId: 'basic_free',
+    id: "basic",
+    name: "Basic",
+    price: "Free",
+    description: "Perfect for occasional users",
+    items: ["5 PDF summaries", "Standard processing speed", "Email support"],
+    paymentLink: "/upload",
+    priceId: "basic_free",
   },
   {
-    id: 'pro',
-    name: 'Pro',
+    id: "pro",
+    name: "Pro",
     price: 200,
-    description: 'Perfect for occasional users',
+    description: "Perfect for occasional users",
     items: [
-      '10 PDF summaries',
-      'Standard processing speed',
-      'Email support',
-      'Markdown Export',
+      "10 PDF summaries",
+      "Standard processing speed",
+      "Email support",
+      "Markdown Export",
     ],
-    priceId: 'pro_monthly',
+    priceId: "pro_monthly",
   },
 ];
 
@@ -56,7 +58,7 @@ export const demoText = `# SOMMAIRE: AI-Powered Document Summarizer 🧠📄
 # Bottom Line
 • 💫 SOMMAIRE is your go - to AI assistant for document summarization—fast, efficient, and built for clarity in the age of information overload.`;
 
-export const containerVariants = {
+export const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -67,12 +69,12 @@ export const containerVariants = {
   },
 };
 
-export const itemVariants = {
+export const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
-    tranition: {
-      type: 'spring',
+    transition: {
+      type: "spring",
       damping: 15,
       striffness: 50,
       duration: 0.8,
@@ -80,16 +82,26 @@ export const itemVariants = {
   },
 };
 
-export const listVariants = {
+export const listVariants: Variants = {
   hidden: { opacity: 0, x: -20 },
   visible: {
     opacity: 1,
     x: 0,
     transition: {
-      type: 'spring',
+      type: "spring",
       duration: 0.5,
       damping: 20,
       stiffness: 100,
     },
+  },
+};
+
+export const buttonVariants: HoverHandlers["whileHover"] = {
+  scale: 1.05,
+  transition: {
+    type: "spring",
+    damping: 10,
+    striffness: 300,
+    duration: 0.8,
   },
 };

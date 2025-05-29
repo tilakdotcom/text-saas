@@ -11,19 +11,10 @@ import {
   MotionSpan,
 } from "@/components/common/FramerMotion";
 import {
+  buttonVariants,
   containerVariants,
   itemVariants,
 } from "@/common/constants/defaultValues";
-
-const buttonVariants = {
-  scale: 1.05,
-  tranition: {
-    type: "spring",
-    damping: 10,
-    striffness: 300,
-    duration: 0.8,
-  },
-};
 
 export default function HeroSection() {
   return (
@@ -47,10 +38,11 @@ export default function HeroSection() {
           <p className="text-base text-rose-600">Powered by AI</p>
         </Badge>
       </MotionDiv>
+
       <MotionH1
         viewport={{ once: true }}
         variants={itemVariants}
-        className="py-6 text-center font-bold"
+        className="py-6 delay-75 text-center font-bold"
       >
         Transform PDFs into{" "}
         <span className="relative inline-block">
@@ -64,7 +56,7 @@ export default function HeroSection() {
           <span
             className="animate-rotate absolute inset-0 rounded-lg bg-rose-200/50"
             aria-hidden="true"
-          ></span>
+          />
         </span>{" "}
         summaries
       </MotionH1>
@@ -74,6 +66,7 @@ export default function HeroSection() {
       >
         Get a beautiful summary reel of the document in seconds.
       </MotionH2>
+
       <MotionDiv
         viewport={{ once: true }}
         variants={itemVariants}
