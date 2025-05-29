@@ -3,67 +3,78 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="mt-auto w-full bg-gray-200/20 px-4 pt-4 pb-6 sm:p-2 md:px-12 md:pt-12 lg:px-24">
-      <div className="flex items-center justify-around md:items-start lg:justify-normal">
-        <div className="font-logo mr-0 mb-6 flex flex-col items-center space-y-4 space-x-4 pt-4 text-3xl text-black outline-none md:mb-0 lg:mr-auto dark:text-white">
-          <Image
-            src={"/image.png"}
-            width={120}
-            height={120}
-            alt="Tilak Singh Picture"
-            className="border-opacity-30 w-16 self-center rounded-full border-2 border-solid border-gray-300 p-0.5 shadow-2xl lg:w-24"
-            style={{ color: "transparent" }}
-          />
-
-          <div className="mr-auto text-center text-base text-gray-400 outline-none lg:text-lg">
-            Made by
-            <span className="px-1 underline underline-offset-4">
-              <Link target="_blank" href="#">
+    <footer className="bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 mt-auto">
+      <div className="mx-auto max-w-7xl px-6 py-12 md:flex md:items-start md:justify-between">
+        {/* Branding Section */}
+        <div className="mb-8 md:mb-0 md:w-1/3 text-center md:text-left">
+          <div className="flex flex-col items-center md:items-start space-y-4">
+            <Image
+              src="/image.png"
+              width={96}
+              height={96}
+              alt="Tilak Singh"
+              className="rounded-full border-2 border-gray-300 shadow-md"
+            />
+            <p className="text-gray-600 dark:text-gray-300 text-sm">
+              Made with 🧡 by{" "}
+              <Link
+                href="#"
+                target="_blank"
+                className="underline underline-offset-2 hover:text-pink-600 dark:hover:text-pink-400"
+              >
                 Tilak Singh
               </Link>
-            </span>
-            🧡
+            </p>
           </div>
         </div>
 
-        <div className="mb-8 flex flex-col gap-4 md:flex-row lg:gap-16">
+        {/* Links Section */}
+        <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:w-2/3 text-sm">
           <div>
-            <h4 className="mb-2 font-bold text-gray-600 uppercase dark:text-white">
+            <h4 className="mb-3 font-semibold text-gray-800 uppercase dark:text-white">
               Navigation
             </h4>
-            <ul className="list-none text-gray-600 dark:text-gray-500">
-              <li className="mb-1 dark:text-gray-400">
-                <Link href="/">Home</Link>
+            <ul className="space-y-2 text-gray-600 dark:text-gray-400">
+              <li>
+                <Link href="/" className="hover:underline">
+                  Home
+                </Link>
               </li>
-              <li className="mb-1 dark:text-gray-400">
-                <Link href="/#pricing">Pricing</Link>
+              <li>
+                <Link href="/#pricing" className="hover:underline">
+                  Pricing
+                </Link>
               </li>
-              <li className="mb-1 dark:text-gray-400">
-                <Link href="/contact">Contact</Link>
+              <li>
+                <Link href="/contact" className="hover:underline">
+                  Contact
+                </Link>
               </li>
-              <li className="mb-1 dark:text-gray-400">
-                <Link href="/subscription">Subscription</Link>
+              <li>
+                <Link href="/subscription" className="hover:underline">
+                  Subscription
+                </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="mb-2 font-bold text-gray-600 uppercase dark:text-white">
+            <h4 className="mb-3 font-semibold text-gray-800 uppercase dark:text-white">
               Legal
             </h4>
-            <ul className="list-none text-gray-600 dark:text-gray-500">
-              <li className="mb-1">
-                <Link className="dark:text-gray-400" href="/privacy-policy">
+            <ul className="space-y-2 text-gray-600 dark:text-gray-400">
+              <li>
+                <Link href="/privacy-policy" className="hover:underline">
                   Privacy Policy
                 </Link>
               </li>
-              <li className="mb-1">
-                <Link className="dark:text-gray-400" href="/terms">
+              <li>
+                <Link href="/terms" className="hover:underline">
                   Terms & Conditions
                 </Link>
               </li>
-              <li className="mb-1">
-                <Link className="dark:text-gray-400" href="/refund-policy">
+              <li>
+                <Link href="/refund-policy" className="hover:underline">
                   Cancellation & Refund
                 </Link>
               </li>
@@ -71,12 +82,12 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-2 font-bold text-gray-600 uppercase dark:text-white">
+            <h4 className="mb-3 font-semibold text-gray-800 uppercase dark:text-white">
               About
             </h4>
-            <ul className="list-none text-gray-600 dark:text-gray-500">
-              <li className="mb-1">
-                <Link className="dark:text-gray-400" href="/contact">
+            <ul className="space-y-2 text-gray-600 dark:text-gray-400">
+              <li>
+                <Link href="/contact" className="hover:underline">
                   Contact Us
                 </Link>
               </li>
@@ -85,18 +96,13 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mt-2 text-center lg:flex lg:items-center lg:justify-between">
-        <span className="w-full text-center text-sm text-gray-700 sm:text-center dark:text-gray-400">
-          © 2025{" "}
-          <Link
-            target="blank"
-            className="underline dark:text-gray-400"
-            href="#"
-          >
-            Tilak Singh
-          </Link>
-          . All Rights Reserved.
-        </span>
+      {/* Bottom Bar */}
+      <div className="border-t border-gray-300 dark:border-gray-700 py-4 text-center text-xs text-gray-600 dark:text-gray-400">
+        © 2025{" "}
+        <Link href="#" target="_blank" className="underline">
+          Tilak Singh
+        </Link>
+        . All rights reserved.
       </div>
     </footer>
   );

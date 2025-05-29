@@ -1,38 +1,49 @@
+"use client";
+import { useTypeSelector } from "@/store/store";
 import { Logo } from "../common/Logo";
 import NavLink from "./NavLink";
 
 export default function Header() {
+  const { isAuthenticated } = useTypeSelector((state) => state.auth);
   return (
-    <nav className="container mx-auto flex items-center justify-between px-8 py-4">
-      <div className="flex lg:flex-1">
+    <header className="sticky top-0 z-50 w-full h-20 flex items-center justify-between px-4 md:px-7 bg-opacity-80 backdrop-blur-md  overflow-hidden transform duration-500">
+      <div className="flex ">
         <NavLink href="/" className="flex shrink-0 items-center gap-1 lg:gap-2">
           <Logo />
         </NavLink>
       </div>
 
-      <div className="flex gap-4 text-base lg:items-center lg:justify-center lg:gap-12 lg:text-lg">
-        <>
-          <NavLink href="/dashboard">Your Summaries</NavLink>
-        </>
+      <div className="hidden md:flex space-x-6">
+        <NavLink
+          href="/"
+          className="text-gray-700 dark:text-gray-300 hover:text-pink-600 transition"
+        >
+          Home
+        </NavLink>
+        <NavLink
+          href="/#pricing"
+          className="text-gray-700 dark:text-gray-300 hover:text-pink-600 transition"
+        >
+          Pricing
+        </NavLink>
+        <NavLink
+          href="/contact"
+          className="text-gray-700 dark:text-gray-300 hover:text-pink-600 transition"
+        >
+          Contact
+        </NavLink>
       </div>
 
-      {/* <div className="flex lg:flex-1 lg:justify-end">
-        <SignedIn>
-          <div className="flex items-center gap-2 text-base lg:text-lg">
-            <NavLink href="/upload">Upload a PDF</NavLink>
-            <PlanBadge />
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </div>
-        </SignedIn>
-
-        <SignedOut>
-          <NavLink className="text-base" href="/sign-in">
-            Sign In
+      <div className="">
+        {!isAuthenticated && (
+          <NavLink
+            href="/login"
+            className="px-4 py-2 text-base font-medium transition"
+          >
+            Login
           </NavLink>
-        </SignedOut>
-      </div> */}
-    </nav>
+        )}{" "}
+      </div>
+    </header>
   );
 }
