@@ -1,5 +1,5 @@
 export const getEnv = (key: string, dafaultKey?: string): string => {
-  const env = process.env[key] || dafaultKey;
+  const env = process.env[key as keyof typeof process.env] || dafaultKey;
 
   if (!env) {
     throw new Error(`Environment variable ${key} is not defined.`);
@@ -8,14 +8,8 @@ export const getEnv = (key: string, dafaultKey?: string): string => {
   return env;
 };
 
-export const CLIENT_URI = getEnv(
-  "NEXT_PUBLIC_CLIENT_URI",
-  "http://localhost:3000"
-);
+export const CLIENT_URI = getEnv("CLIENT_URI", "http://localhost:3000");
 
-export const BACKEND_URI = getEnv(
-  "NEXT_PUBLIC_BACKEND_URI",
-  "http://localhost:8000"
-);
+export const BACKEND_URI = getEnv("BACKEND_URI", "http://localhost:8000");
 
-export const CLIENT_ID = getEnv("NEXT_PUBLIC_CLIENT_ID");
+export const CLIENT_ID = getEnv("CLIENT_ID", "sgsf");
