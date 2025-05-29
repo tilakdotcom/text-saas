@@ -91,9 +91,9 @@ export default function Footer() {
           <Link
             target="blank"
             className="underline dark:text-gray-400"
-            href="https://kaushikverma.me/"
+            href="#"
           >
-            Kaushik Verma
+            Tilak Singh
           </Link>
           . All Rights Reserved.
         </span>
