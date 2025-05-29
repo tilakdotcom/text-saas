@@ -6,6 +6,7 @@ import CheckUser from "./UserCheck";
 import { Provider } from "react-redux";
 import store from "@/store/store";
 import Header from "../app-ui/Header";
+import Footer from "../app-ui/Footer";
 
 export function MainLayout({
   children,
@@ -24,7 +25,7 @@ export function MainLayout({
           
           {children}
           
-          
+          <Footer/>
           </Container>;
       </Provider>
     </>
