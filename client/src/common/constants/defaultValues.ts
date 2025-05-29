@@ -13,7 +13,7 @@ export const pricingPlans = [
   {
     id: "pro",
     name: "Pro",
-    price: 200,
+    price: "200",
     description: "Perfect for occasional users",
     items: [
       "10 PDF summaries",
@@ -22,10 +22,11 @@ export const pricingPlans = [
       "Markdown Export",
     ],
     priceId: "pro_monthly",
+    paymentLink: "/upload",
   },
 ];
 
-export const demoText :  string = `# SOMMAIRE: AI-Powered Document Summarizer 🧠📄
+export const demoText: string = `# SOMMAIRE: AI-Powered Document Summarizer 🧠📄
 🎯 SOMMAIRE is an intelligent, web - based tool that simplifies complex documents into clear, concise summaries—powered by state - of - the - art AI.
 
 # Website Details
