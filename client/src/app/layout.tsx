@@ -5,6 +5,7 @@ import { CLIENT_ID, CLIENT_URI } from "@/common/constants/getEvn";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Preloader } from "@/components/app-ui/Loading";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import BgGradient from "@/components/common/BGGradient";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin-ext"],
@@ -45,7 +46,10 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <Preloader />
-          <MainLayout>{children}</MainLayout>
+          <BgGradient className="from-rose-500 via-rose-500 to-cyan-500" />
+          <MainLayout className="bg-gradient-to-b from-rose-50 via-red-50 to-cyan-50 text-neutral-950">
+            {children}
+          </MainLayout>
         </body>
       </html>
     </GoogleOAuthProvider>

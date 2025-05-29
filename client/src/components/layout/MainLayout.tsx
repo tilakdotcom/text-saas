@@ -26,7 +26,7 @@ export function MainLayout({
           {children}
           
           <Footer/>
-          </Container>;
+          </Container>
       </Provider>
     </>
   );
