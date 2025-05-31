@@ -10,6 +10,6 @@ export const getEnv = (key: string, dafaultKey?: string): string => {
 
 export const CLIENT_URI = getEnv("CLIENT_URI", "http://localhost:3000");
 
-export const BACKEND_URI = getEnv("BACKEND_URI", "http://localhost:8000");
+export const BACKEND_URI = getEnv("BACKEND_URI", "http://localhost:5000/api/v1");
 
 export const CLIENT_ID = getEnv("CLIENT_ID", "sgsf");

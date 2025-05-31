@@ -6,7 +6,8 @@ export function middleware(request: NextRequest) {
   const accessToken = request.cookies.get("accessToken");
 
   const isAuthPage = url.pathname === "/login" || url.pathname === "/register";
-  const isProtectedPage = url.pathname.startsWith("/dashboard");
+  const isProtectedPage =
+    url.pathname.startsWith("/dashboard") || url.pathname.startsWith("/upload");
 
   if (isAuthPage && accessToken) {
     return NextResponse.redirect(new URL("/dashboard", request.url));

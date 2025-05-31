@@ -1,3 +1,6 @@
+"use client"
+
+
 import UploadHeader from "@/components/pages/upload/UploadHeader";
 import UploadForm from "@/components/pages/upload/UploadForm";
 import { redirect } from "next/navigation";

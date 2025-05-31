@@ -1,6 +1,7 @@
 import { itemVariants } from "@/common/constants/defaultValues";
 import { MotionDiv } from "@/components/common/FramerMotion";
-import { Badge, Sparkles } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Sparkles } from "lucide-react";
 
 export default function UploadHeader() {
   return (
@@ -11,7 +12,7 @@ export default function UploadHeader() {
         className="animate-gradient-x group relative overflow-hidden rounded-full bg-linear-to-r from-rose-200 via-rose-500 to-rose-800 p-[1px]"
       >
         <Badge
-          fontVariant={"secondary"}
+          variant={"secondary"}
           className="relative rounded-full bg-white px-6 py-2 text-base font-medium transition-colors group-hover:bg-gray-50"
         >
           <Sparkles className="mr-2 h-12 w-12 animate-pulse text-rose-600" />

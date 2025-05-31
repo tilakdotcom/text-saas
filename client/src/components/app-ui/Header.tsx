@@ -26,12 +26,6 @@ export default function Header() {
         >
           Pricing
         </NavLink>
-        <NavLink
-          href="/contact"
-          className="text-gray-700 dark:text-gray-300 hover:text-pink-600 transition"
-        >
-          Contact
-        </NavLink>
       </div>
 
       <div className="">
@@ -43,6 +37,17 @@ export default function Header() {
             Login
           </NavLink>
         )}{" "}
+        {isAuthenticated && (
+          <>
+            {" "}
+            <NavLink
+              href="/upload"
+              className="px-4 py-2 text-base font-medium transition"
+            >
+              Upload a PDF
+            </NavLink>
+          </>
+        )}
       </div>
     </header>
   );

@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { CLIENT_ID, CLIENT_URI } from "@/common/constants/getEvn";
 import { MainLayout } from "@/components/layout/MainLayout";
-import { Preloader } from "@/components/app-ui/Loading";
+// import { Preloader } from "@/components/app-ui/Loading";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import BgGradient from "@/components/common/BGGradient";
 import ScrollToTop from "@/components/app-ui/ScrollToTop";
@@ -46,7 +46,7 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <Preloader />
+          {/* <Preloader /> */}
           <ScrollToTop />
           <BgGradient className="from-rose-500 via-rose-500 to-cyan-500" />
           <MainLayout className="bg-gradient-to-b from-rose-50 via-red-50 to-cyan-50 text-neutral-950">
