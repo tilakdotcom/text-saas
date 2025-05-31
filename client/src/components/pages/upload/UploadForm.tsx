@@ -1,46 +1,50 @@
-import { itemVariants } from "@/common/constants/defaultValues";
-import { MotionDiv } from "@/components/common/FramerMotion";
-import { Badge, Sparkles } from "lucide-react";
+"use client";
+import UploadFormInput from "./UploadFormInput";
+import { useRef } from "react";
+import LoadingSkeleton from "./LoadingSkeleton";
 
-export default function UploadHeader() {
+export default function UploadForm() {
+  const formRef = useRef(null);
+  const isLoading = false;
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    console.log(e);
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center gap-6 text-center">
-      <MotionDiv
-        viewport={{ once: true }}
-        variants={itemVariants}
-        className="animate-gradient-x group relative overflow-hidden rounded-full bg-linear-to-r from-rose-200 via-rose-500 to-rose-800 p-[1px]"
-      >
-        <Badge
-          fontVariant={"secondary"}
-          className="relative rounded-full bg-white px-6 py-2 text-base font-medium transition-colors group-hover:bg-gray-50"
-        >
-          <Sparkles className="mr-2 h-12 w-12 animate-pulse text-rose-600" />
-          <p className="text-base">AI-Powered Content Creation</p>
-        </Badge>
-      </MotionDiv>
-
-      <MotionDiv
-        viewport={{ once: true }}
-        variants={itemVariants}
-        className="text-3xl font-bold tracking-tighter text-gray-900 capitalize sm:text-4xl"
-      >
-        Start Uploading{" "}
-        <span className="relative inline-block">
-          <span className="relative z-10 px-2">Your PDF&apos;s</span>{" "}
-          <span
-            className="animate-rotate absolute inset-0 rounded-lg bg-rose-200/50"
+    <div className="mx-auto flex w-full max-w-2xl flex-col gap-8">
+      <div className="relative">
+        <div className="absolute inset-0 flex items-center" aria-hidden="true">
+          <div className="w-full border-t border-gray-200 dark:border-gray-800" />
+        </div>
+        <div className="relative flex justify-center">
+          <span className="bg-background text-muted-foreground px-3 text-sm">
+            Uplaod PDF
+          </span>
+        </div>
+      </div>
+      <UploadFormInput
+        isLoading={isLoading}
+        ref={formRef}
+        onSubmit={handleSubmit}
+      />
+      {/* {isLoading && ( */}
+      <>
+        <div className="relative">
+          <div
+            className="absolute inset-0 flex items-center"
             aria-hidden="true"
-          ></span>
-        </span>{" "}
-      </MotionDiv>
-
-      <MotionDiv
-        viewport={{ once: true }}
-        variants={itemVariants}
-        className="mt-2 max-w-2xl text-center text-xl leading-8 text-gray-600"
-      >
-        <p>Upload your PDF and let our Al do the magic!✨</p>
-      </MotionDiv>
+          >
+            <div className="w-full border-t border-gray-200 dark:border-gray-800" />
+          </div>
+          <div className="relative flex justify-center">
+            <span className="bg-background text-muted-foreground px-3 text-sm">
+              Processing
+            </span>
+          </div>
+        </div>
+        <LoadingSkeleton />
+      </>
+      {/* )} */}
     </div>
   );
 }
