@@ -1,13 +1,12 @@
 "use client";
 import UploadFormInput from "./UploadFormInput";
-import { useRef } from "react";
 import LoadingSkeleton from "./LoadingSkeleton";
+import { SubmitHandler } from "react-hook-form";
 
 export default function UploadForm() {
-  const formRef = useRef(null);
   const isLoading = false;
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    console.log(e);
+  const handleSubmit: SubmitHandler<{ file: File | null }> = async (data) => {
+    console.log(data);
   };
 
   return (
@@ -22,11 +21,7 @@ export default function UploadForm() {
           </span>
         </div>
       </div>
-      <UploadFormInput
-        isLoading={isLoading}
-        ref={formRef}
-        onSubmit={handleSubmit}
-      />
+      <UploadFormInput isLoading={isLoading} onSubmit={handleSubmit} />
       {/* {isLoading && ( */}
       <>
         <div className="relative">

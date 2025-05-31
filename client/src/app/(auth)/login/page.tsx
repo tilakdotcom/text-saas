@@ -20,14 +20,9 @@ import toast from "react-hot-toast";
 import { MotionSection } from "@/components/common/FramerMotion";
 import Link from "next/link";
 import GoogleAuth from "@/components/common/GoogleAuth";
-import { redirect } from "next/navigation";
 
 export default function LoginPage() {
-  const { isLoading, isAuthenticated } = useTypeSelector((state) => state.auth);
-
-  if (isAuthenticated) {
-    redirect("/upload");
-  }
+  const { isLoading } = useTypeSelector((state) => state.auth);
 
   const dispatch = useAppDispatch();
   const form = useForm<z.infer<typeof loginSchema>>({

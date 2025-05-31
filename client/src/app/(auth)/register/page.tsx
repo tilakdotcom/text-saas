@@ -166,17 +166,17 @@ export default function SignupPage() {
                 disabled={isLoading}
                 className="w-full py-2 px-4 rounded-lg font-medium text-white transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 bg-pink-600 hover:bg-pink-700 disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {isLoading ? "Processing..." : "Login"}
+                {isLoading ? "Processing..." : "Register"}
               </Button>
 
               {/* Navigation Link */}
               <p className="text-sm text-center text-gray-600 mt-2">
-                Don&apos;t have an account?{" "}
+                Already have an Account?{" "}
                 <Link
-                  href="/register"
+                  href="/login"
                   className="text-pink-600 font-medium hover:underline"
                 >
-                  Register
+                  Login
                 </Link>
               </p>
             </form>

@@ -10,5 +10,6 @@ export const uploadFileSchema = z.object({
     .refine(
       (file) => file.type.startsWith('application/pdf'),
       'File Must be a PDF'
-    ),
+    )
+    .nullable()
 });
