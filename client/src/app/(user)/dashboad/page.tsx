@@ -1,26 +1,17 @@
 // import EmptySummaryState from "@/components/summaries/empty-summary-state";
-import { Button } from "@/components/ui/button";
-// import { getSummaries } from "@/lib/summaries";
-import { ArrowRight, Plus } from "lucide-react";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
-import {
-  MotionDiv,
-  MotionH1,
-  MotionP,
-} from "@/components/common/FramerMotion";
+import { MotionDiv, MotionH1, MotionP } from "@/components/common/FramerMotion";
 import { useTypeSelector } from "@/store/store";
 import BgGradient from "@/components/common/BGGradient";
 import { itemVariants } from "@/common/constants/defaultValues";
 
 export default function Page() {
-  const {user} = useTypeSelector(state=>state.auth)
+  const { user } = useTypeSelector((state) => state.auth);
 
   if (!user?.id) {
     return redirect("/sign-in");
   }
-
   return (
     <main className="min-h-screen">
       <BgGradient className="from-emerald-200 via-teal-200 to-cyan-200" />
@@ -53,7 +44,7 @@ export default function Page() {
                 Transform your PDFs into concise, actionable insights
               </MotionP>
             </div>
-            {!hasReachedLimit && (
+            {/* {!hasReachedLimit && (
               <MotionDiv
                 variants={itemVariants}
                 initial={"hidden"}
@@ -71,9 +62,9 @@ export default function Page() {
                   </Link>
                 </Button>
               </MotionDiv>
-            )}
+            )} */}
           </div>
-
+          {/* 
           {hasReachedLimit && (
             <MotionDiv
               variants={itemVariants}
@@ -100,7 +91,7 @@ export default function Page() {
                 </p>
               </div>
             </MotionDiv>
-          )}
+          )} */}
 
           {/* {summaries.length === 0 ? (
             <EmptySummaryState />
