@@ -3,9 +3,9 @@ import {
   itemVariants,
   pricingPlans,
 } from "@/common/constants/defaultValues";
+import PricingCardBasic from "@/components/cards/pricing-card/PricingCardBasic";
+import PricingCardPro from "@/components/cards/pricing-card/PricingCardPro";
 import { MotionDiv, MotionSection } from "@/components/common/FramerMotion";
-import PricingCardBasic from "../cards/pricing-card/PricingCardBasic";
-import PricingCardPro from "../cards/pricing-card/PricingCardPro";
 
 export default function PricingSection() {
   return (

@@ -1,7 +1,7 @@
 import { Pizza } from 'lucide-react';
 import { demoText } from '@/common/constants/defaultValues';
 import { MotionSection, MotionH3, MotionDiv } from "@/components/common/FramerMotion"
-import SummaryViewCard from '../cards/summary-card/SummaryViewCard';
+import SummaryViewCard from '@/components/cards/summary-card/SummaryViewCard';
 
 export default function DemoSection() {
   return (

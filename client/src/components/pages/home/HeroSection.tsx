@@ -1,7 +1,5 @@
 import React from "react";
-import { Button } from "../ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { Badge } from "../ui/badge";
 import Link from "next/link";
 import {
   MotionDiv,
@@ -15,6 +13,8 @@ import {
   containerVariants,
   itemVariants,
 } from "@/common/constants/defaultValues";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 export default function HeroSection() {
   return (

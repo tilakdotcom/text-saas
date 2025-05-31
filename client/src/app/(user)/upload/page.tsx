@@ -1,5 +1,5 @@
 import UploadHeader from "@/components/pages/upload/UploadHeader";
-// import UploadForm from "@/components/upload/upload-form";
+import UploadForm from "@/components/pages/upload/UploadForm";
 import { redirect } from "next/navigation";
 import { containerVariants } from "@/common/constants/defaultValues";
 import { MotionDiv } from "@/components/common/FramerMotion";
