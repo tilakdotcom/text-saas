@@ -1,5 +1,4 @@
-"use client"
-
+"use client";
 
 import {
   registerUserRequest,
@@ -15,7 +14,7 @@ import {
 } from "@/common/types/authSlice";
 import API from "@/common/config/axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { persistUser } from "@/lib/localStorage";
+import { loadUser, persistUser } from "@/lib/localStorage";
 
 export const loginUser = createAsyncThunk(
   "loginUser/Data",
@@ -117,7 +116,7 @@ export const loginWithGoogleUser = createAsyncThunk(
 const initialState: initialStateProps = {
   isAuthenticated: false,
   isLoading: false,
-  user: null,
+  user: loadUser(),
   error: null,
 };
 

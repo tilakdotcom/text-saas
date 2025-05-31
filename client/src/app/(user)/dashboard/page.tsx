@@ -8,13 +8,10 @@ import { MotionDiv, MotionH1, MotionP } from "@/components/common/FramerMotion";
 import SummaryViewCard from "@/components/cards/summary-card/SummaryViewCard";
 import { itemVariants } from "@/common/constants/defaultValues";
 import EmptySummaryState from "@/components/cards/summary-card/EmptySummaryState";
-import { useTypeSelector } from "@/store/store";
 import BgGradient from "@/components/common/BGGradient";
 
 export default function Page() {
-  const { user } = useTypeSelector((state) => state.auth);
 
-  console.log(user);
   const summaries: string[] = [];
   const hasReachedLimit = false;
 

@@ -75,7 +75,6 @@ export const itemVariants: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      type: "spring",
       damping: 15,
       striffness: 50,
       duration: 0.8,
@@ -89,7 +88,6 @@ export const listVariants: Variants = {
     opacity: 1,
     x: 0,
     transition: {
-      type: "spring",
       duration: 0.5,
       damping: 20,
       stiffness: 100,
@@ -100,7 +98,6 @@ export const listVariants: Variants = {
 export const buttonVariants: HoverHandlers["whileHover"] = {
   scale: 1.05,
   transition: {
-    type: "spring",
     damping: 10,
     striffness: 300,
     duration: 0.8,

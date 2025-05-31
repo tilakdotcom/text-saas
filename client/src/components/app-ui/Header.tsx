@@ -7,29 +7,46 @@ import { Avatar } from "../common/Avatar";
 
 export default function Header() {
   const { isAuthenticated, user } = useTypeSelector((state) => state.auth);
+
   return (
     <header className="sticky top-0 z-50 w-full h-20 flex items-center justify-between px-4 md:px-7 bg-opacity-80 backdrop-blur-md  overflow-hidden transform duration-500">
       <div className="flex ">
         <NavLink href="/" className="flex shrink-0 items-center gap-1 lg:gap-2">
           <Logo />
         </NavLink>
-      </div>
-
-      <div className="hidden md:flex space-x-6">
-        <NavLink
-          href="/"
-          className="text-gray-700 dark:text-gray-300 hover:text-pink-600 transition"
-        >
-          Home
-        </NavLink>
-        <NavLink
-          href="/#pricing"
-          className="text-gray-700 dark:text-gray-300 hover:text-pink-600 transition"
-        >
-          Pricing
-        </NavLink>
-      </div>
-
+      </div>{" "}
+      {!isAuthenticated && (
+        <div className="hidden md:flex space-x-6">
+          <NavLink
+            href="/"
+            className="text-gray-700 dark:text-gray-300 hover:text-pink-600 transition"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            href="/#pricing"
+            className="text-gray-700 dark:text-gray-300 hover:text-pink-600 transition"
+          >
+            Pricing
+          </NavLink>
+        </div>
+      )}
+      {isAuthenticated && (
+        <div className="hidden md:flex space-x-6">
+          <NavLink
+            href="/dashboard"
+            className="text-gray-700 dark:text-gray-300 hover:text-pink-600 transition"
+          >
+            Summaries
+          </NavLink>
+          <NavLink
+            href="/#pricing"
+            className="text-gray-700 dark:text-gray-300 hover:text-pink-600 transition"
+          >
+            Pricing
+          </NavLink>
+        </div>
+      )}
       <div className="">
         {!isAuthenticated && (
           <NavLink
@@ -41,14 +58,11 @@ export default function Header() {
         )}{" "}
         {isAuthenticated && (
           <div className="flex items-center gap-x-2">
-            <NavLink
-              href="/upload"
-              className=" text-sm font-medium transition"
-            >
+            <NavLink href="/upload" className=" text-sm font-medium transition">
               Upload a PDF
             </NavLink>
             <PlanBadge />
-            <Avatar size={30} src={user?.avatar} href={user?.avatar}/>
+            <Avatar size={30} src={user?.avatar} href={user?.avatar} />
           </div>
         )}
       </div>

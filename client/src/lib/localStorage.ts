@@ -1,7 +1,5 @@
 "use client";
 
-
-
 import { UserType } from "@/common/types/user";
 export const loadUser = () => {
   if (typeof window !== "undefined") {

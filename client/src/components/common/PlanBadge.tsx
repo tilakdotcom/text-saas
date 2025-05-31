@@ -10,7 +10,6 @@ export default function PlanBadge() {
 
   const plan = pricingPlans.find((plan) => plan.priceId === priceId);
 
-  console.log(plan?.name);
 
   return (
     <div>
