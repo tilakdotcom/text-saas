@@ -5,19 +5,13 @@ export function middleware(request: NextRequest) {
   const url = request.nextUrl;
   const accessToken = request.cookies.get("accessToken");
 
-  const isAuthPage = url.pathname === "/login" || url.pathname === "/register";
   const isProtectedPage =
     url.pathname.startsWith("/dashboard") || url.pathname.startsWith("/upload");
-
-  if (isAuthPage && accessToken) {
-    return NextResponse.redirect(new URL("/dashboard", request.url));
-  }
 
   if (isProtectedPage && !accessToken) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  // Otherwise allow the request
   return NextResponse.next();
 }
 
