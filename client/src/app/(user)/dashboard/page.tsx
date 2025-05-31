@@ -19,7 +19,7 @@ export default function Page() {
   const hasReachedLimit = false;
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen sm:px-8">
       <BgGradient className="from-emerald-200 via-teal-200 to-cyan-200" />
       <MotionDiv
         initial={{ opacity: 0, y: 20 }}
@@ -55,13 +55,13 @@ export default function Page() {
                 variants={itemVariants}
                 initial={"hidden"}
                 whileInView={"visible"}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1 }}
                 viewport={{ once: true }}
                 className="self-start"
               >
                 <Button
                   variant={"link"}
-                  className="group bg-linear-to-r from-rose-500 to-rose-700 transition-all duration-200 hover:scale-105 hover:from-rose-600 hover:to-rose-800 hover:no-underline"
+                  className="group bg-linear-to-r from-rose-500 to-rose-700 transition-all duration-200 hover:scale-105 hover:from-rose-600 hover:to-rose-800 hover:no-underline py-2 px-3"
                 >
                   <Link href="/upload" className="flex items-center text-white">
                     <Plus className="mr-2 h-5 w-5" /> New Summary

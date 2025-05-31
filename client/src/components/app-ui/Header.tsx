@@ -2,9 +2,11 @@
 import { useTypeSelector } from "@/store/store";
 import { Logo } from "../common/Logo";
 import NavLink from "./NavLink";
+import PlanBadge from "../common/PlanBadge";
+import { Avatar } from "../common/Avatar";
 
 export default function Header() {
-  const { isAuthenticated } = useTypeSelector((state) => state.auth);
+  const { isAuthenticated, user } = useTypeSelector((state) => state.auth);
   return (
     <header className="sticky top-0 z-50 w-full h-20 flex items-center justify-between px-4 md:px-7 bg-opacity-80 backdrop-blur-md  overflow-hidden transform duration-500">
       <div className="flex ">
@@ -32,21 +34,22 @@ export default function Header() {
         {!isAuthenticated && (
           <NavLink
             href="/login"
-            className="px-4 py-2 text-base font-medium transition"
+            className="px-4 py-2 text-sm font-medium transition"
           >
             Login
           </NavLink>
         )}{" "}
         {isAuthenticated && (
-          <>
-            {" "}
+          <div className="flex items-center gap-x-2">
             <NavLink
               href="/upload"
-              className="px-4 py-2 text-base font-medium transition"
+              className=" text-sm font-medium transition"
             >
               Upload a PDF
             </NavLink>
-          </>
+            <PlanBadge />
+            <Avatar size={30} src={user?.avatar} href={user?.avatar}/>
+          </div>
         )}
       </div>
     </header>
