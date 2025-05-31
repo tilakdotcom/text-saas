@@ -62,7 +62,7 @@ export default function Header() {
               Upload a PDF
             </NavLink>
             <PlanBadge />
-            <Avatar size={30} src={user?.avatar} href={user?.avatar} />
+            <Avatar size={30} src={user?.avatar} href={"/profile"} />
           </div>
         )}
       </div>

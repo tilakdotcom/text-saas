@@ -1,4 +1,4 @@
-import { HoverHandlers, Variants } from "framer-motion";
+import { Variants } from "framer-motion";
 
 export const pricingPlans = [
   {
@@ -59,47 +59,55 @@ export const demoText: string = `# SOMMAIRE: AI-Powered Document Summarizer 🧠
 # Bottom Line
 • 💫 SOMMAIRE is your go - to AI assistant for document summarization—fast, efficient, and built for clarity in the age of information overload.`;
 
+// Container animation
 export const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      straggerChildren: 0.2,
+      staggerChildren: 0.2,
       delayChildren: 0.1,
     },
   },
 };
 
+// Individual item animation
 export const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
+    y: 0,
     transition: {
+      type: "spring",
       damping: 15,
-      striffness: 50,
+      stiffness: 50,
       duration: 0.8,
     },
   },
 };
 
+// List item animation from the left
 export const listVariants: Variants = {
   hidden: { opacity: 0, x: -20 },
   visible: {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.5,
+      type: "spring",
       damping: 20,
       stiffness: 100,
+      duration: 0.5,
     },
   },
 };
 
-export const buttonVariants: HoverHandlers["whileHover"] = {
+// Button hover effect
+export const buttonVariants = {
   scale: 1.05,
   transition: {
+    type: "spring",
     damping: 10,
-    striffness: 300,
+    stiffness: 300,
     duration: 0.8,
   },
 };
