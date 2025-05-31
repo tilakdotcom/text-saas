@@ -1,19 +1,22 @@
 "use client";
 
 import { loadUser } from "@/lib/localStorage";
-import { setUser } from "@/store/auth/authSlice";
+import { checkAuth, setAuthenticated } from "@/store/auth/authSlice";
 import { useAppDispatch } from "@/store/store";
 import { useEffect } from "react";
 
 export default function CheckUser() {
+  const user = loadUser();
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const user = loadUser();
-    if (user) {
-      dispatch(setUser(user));
+    if (user === null) {
+      dispatch(setAuthenticated(false));
+    } else {
+      dispatch(checkAuth());
     }
-  }, [dispatch]);
+  }, [dispatch, user]);
 
   return null;
 }

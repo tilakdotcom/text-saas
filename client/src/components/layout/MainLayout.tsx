@@ -7,7 +7,6 @@ import { Provider } from "react-redux";
 import store from "@/store/store";
 import Header from "../app-ui/Header";
 import Footer from "../app-ui/Footer";
-
 export function MainLayout({
   children,
   className,
@@ -20,13 +19,12 @@ export function MainLayout({
       <Provider store={store}>
         <CheckUser />
         <Container className={className}>
-          
           <Header />
-          
+
           {children}
-          
-          <Footer/>
-          </Container>
+
+          <Footer />
+        </Container>
       </Provider>
     </>
   );
