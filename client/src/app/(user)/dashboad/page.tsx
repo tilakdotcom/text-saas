@@ -1,10 +1,14 @@
-// import EmptySummaryState from "@/components/summaries/empty-summary-state";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Plus } from "lucide-react";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
 import { MotionDiv, MotionH1, MotionP } from "@/components/common/FramerMotion";
+import SummaryViewCard from "@/components/cards/summary-card/SummaryViewCard";
+import { itemVariants } from "@/common/constants/defaultValues";
+import EmptySummaryState from "@/components/cards/summary-card/EmptySummaryState";
 import { useTypeSelector } from "@/store/store";
 import BgGradient from "@/components/common/BGGradient";
-import { itemVariants } from "@/common/constants/defaultValues";
 
 export default function Page() {
   const { user } = useTypeSelector((state) => state.auth);
@@ -12,6 +16,10 @@ export default function Page() {
   if (!user?.id) {
     return redirect("/sign-in");
   }
+
+  const summaries: string[] = [];
+  const hasReachedLimit = false;
+
   return (
     <main className="min-h-screen">
       <BgGradient className="from-emerald-200 via-teal-200 to-cyan-200" />
@@ -44,7 +52,7 @@ export default function Page() {
                 Transform your PDFs into concise, actionable insights
               </MotionP>
             </div>
-            {/* {!hasReachedLimit && (
+            {!hasReachedLimit && (
               <MotionDiv
                 variants={itemVariants}
                 initial={"hidden"}
@@ -62,9 +70,9 @@ export default function Page() {
                   </Link>
                 </Button>
               </MotionDiv>
-            )} */}
+            )}
           </div>
-          {/* 
+
           {hasReachedLimit && (
             <MotionDiv
               variants={itemVariants}
@@ -91,17 +99,17 @@ export default function Page() {
                 </p>
               </div>
             </MotionDiv>
-          )} */}
+          )}
 
-          {/* {summaries.length === 0 ? (
+          {summaries.length === 0 ? (
             <EmptySummaryState />
           ) : (
             <div className="grid grid-cols-1 gap-4 sm:gap-6 sm:px-0 md:grid-cols-2 lg:grid-cols-3">
-              {summaries.map((summary, i) => (
-                <SummaryCard summary={summary} key={i} />
+              {summaries.map((summary: string, i: number) => (
+                <SummaryViewCard summary={summary} key={i} />
               ))}
             </div>
-          )} */}
+          )}
         </div>
       </MotionDiv>
     </main>
