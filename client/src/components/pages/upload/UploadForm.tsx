@@ -5,7 +5,9 @@ import { SubmitHandler } from "react-hook-form";
 
 export default function UploadForm() {
   const isLoading = false;
-  const handleSubmit: SubmitHandler<{ file: File | null }> = async (data) => {
+  const handleSubmit: SubmitHandler<{ file?: File | undefined }> = async (
+    data
+  ) => {
     console.log(data);
   };
 
