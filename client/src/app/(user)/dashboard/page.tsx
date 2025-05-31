@@ -1,7 +1,8 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Plus } from "lucide-react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import React from "react";
 import { MotionDiv, MotionH1, MotionP } from "@/components/common/FramerMotion";
 import SummaryViewCard from "@/components/cards/summary-card/SummaryViewCard";
@@ -13,10 +14,7 @@ import BgGradient from "@/components/common/BGGradient";
 export default function Page() {
   const { user } = useTypeSelector((state) => state.auth);
 
-  if (!user?.id) {
-    return redirect("/sign-in");
-  }
-
+  console.log(user);
   const summaries: string[] = [];
   const hasReachedLimit = false;
 
