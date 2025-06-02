@@ -6,24 +6,25 @@ import {
   LIMIT_EXCEEDED,
 } from "../common/constants/http";
 import ApiErrorCode from "../common/constants/apiErrorCode";
+import { SUMMARY_SYSTEM_PROMPT } from "../common/constants/systemPrompt";
 
 // Instantiate OpenAI with your API key
 const openai = new OpenAI({
   apiKey: OPEN_AI_KEY,
 });
 
-export async function getResponseFromOpenAi() {
+export async function getResponseFromOpenAi(pdfText: string) {
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4",
+      model: "gpt-3.5-turbo",
       messages: [
         {
           role: "system",
-          content: "You are helpful Assistant.",
+          content: SUMMARY_SYSTEM_PROMPT,
         },
         {
           role: "user",
-          content: "",
+          content: `Transform this document into an engaging, easy-to-read summary with contextually relevant emojis and proper markdown formatting:\n\n${pdfText}.`,
         },
       ],
       temperature: 0.7,
