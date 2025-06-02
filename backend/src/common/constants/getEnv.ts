@@ -34,7 +34,8 @@ export const CLIENT_SECRET = getEnv("VITE_CLIENT_SECRET")
 export const REDIRECT_URI = getEnv("VITE_REDIRECT_URI")
 export const JAVASCRIPT_URI = getEnv("VITE_JAVASCRIPT_URI")
 
-
+//ai
+export const OPEN_AI_KEY = getEnv("OPEN_AI_KEY")
 
 
 
