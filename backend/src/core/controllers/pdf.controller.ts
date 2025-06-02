@@ -1,14 +1,24 @@
-import { uploadFileSchema } from "../../common/schemas/pdf";
 import asyncHandler from "../../middlewares/asyncHandler.middleware";
+import { validateFilePdf } from "../../middlewares/file.middleware";
+import { PdfUploadService } from "../services/pdf.service";
 
 export const pdfUploadController = asyncHandler(async (req, res) => {
   const body = {
-    pdf: uploadFileSchema.parse(req.body.pdf),
+    pdf: validateFilePdf(req.body.pdf),
     userId: req?.userId,
-    ...req,
   };
 
-  
+  const { pdf, userId } = await PdfUploadService({
+    pdf: body.pdf.path,
+    userId: body.userId as string,
+  });
 
-  res.status(200).json({ message: "Server is running", success: true });
+  res.status(200).json({
+    message: "PDF summary explained successfully",
+    success: true,
+    data: {
+      pdf,
+      userId,
+    },
+  });
 });

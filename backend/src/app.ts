@@ -33,7 +33,7 @@ import sessionRoutes from "./core/routes/session.routes";
 import pdfRoutes from "./core/routes/pdf.routes";
 
 //  use routes
-app.use("/api/v1/heath", healthRoutes);
+app.use("/api/v1/health", healthRoutes);
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/session", sessionRoutes);

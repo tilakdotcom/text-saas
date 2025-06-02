@@ -1,3 +1,4 @@
+import { uploadPdfSchema } from "../common/schemas/pdf";
 import { imageSchema } from "../common/schemas/user";
 
 export const validateFileImage = (file: Express.Multer.File) => {
@@ -11,4 +12,9 @@ export const validateFileImage = (file: Express.Multer.File) => {
     path: file.path,
   });
   return { path: image.path, filename: image.filename };
+};
+
+export const validateFilePdf = (file: Express.Multer.File) => {
+  const pdf = uploadPdfSchema.parse(file);
+  return { path: pdf.path, fileName: pdf.filename };
 };
