@@ -5,8 +5,12 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-}
+} 
 
+enum verificationType {
+  EMAIL_VERIFICATION
+  RESET_PASSWORD
+}
 model User {
   id            String         @id @default(uuid())
   email         String         @unique
@@ -31,10 +35,7 @@ model Session {
   updatedAt    DateTime @default(now()) @updatedAt
 }
 
-enum verificationType {
-  EMAIL_VERIFICATION
-  RESET_PASSWORD
-}
+
 
 model Verification {
   id        String           @id @default(uuid())

@@ -5,11 +5,11 @@ import {
 } from "../../common/constants/http";
 import uploadFileToCloudinary from "../../common/utils/cloudinary";
 import prisma from "../../database/dbConnect";
-import { verificationType } from "@prisma/client";
 import ApiError from "../../common/API/ApiError";
 import { fifteenMinuteFromNow, Now } from "../../common/utils/customTime";
 import { CLIENT_URI } from "../../common/constants/getEnv";
 import { passwordHasher } from "../../common/utils/bcryptjs";
+import { verificationType } from "@prisma/client";
 
 type UserAvatar = {
   avatar: string;

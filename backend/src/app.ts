@@ -30,13 +30,14 @@ import healthRoutes from "./core/routes/health.routes";
 import authRoutes from "./core/routes/auth.routes";
 import userRoutes from "./core/routes/user.routes";
 import sessionRoutes from "./core/routes/session.routes";
+import pdfRoutes from "./core/routes/pdf.routes";
 
 //  use routes
 app.use("/api/v1/heath", healthRoutes);
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/session", sessionRoutes);
-
+app.use("/api/v1/pdf", pdfRoutes);
 
 app.use(errorHandler);
 
