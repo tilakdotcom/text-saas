@@ -4,11 +4,11 @@ import { PdfUploadService } from "../services/pdf.service";
 
 export const pdfUploadController = asyncHandler(async (req, res) => {
   const body = {
-    pdf: validateFilePdf(req.body.pdf),
+    pdf: validateFilePdf(req.file as Express.Multer.File),
     userId: req?.userId,
   };
 
-  const { pdf, userId } = await PdfUploadService({
+  const { pdfText, userId } = await PdfUploadService({
     pdf: body.pdf.path,
     userId: body.userId as string,
   });
@@ -17,7 +17,7 @@ export const pdfUploadController = asyncHandler(async (req, res) => {
     message: "PDF summary explained successfully",
     success: true,
     data: {
-      pdf,
+      pdfText,
       userId,
     },
   });
