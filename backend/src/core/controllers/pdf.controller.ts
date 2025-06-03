@@ -8,16 +8,17 @@ export const pdfUploadController = asyncHandler(async (req, res) => {
     userId: req?.userId,
   };
 
-  const { summaryText, userId } = await PdfUploadService({
+  const { summary, userId } = await PdfUploadService({
     pdf: body.pdf.path,
     userId: body.userId as string,
+    fileName: body.pdf.fileName,
   });
 
   res.status(200).json({
     message: "PDF summary explained successfully",
     success: true,
     data: {
-      summaryText,
+      summary,
       userId,
     },
   });

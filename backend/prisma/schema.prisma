@@ -57,4 +57,5 @@ model Pdf {
   original_file_url String
   summary_text      String
   title             String
+  status            String
 }
