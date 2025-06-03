@@ -1,5 +1,6 @@
 import { ExternalLink, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import DownloadSummaryButton from "./DownloadSummaryButton";
 
 type SourceInfoProps = {
   fileName: string;
