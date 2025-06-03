@@ -1,4 +1,4 @@
-import { abstractTextFromPdf } from "../../common/utils/pdf";
+import { abstractTextFromPdf, formatFileName } from "../../common/utils/pdf";
 import { getResponseFromGemini } from "../../config/gemini";
 import { getResponseFromOpenAi } from "../../config/openai";
 import prisma from "../../database/dbConnect";
@@ -24,9 +24,9 @@ export const PdfUploadService = async ({
       file_name: fileName,
       original_file_url: "",
       summary_text: summaryText,
-      title: "Tilak Resume",
+      title: formatFileName(fileName),
       userId,
-      status: "completed",
+      status: "COMPLETED",
     },
   });
 

@@ -10,3 +10,16 @@ export const abstractTextFromPdf = async (pdfPath: string) => {
 
   return pdfText[0]
 };
+
+
+
+export function formatFileName(url:string) {
+  const fileName = url.split('/').pop() || '';
+  return fileName
+    .replace(/\.[^/.]+$/, '')
+    .replace(/[-_]+/g, ' ')
+    .split(' ')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join('')
+    .trim();
+}

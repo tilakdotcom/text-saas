@@ -1,6 +1,9 @@
 -- CreateEnum
 CREATE TYPE "verificationType" AS ENUM ('EMAIL_VERIFICATION', 'RESET_PASSWORD');
 
+-- CreateEnum
+CREATE TYPE "pdfStatus" AS ENUM ('PENDING', 'PROCESSING', 'COMPLETED', 'FAILED');
+
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
@@ -50,6 +53,7 @@ CREATE TABLE "Pdf" (
     "original_file_url" TEXT NOT NULL,
     "summary_text" TEXT NOT NULL,
     "title" TEXT NOT NULL,
+    "status" "pdfStatus" NOT NULL DEFAULT 'PENDING',
 
     CONSTRAINT "Pdf_pkey" PRIMARY KEY ("id")
 );
