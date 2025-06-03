@@ -5,23 +5,25 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-} 
+}
 
 enum verificationType {
   EMAIL_VERIFICATION
   RESET_PASSWORD
 }
+
 model User {
   id            String         @id @default(uuid())
   email         String         @unique
   password      String?
-  name      String?
+  name          String?
   verifiedEmail Boolean        @default(false)
   avatar        String?
   createAt      DateTime       @default(now())
   updatedAt     DateTime       @default(now()) @updatedAt
   Session       Session[]
   Verification  Verification[]
+  Pdf           Pdf[]
 }
 
 model Session {
@@ -29,13 +31,11 @@ model Session {
   expiresAt    DateTime @default(now())
   userId       String
   user         User     @relation(fields: [userId], references: [id])
-  userAgent String?
+  userAgent    String?
   refreshToken String?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @default(now()) @updatedAt
 }
-
-
 
 model Verification {
   id        String           @id @default(uuid())
@@ -47,3 +47,14 @@ model Verification {
   updatedAt DateTime         @default(now()) @updatedAt
 }
 
+model Pdf {
+  id                String   @id @default(uuid())
+  userId            String
+  user              User     @relation(fields: [userId], references: [id])
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @default(now()) @updatedAt
+  file_name         String
+  original_file_url String
+  summary_text      String
+  title             String
+}
