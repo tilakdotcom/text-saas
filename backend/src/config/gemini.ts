@@ -19,11 +19,12 @@ export async function getResponseFromGemini(pdfText: string) {
     maxOutputTokens: 1500,
   };
 
-  const model = "gemini-2.0-flash";
+  // const model = "gemini-2.0-flash";
+  const model = "gemini-2.0-flash-lite";
 
   const contents = [
     {
-      role: "system",
+      role: "user",
       parts: [
         {
           text: SUMMARY_SYSTEM_PROMPT,
@@ -31,7 +32,7 @@ export async function getResponseFromGemini(pdfText: string) {
       ],
     },
     {
-      role: "",
+      role: "user",
       parts: [
         {
           text: `Transform this document into an engaging, easy-to-read summary with contextually relevant emojis and proper markdown formatting:\n\n${pdfText}.`,
