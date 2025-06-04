@@ -32,3 +32,14 @@ export const PdfUploadService = async ({
 
   return { summary: newPdf, userId };
 };
+
+
+type GetPdfsServiceProps = {
+  userId: string;
+};
+
+export const getPdfsService =async({userId}:GetPdfsServiceProps)=>{
+const pdfs= await prisma.pdf.findMany({
+where })
+
+}
