@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { FileText } from "lucide-react";
-import { cn, formatFileName } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { formatDistanceToNow } from "date-fns";
 import { MotionDiv } from "@/components/common/FramerMotion";
 import { itemVariants } from "@/common/constants/defaultValues";
@@ -9,21 +9,22 @@ import { SummaryType } from "@/common/types/summary";
 import DeleteButton from "./DeleteButton";
 
 type SummaryHeaderProps = {
-  fileUrl: string;
+  fileUrl?: string;
   title: string;
   createdAt: string;
 };
 
-const SummaryHeader = ({ fileUrl, title, createdAt }: SummaryHeaderProps) => {
+const SummaryHeader = ({ title, createdAt }: SummaryHeaderProps) => {
+  const date = new Date(createdAt);
   return (
     <div className="flex items-start gap-2 sm:gap-4">
       <FileText className="mt-1 h-6 w-6 text-rose-400 sm:h-8 sm:w-8" />
       <div className="min-w-0 flex-1">
         <h3 className="w-4/5 truncate text-base font-semibold text-gray-900 xl:text-lg">
-          {title || formatFileName(fileUrl)}
+          {title}
         </h3>
         <p className="text-sm text-gray-500">
-          {formatDistanceToNow(new Date(createdAt), { addSuffix: true })}
+          {formatDistanceToNow(date, { addSuffix: true })}
         </p>
       </div>
     </div>
@@ -66,7 +67,7 @@ export function SummaryCard(summary: SummaryType) {
             <SummaryHeader
               fileUrl={summary.original_file_url}
               title={summary.file_name}
-              createdAt={summary.created_at}
+              createdAt={summary.createdAt}
             />
             <p className="line-clamp-2 pl-2 text-sm text-gray-600 sm:text-base">
               {summary.summary_text}

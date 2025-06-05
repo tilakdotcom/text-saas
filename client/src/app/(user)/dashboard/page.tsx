@@ -5,13 +5,13 @@ import { ArrowRight, Plus } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { MotionDiv, MotionH1, MotionP } from "@/components/common/FramerMotion";
-import SummaryViewCard from "@/components/cards/summary-card/SummaryViewCard";
 import { itemVariants } from "@/common/constants/defaultValues";
 import EmptySummaryState from "@/components/cards/summary-card/EmptySummaryState";
 import BgGradient from "@/components/common/BGGradient";
 import { useAppDispatch, useTypeSelector } from "@/store/store";
 import { getPdfSummaries } from "@/store/summary/summarySlice";
 import { SummaryType } from "@/common/types/summary";
+import { SummaryCard } from "@/components/cards/summary-card/SummeryCard";
 
 export default function Page() {
   const { summaries } = useTypeSelector((state) => state.summary);
@@ -114,7 +114,7 @@ export default function Page() {
             <div className="grid grid-cols-1 gap-4 sm:gap-6 sm:px-0 md:grid-cols-2 lg:grid-cols-3">
               {summaries &&
                 summaries.map((summary: SummaryType, i: number) => (
-                  <SummaryViewCard summary={summary.summary_text} key={i} />
+                  <SummaryCard {...summary} key={i} />
                 ))}
             </div>
           )}
