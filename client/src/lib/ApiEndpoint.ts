@@ -5,6 +5,7 @@ export const getUserRequest = "/user";
 
 export const loginWithGoogleRequest = (code: string) =>
   `/auth/google-login?code=${code}`;
+export const getSummariesRequest = "/pdf/";
 
 export const uploadPdfRequest = "/pdf/new";
-export const getSummariesRequest = "/pdf";
+export const getSummaryByIdRequest = (id: string) => `/pdf/${id}`;

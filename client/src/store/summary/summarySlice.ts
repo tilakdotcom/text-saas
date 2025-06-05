@@ -1,6 +1,10 @@
 import API from "@/common/config/axios";
 import { InitialStateProps } from "@/common/types/summary";
-import { getSummariesRequest, uploadPdfRequest } from "@/lib/ApiEndpoint";
+import {
+  getSummariesRequest,
+  getSummaryByIdRequest,
+  uploadPdfRequest,
+} from "@/lib/ApiEndpoint";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const uploadPdfForSummary = createAsyncThunk(
@@ -22,6 +26,18 @@ export const getPdfSummaries = createAsyncThunk(
   async () => {
     try {
       const response = await API.get(getSummariesRequest);
+      return response.data.data;
+    } catch (error) {
+      throw new Error((error as string) || "Error getting");
+    }
+  }
+);
+
+export const getPdfSummaryById = createAsyncThunk(
+  "getPdfSummaryById/data",
+  async (id: string) => {
+    try {
+      const response = await API.get(getSummaryByIdRequest(id));
       return response.data.data;
     } catch (error) {
       throw new Error((error as string) || "Error getting");
@@ -60,11 +76,24 @@ const summarySlice = createSlice({
     });
     builder.addCase(getPdfSummaries.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.summaries = action.payload
+      state.summaries = action.payload;
     });
     builder.addCase(getPdfSummaries.rejected, (state, action) => {
       state.isLoading = false;
       state.summaries = null;
+      state.error = (action.error as string) || "Error in  uploading summary";
+    });
+    //get summmary by id
+    builder.addCase(getPdfSummaryById.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getPdfSummaryById.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.current = action.payload;
+    });
+    builder.addCase(getPdfSummaryById.rejected, (state, action) => {
+      state.isLoading = false;
+      state.current = null;
       state.error = (action.error as string) || "Error in  uploading summary";
     });
   },

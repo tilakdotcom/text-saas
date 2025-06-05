@@ -5,6 +5,7 @@ export type SummaryType = {
   createdAt: string; // or Date, depending on how you handle it
   summary_text: string;
   status: "pending" | "completed" | "failed";
+  title: string;
 };
 
 export type InitialStateProps = {

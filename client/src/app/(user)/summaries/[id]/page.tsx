@@ -1,38 +1,39 @@
+"use client"
+
 import { tilakText } from "@/common/constants/defaultValues";
 import SourceInfo from "@/components/cards/summary-card/SourceInfo";
 import SummaryHeader from "@/components/cards/summary-card/SummaryHeader";
 import SummaryViewCard from "@/components/cards/summary-card/SummaryViewCard";
 import BgGradient from "@/components/common/BGGradient";
 import { MotionDiv } from "@/components/common/FramerMotion";
+import { useAppDispatch, useTypeSelector } from "@/store/store";
+import { getPdfSummaryById } from "@/store/summary/summarySlice";
 import { FileText } from "lucide-react";
+import { notFound } from "next/navigation";
+import { useEffect } from "react";
 
 type SummaryPageProps = {
   id: string;
 };
-
-const summary = {
-  title: "Tilak Resume About",
-  summary_text: tilakText,
-  file_name: "Tilak Resume File",
-  word_count: tilakText.length,
-  created_at: "2025-05-11T11:03:13.015Z",
-  original_file_url: "",
-};
 export default function SummaryPage({ id }: SummaryPageProps) {
-  console.log(id);
+  const { current } = useTypeSelector((state) => state.summary);
+  const dispatch = useAppDispatch();
 
-  // if (!summary) {
-  //   notFound();
-  // }
+  useEffect(() => {
+    const fetchSummaries = async () => {
+      await dispatch(getPdfSummaryById(id));
+    };
+    fetchSummaries();
+  }, [dispatch, id]);
 
-  const {
-    created_at,
-    file_name,
-    original_file_url,
-    summary_text,
-    title,
-    word_count,
-  } = summary;
+  if (!current) {
+    notFound();
+  }
+
+  const { createdAt, file_name, original_file_url, summary_text, title } =
+    current;
+
+  const word_count = summary_text.length;
 
   const readingTime = Math.ceil((word_count || 0) / 200);
 
@@ -50,7 +51,7 @@ export default function SummaryPage({ id }: SummaryPageProps) {
           >
             <SummaryHeader
               title={title}
-              createdAt={created_at}
+              createdAt={createdAt}
               readingTime={String(readingTime)}
             />
           </MotionDiv>
@@ -59,7 +60,7 @@ export default function SummaryPage({ id }: SummaryPageProps) {
               fileName={file_name}
               title={title}
               summaryText={summary_text}
-              createdAt={created_at}
+              createdAt={createdAt}
               originalFileUrl={original_file_url}
             />
           )}
