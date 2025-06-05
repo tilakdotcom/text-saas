@@ -9,4 +9,6 @@ router.use(verifyUser);
 
 router.route("/new").post(upload.single("pdf"), pdfUploadController);
 
+router.route("/").get();
+
 export default router;
