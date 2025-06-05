@@ -32,3 +32,42 @@ export const PdfUploadService = async ({
 
   return { summary: newPdf, userId };
 };
+
+type GetPdfSummariesServicesProps = {
+  userId: string;
+};
+
+export const getPdfSummariesServices = async ({
+  userId,
+}: GetPdfSummariesServicesProps) => {
+  const summaries = await prisma.pdf.findMany({
+    where: {
+      userId,
+    },
+  });
+
+  return {
+    summaries,
+  };
+};
+
+type GetPdfSummaryServicesProps = {
+  userId: string;
+  id: string;
+};
+
+export const getPdfSummaryServices = async ({
+  userId,
+  id,
+}: GetPdfSummaryServicesProps) => {
+  const summary = await prisma.pdf.findFirst({
+    where: {
+      userId,
+      id,
+    },
+  });
+
+  return {
+    summary,
+  };
+};
