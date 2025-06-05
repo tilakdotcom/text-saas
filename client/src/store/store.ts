@@ -1,13 +1,14 @@
-"use client"
-
+"use client";
 
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import authReduser from "./auth/authSlice";
+import summaryReducer from "./summary/summarySlice";
 
 const store = configureStore({
   reducer: {
-    auth: authReduser
+    auth: authReduser,
+    summary: summaryReducer,
   },
 });
 
