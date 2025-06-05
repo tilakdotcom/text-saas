@@ -21,8 +21,7 @@ export default function Page() {
 
   useEffect(() => {
     const fetchSummaries = async () => {
-      const res = await dispatch(getPdfSummaries());
-      console.log("response ", res);
+      await dispatch(getPdfSummaries());
     };
     fetchSummaries();
   }, [dispatch]);

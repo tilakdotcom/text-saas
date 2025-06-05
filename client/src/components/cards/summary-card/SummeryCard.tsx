@@ -24,7 +24,9 @@ const SummaryHeader = ({ title, createdAt }: SummaryHeaderProps) => {
           {title}
         </h3>
         <p className="text-sm text-gray-500">
-          {formatDistanceToNow(date, { addSuffix: true })}
+          {date
+            ? formatDistanceToNow(new Date(date), { addSuffix: true })
+            : "Unknown time"}
         </p>
       </div>
     </div>
