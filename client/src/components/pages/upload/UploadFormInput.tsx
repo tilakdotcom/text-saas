@@ -7,7 +7,6 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -61,7 +60,6 @@ export const UploadFormInput = ({
                       }}
                     />
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -74,7 +72,7 @@ export const UploadFormInput = ({
               {isLoading ? (
                 <>
                   <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />
-                  Processing...
+                  Uploading...
                 </>
               ) : (
                 "Upload Your Pdf"

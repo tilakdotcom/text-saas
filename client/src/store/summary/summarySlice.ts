@@ -5,16 +5,13 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const uploadPdfForSummary = createAsyncThunk(
   "uplaod/data",
-  async ({ pdf }: { pdf: File | undefined }) => {
+  async ({ pdf }: { pdf: File }) => {
     try {
-      const response = await API.post(uploadPdfRequest, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        data: { pdf },
-      });
+      const formData = new FormData();
+      formData.append("pdf", pdf);
+      const response = await API.post(uploadPdfRequest, formData);
       console.log("bhai response ", response.data);
-      return response.data;
+      return response.data.data.summary;
     } catch (error) {
       throw new Error((error as string) || "Error getting");
     }
@@ -37,8 +34,9 @@ const summarySlice = createSlice({
     builder.addCase(uploadPdfForSummary.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(uploadPdfForSummary.fulfilled, (state) => {
+    builder.addCase(uploadPdfForSummary.fulfilled, (state, action) => {
       state.isLoading = false;
+      state.current = action.payload;
     });
     builder.addCase(uploadPdfForSummary.rejected, (state, action) => {
       state.isLoading = false;

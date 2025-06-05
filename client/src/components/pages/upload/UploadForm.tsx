@@ -4,15 +4,26 @@ import LoadingSkeleton from "./LoadingSkeleton";
 import { SubmitHandler } from "react-hook-form";
 import { useAppDispatch, useTypeSelector } from "@/store/store";
 import { uploadPdfForSummary } from "@/store/summary/summarySlice";
+import toast from "react-hot-toast";
 
 export default function UploadForm() {
   const { isLoading } = useTypeSelector((state) => state.summary);
   const dispatch = useAppDispatch();
+
   const handleSubmit: SubmitHandler<{ file?: File | undefined }> = async (
     data
   ) => {
-    const response = await dispatch(uploadPdfForSummary({ pdf: data.file }));
-    console.log("uploaded ", response);
+    toast.loading("We are Uploading ur pdf");
+
+    const response = await dispatch(
+      uploadPdfForSummary({ pdf: data.file as File })
+    );
+
+    if (uploadPdfForSummary.fulfilled.match(response)) {
+      toast.success("PDF uploaded Successfully");
+    } else if (uploadPdfForSummary.rejected.match(response)) {
+      toast.error("someting went wrong, please try again.");
+    }
   };
 
   return (
