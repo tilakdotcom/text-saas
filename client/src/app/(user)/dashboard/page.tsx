@@ -3,17 +3,29 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Plus } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { MotionDiv, MotionH1, MotionP } from "@/components/common/FramerMotion";
 import SummaryViewCard from "@/components/cards/summary-card/SummaryViewCard";
 import { itemVariants } from "@/common/constants/defaultValues";
 import EmptySummaryState from "@/components/cards/summary-card/EmptySummaryState";
 import BgGradient from "@/components/common/BGGradient";
+import { useAppDispatch, useTypeSelector } from "@/store/store";
+import { getPdfSummaries } from "@/store/summary/summarySlice";
+import { SummaryType } from "@/common/types/summary";
 
 export default function Page() {
+  const { summaries } = useTypeSelector((state) => state.summary);
+  const dispatch = useAppDispatch();
 
-  const summaries: string[] = [];
   const hasReachedLimit = false;
+
+  useEffect(() => {
+    const fetchSummaries = async () => {
+      const res = await dispatch(getPdfSummaries());
+      console.log("response ", res);
+    };
+    fetchSummaries();
+  }, [dispatch]);
 
   return (
     <main className="min-h-screen sm:px-8">
@@ -96,13 +108,14 @@ export default function Page() {
             </MotionDiv>
           )}
 
-          {summaries.length === 0 ? (
+          {summaries && summaries.length === 0 ? (
             <EmptySummaryState />
           ) : (
             <div className="grid grid-cols-1 gap-4 sm:gap-6 sm:px-0 md:grid-cols-2 lg:grid-cols-3">
-              {summaries.map((summary: string, i: number) => (
-                <SummaryViewCard summary={summary} key={i} />
-              ))}
+              {summaries &&
+                summaries.map((summary: SummaryType, i: number) => (
+                  <SummaryViewCard summary={summary.summary_text} key={i} />
+                ))}
             </div>
           )}
         </div>
