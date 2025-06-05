@@ -4,5 +4,12 @@ export type SummaryType = {
   file_name: string;
   created_at: string; // or Date, depending on how you handle it
   summary_text: string;
-  status: "pending" | "completed" | "failed"; 
+  status: "pending" | "completed" | "failed";
+};
+
+export type InitialStateProps = {
+  summaries: SummaryType[] | null;
+  current: SummaryType | null;
+  isLoading: boolean;
+  error: string | null;
 };

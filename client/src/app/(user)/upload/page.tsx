@@ -9,14 +9,6 @@ import BgGradient from "@/components/common/BGGradient";
 export const maxDuration = 60;
 
 export default function Page() {
-  // const userId = user?.id;
-
-  // const { hasReachedLimit } = await hasReachedUploadLimit(userId);
-
-  // if (hasReachedLimit) {
-  //   redirect("/dashboard");
-  // }
-
   return (
     <section className="">
       <BgGradient />

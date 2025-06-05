@@ -2,13 +2,17 @@
 import UploadFormInput from "./UploadFormInput";
 import LoadingSkeleton from "./LoadingSkeleton";
 import { SubmitHandler } from "react-hook-form";
+import { useAppDispatch, useTypeSelector } from "@/store/store";
+import { uploadPdfForSummary } from "@/store/summary/summarySlice";
 
 export default function UploadForm() {
-  const isLoading = false;
+  const { isLoading } = useTypeSelector((state) => state.summary);
+  const dispatch = useAppDispatch();
   const handleSubmit: SubmitHandler<{ file?: File | undefined }> = async (
     data
   ) => {
-    console.log(data);
+    const response = await dispatch(uploadPdfForSummary({ pdf: data.file }));
+    console.log("uploaded ", response);
   };
 
   return (
