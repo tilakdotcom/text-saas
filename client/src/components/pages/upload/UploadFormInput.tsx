@@ -7,6 +7,7 @@ import {
   FormControl,
   FormField,
   FormItem,
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -29,6 +30,7 @@ export const UploadFormInput = ({
       file: undefined,
     },
   });
+
   return (
     <>
       <Form {...form}>
@@ -44,7 +46,7 @@ export const UploadFormInput = ({
               name="file"
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
               render={({ field: { value, onChange, ...fieldProps } }) => (
-                <FormItem>
+                <FormItem className="relative">
                   <FormControl>
                     <Input
                       {...fieldProps}
@@ -60,6 +62,7 @@ export const UploadFormInput = ({
                       }}
                     />
                   </FormControl>
+                  <FormMessage className="absolute -top-5 text-xs" />
                 </FormItem>
               )}
             />

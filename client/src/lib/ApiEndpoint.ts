@@ -3,7 +3,8 @@ export const loginUserRequest = "/auth/login";
 export const logoutUserRequest = "/auth/logout";
 export const getUserRequest = "/user";
 
-export const loginWithGoogleRequest = (code: string) => `/auth/google-login?code=${code}`;
+export const loginWithGoogleRequest = (code: string) =>
+  `/auth/google-login?code=${code}`;
 
-export const uploadPdfRequest = "/pdf/new"
-
+export const uploadPdfRequest = "/pdf/new";
+export const getSummariesRequest = "/pdf";
