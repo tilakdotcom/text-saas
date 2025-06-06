@@ -13,4 +13,5 @@ export type InitialStateProps = {
   current: SummaryType | null;
   isLoading: boolean;
   error: string | null;
+  currentPage: number;
 };

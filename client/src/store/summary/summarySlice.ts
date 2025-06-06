@@ -50,12 +50,17 @@ const initialState: InitialStateProps = {
   isLoading: false,
   error: null,
   current: null,
+  currentPage: 1,
 };
 
 const summarySlice = createSlice({
   name: "summary",
   initialState,
-  reducers: {},
+  reducers: {
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     //upload pdf
     builder.addCase(uploadPdfForSummary.pending, (state) => {
@@ -98,6 +103,8 @@ const summarySlice = createSlice({
     });
   },
 });
+
+export const { setCurrentPage } = summarySlice.actions;
 
 const summaryReducer = summarySlice.reducer;
 
