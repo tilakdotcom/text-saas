@@ -21,7 +21,7 @@ export function MainLayout({
         <Container className={className}>
           <Header />
 
-          {children}
+          <main className="min-h-screen">{children}</main>
 
           <Footer />
         </Container>

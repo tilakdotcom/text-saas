@@ -1,21 +1,24 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { FileText } from "lucide-react";
 import { useAppDispatch, useTypeSelector } from "@/store/store";
 import { getPdfSummaryById } from "@/store/summary/summarySlice";
-import { Loading } from "@/components/app-ui/Loading";
 import SummaryHeader from "@/components/cards/summary-card/SummaryHeader";
 import SourceInfo from "@/components/cards/summary-card/SourceInfo";
 import SummaryViewCard from "@/components/cards/summary-card/SummaryViewCard";
 import BgGradient from "@/components/common/BGGradient";
 import { MotionDiv } from "@/components/common/FramerMotion";
+import NotFound from "@/app/not-found";
+import LoadingSummary from "./loading";
 
 export default function SummaryPage() {
   const dispatch = useAppDispatch();
   const { current, isLoading } = useTypeSelector((state) => state.summary);
   const params = useParams();
+
+  const [hasTriedLoading, setHasTriedLoading] = useState(false);
 
   const id =
     typeof params.id === "string"
@@ -26,9 +29,12 @@ export default function SummaryPage() {
 
   useEffect(() => {
     if (id) {
-      dispatch(getPdfSummaryById(id));
+      dispatch(getPdfSummaryById(id)).finally(() => {
+        setHasTriedLoading(true);
+      });
     }
   }, [dispatch, id]);
+
   const wordCount = current?.summary_text.length && current.summary_text.length;
   const readingTime = Math.ceil((wordCount || 0) / 200);
 
@@ -36,9 +42,16 @@ export default function SummaryPage() {
     <>
       {isLoading && (
         <div className="min-h-screen">
-          <Loading className="border-t-rose-500" />
+          <LoadingSummary />
         </div>
       )}
+      
+      {!hasTriedLoading && (
+        <div className="min-h-screen max-w-md mx-auto">
+          <LoadingSummary />
+        </div>
+      )}
+
 
       {current && (
         <div className="relative isolate mb-16 min-h-screen bg-gradient-to-b from-rose-100/60 to-white">
@@ -86,16 +99,7 @@ export default function SummaryPage() {
         </div>
       )}
 
-      {!isLoading && !current && (
-        <div className="flex flex-col items-center justify-center py-20 text-center">
-          <div className="animate-bounce text-5xl text-red-400 mb-4">📄❌</div>
-          <h2 className="text-2xl font-bold text-red-600">Summary Not Found</h2>
-          <p className="mt-2 text-gray-600 max-w-md">
-            We couldn&apos;t locate the summary you&apos;re looking for. Please
-            check the link or try again later.
-          </p>
-        </div>
-      )}
+      {!isLoading && !current && hasTriedLoading && <NotFound />}
     </>
   );
 }
