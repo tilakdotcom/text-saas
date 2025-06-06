@@ -37,19 +37,34 @@ export const PdfUploadService = async ({
 
 type GetPdfSummariesServicesProps = {
   userId: string;
+  limit: number;
+  page: number;
+  orderByValue: string;
 };
 
 export const getPdfSummariesServices = async ({
   userId,
+  limit,
+  orderByValue,
+  page,
 }: GetPdfSummariesServicesProps) => {
+  const skip = (page - 1) * limit;
   const summaries = await prisma.pdf.findMany({
-    where: {
-      userId,
+    where: { userId },
+    skip,
+    orderBy: {
+      [orderByValue]: "desc",
     },
+    take: limit,
   });
+
+  const totalSummariesCount = await prisma.pdf.count({ where: { userId } });
 
   return {
     summaries,
+    totalSummariesCount,
+    totalPages: Math.ceil(totalSummariesCount / limit),
+    currentPage: page,
   };
 };
 

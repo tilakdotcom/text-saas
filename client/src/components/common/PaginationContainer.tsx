@@ -43,7 +43,10 @@ const CustomPagination = ({
       {pages.map((page) => (
         <button
           key={page}
-          onClick={() => onPageChange(page)}
+          onClick={() => {
+            dispatch(setCurrentPage(page));
+            onPageChange(page);
+          }}
           className={`border border-gray-700 rounded-md hover:bg-gray-700 transition px-3 py-2 ${
             page === currentPage
               ? "bg-gray-700 text-white"

@@ -81,7 +81,7 @@ const summarySlice = createSlice({
     });
     builder.addCase(getPdfSummaries.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.summaries = action.payload;
+      state.summaries = action.payload.summaries;
     });
     builder.addCase(getPdfSummaries.rejected, (state, action) => {
       state.isLoading = false;

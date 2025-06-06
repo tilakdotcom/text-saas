@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Plus } from "lucide-react";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { MotionDiv, MotionH1, MotionP } from "@/components/common/FramerMotion";
 import { itemVariants } from "@/common/constants/defaultValues";
 import EmptySummaryState from "@/components/cards/summary-card/EmptySummaryState";
@@ -12,16 +12,19 @@ import { useAppDispatch, useTypeSelector } from "@/store/store";
 import { getPdfSummaries } from "@/store/summary/summarySlice";
 import { SummaryType } from "@/common/types/summary";
 import { SummaryCard } from "@/components/cards/summary-card/SummeryCard";
+import { PaginatedItems } from "@/components/app-ui/Pagination";
 
 export default function Page() {
   const { summaries } = useTypeSelector((state) => state.summary);
+  const [count, setCount] = useState<number>(1);
   const dispatch = useAppDispatch();
 
   const hasReachedLimit = false;
 
   useEffect(() => {
     const fetchSummaries = async () => {
-      await dispatch(getPdfSummaries());
+      const res = await dispatch(getPdfSummaries());
+      setCount(res.payload.totalPages);
     };
     fetchSummaries();
   }, [dispatch]);
@@ -117,6 +120,9 @@ export default function Page() {
                 ))}
             </div>
           )}
+          <div className=" w-full flex justify-center">
+            <PaginatedItems pageCount={count} />
+          </div>
         </div>
       </MotionDiv>
     </main>

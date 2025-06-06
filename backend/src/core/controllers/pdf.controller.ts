@@ -30,14 +30,29 @@ export const pdfUploadController = asyncHandler(async (req, res) => {
 });
 
 export const getPdfSummariesController = asyncHandler(async (req, res) => {
-  const { summaries } = await getPdfSummariesServices({
-    userId: req?.userId as string,
-  });
+  const userId = req.userId as string;
+  const { limit, page, orderByValue } = req.query as unknown as {
+    limit: string;
+    page: string;
+    orderByValue: string;
+  };
+  const { summaries, totalSummariesCount, totalPages, currentPage } =
+    await getPdfSummariesServices({
+      userId,
+      limit: Number(limit) || 12,
+      orderByValue: orderByValue || "createdAt",
+      page: Number(page) || 1,
+    });
 
   res.status(200).json({
     message: "pdf summaries fetched",
     success: true,
-    data: summaries,
+    data: {
+      summaries,
+      totalSummariesCount,
+      totalPages,
+      currentPage,
+    },
   });
 });
 
