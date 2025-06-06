@@ -1,6 +1,7 @@
 import React from "react";
 import { Arvo } from "next/font/google";
 import Link from "next/link";
+import BgGradient from "@/components/common/BGGradient";
 
 const arvo = Arvo({
   subsets: ["latin"],
@@ -10,16 +11,34 @@ const arvo = Arvo({
 export default function NotFound() {
   return (
     <section
-      className={`bg-[#fff] ${arvo.className} flex min-h-screen flex-col items-center justify-start pt-10`}
+      className={`min-h-screen ${arvo.className} flex flex-col items-center justify-center px-4 py-10 relative`}
     >
-      <h1 className="text-center text-[80px] font-extralight">404</h1>
-      <div className="h-[400px] w-full bg-[url('/not_found.gif')] bg-center bg-no-repeat" />
-      <div className="mt-[-50px] flex flex-col items-center justify-center">
-        <h3 className="h2">Look like you&apos;re lost</h3>
-        <p>the page you are looking for not avaible!</p>
+      <BgGradient />
+
+      {/* Responsive 404 text */}
+      <h1 className="text-[60px] sm:text-[80px] md:text-[100px] font-bold text-rose-500 drop-shadow-lg mb-4 text-center">
+        404
+      </h1>
+
+      {/* Responsive image */}
+      <div
+        className="relative w-full max-w-[500px] h-[200px] sm:h-[250px] md:h-[300px] bg-center bg-no-repeat bg-contain mb-6"
+        style={{ backgroundImage: "url('/not_found.gif')" }}
+      >
+        <div className="absolute  bg-pink-700/10 rounded-xl" />
+      </div>
+
+      {/* Text + button */}
+      <div className="flex flex-col items-center text-center space-y-3 px-2">
+        <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800">
+          Looks like you&apos;re lost
+        </h3>
+        <p className="text-sm sm:text-base text-gray-600">
+          The page you are looking for is not available!
+        </p>
         <Link
           href="/"
-          className="mx-0 my-[20px] inline-block rounded-xl bg-rose-500 px-[20px] py-[10px] text-white"
+          className="mt-4 inline-block rounded-xl bg-rose-500 px-5 py-3 text-white font-medium text-base sm:text-lg transition duration-300 hover:bg-rose-600 hover:scale-105"
         >
           Go to Home
         </Link>
