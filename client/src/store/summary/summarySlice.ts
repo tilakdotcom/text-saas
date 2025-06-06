@@ -23,9 +23,9 @@ export const uploadPdfForSummary = createAsyncThunk(
 
 export const getPdfSummaries = createAsyncThunk(
   "getPdfSummaries/data",
-  async () => {
+  async (page?: string) => {
     try {
-      const response = await API.get(getSummariesRequest);
+      const response = await API.get(getSummariesRequest(page));
       return response.data.data;
     } catch (error) {
       throw new Error((error as string) || "Error getting");
