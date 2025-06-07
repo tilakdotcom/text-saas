@@ -6,6 +6,7 @@ import {
   getSummaryByIdRequest,
   uploadPdfRequest,
 } from "@/lib/ApiEndpoint";
+import { filterSummaries } from "@/lib/helper";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const uploadPdfForSummary = createAsyncThunk(
@@ -118,8 +119,9 @@ const summarySlice = createSlice({
     builder.addCase(deletePdfSummaryById.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(deletePdfSummaryById.fulfilled, (state) => {
+    builder.addCase(deletePdfSummaryById.fulfilled, (state, action) => {
       state.isLoading = false;
+      state.summaries = filterSummaries(state.summaries, action.payload.id);
     });
     builder.addCase(deletePdfSummaryById.rejected, (state, action) => {
       state.isLoading = false;

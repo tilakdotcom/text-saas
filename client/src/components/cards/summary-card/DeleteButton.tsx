@@ -16,20 +16,25 @@ import { cn } from "@/lib/utils";
 import { useAppDispatch, useTypeSelector } from "@/store/store";
 import { deletePdfSummaryById } from "@/store/summary/summarySlice";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 export default function DeleteButton({ summaryId }: { summaryId: string }) {
   const [open, setOpen] = useState(false);
   const { isLoading } = useTypeSelector((state) => state.summary);
   const dispatch = useAppDispatch();
+  const navigate = useRouter();
 
   const handleDelete = async () => {
     const response = await dispatch(deletePdfSummaryById(summaryId));
+
     // Handle the response here if needed
     if (deletePdfSummaryById.fulfilled.match(response)) {
       toast.success("Summary Deleted successful!");
     } else if (deletePdfSummaryById.rejected.match(response)) {
       toast.error("Failed to Delete Summary, please try again later");
     }
+    setOpen(false);
+    navigate.refresh();
   };
 
   return (
