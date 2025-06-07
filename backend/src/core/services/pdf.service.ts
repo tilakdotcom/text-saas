@@ -1,4 +1,10 @@
-import { abstractTextFromPdf, formatFileName } from "../../common/utils/pdf";
+import { convertPDF } from "../../common/utils/image";
+import {
+  abstractTextFromPdf,
+  abstractTextFromPdfOCR,
+  formatFileName,
+  getPdfPageCount,
+} from "../../common/utils/pdf";
 import { getResponseFromGemini } from "../../config/gemini";
 import { getResponseFromOpenAi } from "../../config/openai";
 import prisma from "../../database/dbConnect";
@@ -14,9 +20,22 @@ export const PdfUploadService = async ({
   userId,
   fileName,
 }: PdfUploadServiceProps) => {
-  const pdfText = await abstractTextFromPdf(pdf);
-  // const summaryText = await getResponseFromOpenAi(pdfText.pageContent);
-  const summaryText = await getResponseFromGemini(pdfText.pageContent);
+  let summaryText: string;
+  const num = await getPdfPageCount(pdf);
+  console.log("pdf pages", num);
+  convertPDF(pdf, num);
+  const pdfParsed = await abstractTextFromPdf(pdf);
+  console.log("lang", pdfParsed);
+  if (pdfParsed != undefined && pdfParsed.pageContent.length > 20) {
+    summaryText = pdfParsed.pageContent;
+  } else if (pdfParsed === undefined || pdfParsed.pageContent.length < 20) {
+    const pdfTextOcr = await abstractTextFromPdfOCR(pdf);
+    summaryText = pdfTextOcr;
+  } else {
+    summaryText = "No Text found in pdf";
+  }
+
+  console.log(summaryText);
 
   // await new Promise((resolve) => setTimeout(resolve, 5000)); // ⏳ wait 5 seconds
 
