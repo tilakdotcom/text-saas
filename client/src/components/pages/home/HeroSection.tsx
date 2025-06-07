@@ -41,8 +41,10 @@ export default function HeroSection() {
 
       <MotionH1
         viewport={{ once: true }}
+        initial="hidden"
+        animate="visible"
         variants={itemVariants}
-        className="py-6 delay-75 text-center font-bold"
+        className="py-6 text-center font-bold"
       >
         Transform PDFs into{" "}
         <span className="relative inline-block">

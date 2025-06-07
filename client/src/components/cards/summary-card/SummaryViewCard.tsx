@@ -11,7 +11,7 @@ import { parseSection } from "@/lib/summaryHelper";
 const SectionTitle = ({ title }: { title: string }) => {
   return (
     <div className="bg-background/80 sticky top-0 z-10 mb-6 flex flex-col gap-2 pt-2 pb-4 backdrop-blur-xs">
-      <h2 className="flex items-center justify-center gap-2 text-center text-3xl font-bold lg:text-4xl">
+      <h2 className="flex items-center justify-center gap-2 text-center text-3xl font-bold lg:text-3xl">
         {title}
       </h2>
     </div>

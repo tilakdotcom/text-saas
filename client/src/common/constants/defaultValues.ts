@@ -75,18 +75,18 @@ export const containerVariants: Variants = {
 
 // Individual item animation
 export const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 10 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      type: "spring",
-      damping: 15,
-      stiffness: 50,
+      type: "tween",
       duration: 0.8,
+      ease: "easeOut",
     },
   },
 };
+
 
 // List item animation from the left
 export const listVariants: Variants = {
