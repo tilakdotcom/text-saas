@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import store from "@/store/store";
 import Header from "../app-ui/Header";
 import Footer from "../app-ui/Footer";
+import { Toaster } from "react-hot-toast";
 export function Providers({
   children,
   className,
@@ -25,6 +26,44 @@ export function Providers({
 
           <Footer />
         </Container>
+        <Toaster
+          position="top-right"
+          reverseOrder={false}
+          toastOptions={{
+            duration: 2000,
+            style: {
+              borderRadius: "14px",
+              background: "#fff1f2", // soft rose background
+              color: "#4b5563", // slate-600 text
+              padding: "16px 20px",
+              fontSize: "14px",
+              boxShadow: "0 8px 24px rgba(0, 0, 0, 0.1)",
+              border: "1px solid #fda4af", // rose-300 border
+            },
+            success: {
+              iconTheme: {
+                primary: "#14b8a6", // teal-500
+                secondary: "#ccfbf1", // teal-100
+              },
+              style: {
+                background: "#ccfbf1", // light teal
+                color: "#115e59", // dark teal text
+                border: "1px solid #5eead4", // teal-300
+              },
+            },
+            error: {
+              iconTheme: {
+                primary: "#f43f5e", // rose-500
+                secondary: "#ffe4e6", // rose-100
+              },
+              style: {
+                background: "#ffe4e6", // light rose
+                color: "#881337", // dark rose text
+                border: "1px solid #fda4af", // rose-300
+              },
+            },
+          }}
+        />
       </Provider>
     </>
   );

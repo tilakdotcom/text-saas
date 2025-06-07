@@ -24,7 +24,7 @@ export default function CTASection() {
                 className="w-full bg-linear-to-r from-slate-900 to-rose-500 text-white transition-colors duration-1000 hover:from-rose-500 hover:to-slate-900 min-[400px]:w-auto"
               >
                 <Link
-                  href="/sign-in"
+                  href="/login"
                   className="flex items-center justify-center"
                 >
                   Get Started{" "}

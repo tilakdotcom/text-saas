@@ -40,7 +40,7 @@ export default function Header() {
             Summaries
           </NavLink>
           <NavLink
-            href="/#pricing"
+            href="/pricing"
             className="text-gray-700 dark:text-gray-300 hover:text-pink-600 transition"
           >
             Pricing
