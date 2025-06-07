@@ -2,7 +2,7 @@ import React from "react";
 import { cn } from "@/lib/utils";
 import { ArrowRight, CheckIcon } from "lucide-react";
 import Link from "next/link";
-import { listVariants } from "@/common/constants/defaultValues";
+import { listVariants, itemVariants } from "@/common/constants/defaultValues";
 import { MotionDiv } from "@/components/common/FramerMotion";
 import { Button } from "@/components/ui/button";
 
@@ -15,26 +15,24 @@ type PricingCardProProps = {
   paymentLink: string;
 };
 
-export default async function PricingCardPro({
+export default function PricingCardPro({
   name,
   description,
   items,
   id,
   price,
 }: PricingCardProProps) {
-  const priceId = "basic_free";
-
   return (
     <MotionDiv
       viewport={{ once: true }}
       variants={listVariants}
-      whileHover={{ scale: 1.02 }}
-      className="relative w-full max-w-lg duration-300 hover:scale-105 hover:transition-all"
+      whileHover={{ scale: 1.001 }}
+      className="relative w-full max-w-lg rounded-2xl border  p-8 shadow-md hover:shadow-xl  border-rose-500 bg-rose-500/5"
     >
       <div
         className={cn(
-          "relative z-10 flex h-full flex-col gap-4 rounded-2xl border-[1px] border-gray-500/20 p-8 lg:gap-8",
-          id === "pro" && "gap-5 border-2 border-rose-500"
+          "relative z-10 flex h-full flex-col gap-4 rounded-2xl p-4 lg:p-8",
+          id === "pro" && "gap-5"
         )}
       >
         <MotionDiv
@@ -43,8 +41,10 @@ export default async function PricingCardPro({
           className="flex items-center justify-between gap-4"
         >
           <div>
-            <p className="text-lg font-bold capitalize lg:text-xl">{name}</p>
-            <p className="text-base-content/80 mt-2">{description}</p>
+            <p className="text-lg font-bold capitalize text-black lg:text-xl">
+              {name}
+            </p>
+            <p className="mt-2 text-base text-gray-800">{description}</p>
           </div>
         </MotionDiv>
 
@@ -53,49 +53,44 @@ export default async function PricingCardPro({
           variants={listVariants}
           className="flex gap-2"
         >
-          <p className="text-5xl font-extrabold tracking-tight">₹ {price}</p>
+          <p className="text-5xl font-extrabold text-black tracking-tight">
+            ₹ {price}
+          </p>
           <div className="mb-[5px] flex flex-col justify-end">
-            <p className="text-xs">/month</p>
+            <p className="text-xs text-gray-700">/month</p>
           </div>
         </MotionDiv>
 
         <MotionDiv
           viewport={{ once: true }}
           variants={listVariants}
-          className="flex-1 space-y-2.5 text-base leading-relaxed"
+          className="flex-1 space-y-2.5 text-sm text-gray-600 leading-relaxed"
         >
           {items.map((item, idx) => (
-            <li className="flex items-center gap-2" key={idx}>
-              <CheckIcon size={18} />
+            <MotionDiv
+              key={idx}
+              variants={itemVariants}
+              className="flex items-center gap-2"
+            >
+              <CheckIcon size={18} className="text-green-400" />
               <span>{item}</span>
-            </li>
+            </MotionDiv>
           ))}
         </MotionDiv>
 
         <MotionDiv
           viewport={{ once: true }}
           variants={listVariants}
-          className="flex w-full justify-center space-y-2 no-underline"
+          className="flex w-full justify-center pt-4"
         >
-          {priceId === "basic_free" ? (
-            <Link className="w-full no-underline" href="/upload">
-              <Button
-                variant="link"
-                className="flex w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-rose-800 to-rose-500 py-2 text-white no-underline transition-colors duration-1000 hover:from-rose-500 hover:to-rose-800"
-              >
-                Try Now <ArrowRight size={18} />
-              </Button>
-            </Link>
-          ) : (
-            <Link className="w-full no-underline" href="/upload">
-              <Button
-                variant="link"
-                className="flex w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-rose-800 to-rose-500 py-2 text-white no-underline transition-colors duration-1000 hover:from-rose-500 hover:to-rose-800"
-              >
-                Try Now <ArrowRight size={18} />
-              </Button>
-            </Link>
-          )}
+          <Link className="w-full no-underline" href="/upload">
+            <Button
+              variant="link"
+              className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-rose-800 to-rose-500 py-2 text-white no-underline transition-colors duration-1000 hover:from-rose-500 hover:to-rose-800"
+            >
+              Try Now <ArrowRight size={18} />
+            </Button>
+          </Link>
         </MotionDiv>
       </div>
     </MotionDiv>
