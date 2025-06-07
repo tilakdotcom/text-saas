@@ -1,16 +1,29 @@
 import { Poppler } from "node-poppler";
 import path from "path";
 import fs from "fs";
+import ApiError from "../API/ApiError";
+import { INTERNAL_SERVER_ERROR } from "../constants/http";
 
 const poppler = new Poppler();
-const outputDir = "./public/images";
-const outputFilePrefix = "page";
+const outputFilePrefix = Date.now() + "-page";
 
-export async function convertPDF(file: string, lastPage: number) {
+export async function convertPDF({
+  file,
+  lastPage,
+  userId,
+}: {
+  file: string;
+  lastPage: number;
+  userId: string;
+}) {
   try {
+    const userImagesFolder = path.join(__dirname, "../public/images", userId);
+    if (!fs.existsSync(userImagesFolder)) {
+      fs.mkdirSync(userImagesFolder, { recursive: true });
+    }
     const output = await poppler.pdfToCairo(
       file,
-      path.join(outputDir, outputFilePrefix),
+      path.join(userImagesFolder, outputFilePrefix),
       {
         pngFile: true,
         firstPageToConvert: 1,
@@ -19,24 +32,28 @@ export async function convertPDF(file: string, lastPage: number) {
     );
     console.log("PDF converted to images:", output);
   } catch (err) {
-    console.error("Error converting PDF:", err);
+    throw new ApiError(INTERNAL_SERVER_ERROR, err as string);
   }
 }
 
-const getUserImagePaths = (userId: string) => {
-  const userImagesFolder = path.join(__dirname, "../public/images", userId);
+export const getUserImagePaths = (userId: string) => {
+  try {
+    const userImagesFolder = path.join(__dirname, "../public/images", userId);
 
-  if (!fs.existsSync(userImagesFolder)) {
-    return []; // No images yet
+    if (!fs.existsSync(userImagesFolder)) {
+      return [];
+    }
+
+    const files = fs.readdirSync(userImagesFolder);
+
+    const imageFiles = files.filter((file) => /\.(png|jpe?g)$/i.test(file));
+
+    const imagePaths = imageFiles.map((file) =>
+      path.join(userImagesFolder, file)
+    );
+
+    return imagePaths;
+  } catch (err) {
+    throw new ApiError(INTERNAL_SERVER_ERROR, err as string);
   }
-
-  const files = fs.readdirSync(userImagesFolder);
-
-  const imageFiles = files.filter((file) => /\.(png|jpe?g)$/i.test(file));
-
-  const imagePaths = imageFiles.map((file) =>
-    path.join(userImagesFolder, file)
-  );
-
-  return imagePaths;
 };

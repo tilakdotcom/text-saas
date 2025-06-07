@@ -23,7 +23,7 @@ export const PdfUploadService = async ({
   let summaryText: string;
   const num = await getPdfPageCount(pdf);
   console.log("pdf pages", num);
-  convertPDF(pdf, num);
+  convertPDF({ file: pdf, lastPage: num, userId });
   const pdfParsed = await abstractTextFromPdf(pdf);
   console.log("lang", pdfParsed);
   if (pdfParsed != undefined && pdfParsed.pageContent.length > 20) {
