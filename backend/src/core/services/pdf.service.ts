@@ -23,33 +23,31 @@ export const PdfUploadService = async ({
 
   const num = await getPdfPageCount(pdf);
 
-  const pdfTextOcr = await abstractTextFromPdfOCR({
-    lastPage: num,
-    pdfPath: pdf,
-    userId,
-  });
-
   const pdfParsed = await abstractTextFromPdf(pdf);
   console.log("lang", pdfParsed);
 
-  // if (pdfParsed != undefined && pdfParsed.pageContent.length > 20) {
-  //   summaryText = pdfParsed.pageContent;
-  // } else if (pdfParsed === undefined || pdfParsed.pageContent.length < 20) {
-  //   const pdfTextOcr = await abstractTextFromPdfOCR(pdf);
-  //   summaryText = pdfTextOcr;
-  // } else {
-  summaryText = "No Text found in pdf";
-  // }
+  if (pdfParsed != undefined && pdfParsed.pageContent.length > 20) {
+    summaryText = pdfParsed.pageContent;
+  } else if (pdfParsed === undefined || pdfParsed.pageContent.length < 20) {
+    const pdfTextOcr = await abstractTextFromPdfOCR({
+      lastPage: num,
+      pdfPath: pdf,
+      userId,
+    });
+    summaryText = pdfTextOcr;
+  } else {
+    summaryText = "No Text found in pdf";
+  }
 
   console.log(summaryText);
-  // await new Promise((resolve) => setTimeout(resolve, 5000)); // ⏳ wait 5 seconds
+  // await new Promise((resolve) => setTimeout(resolve, 5000)); // wait 5 seconds
 
   //create pdf in database
   const newPdf = await prisma.pdf.create({
     data: {
       file_name: fileName,
       original_file_url: "",
-      summary_text: pdfTextOcr,
+      summary_text: summaryText,
       title: formatFileName(fileName),
       userId,
       status: "COMPLETED",

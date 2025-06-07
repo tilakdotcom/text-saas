@@ -30,7 +30,7 @@ export async function convertPDFToImage({
         lastPageToConvert: lastPage,
       }
     );
-    console.log("PDF converted to images:", output);
+    fs.unlinkSync(file)
   } catch (err) {
     throw new ApiError(INTERNAL_SERVER_ERROR, err as string);
   }
