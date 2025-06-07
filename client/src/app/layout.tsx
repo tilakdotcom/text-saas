@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { CLIENT_ID, CLIENT_URI } from "@/common/constants/getEvn";
-import { MainLayout } from "@/components/layout/MainLayout";
+import { Providers } from "@/components/layout/ProvidersLayout";
 // import { Preloader } from "@/components/app-ui/Loading";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import BgGradient from "@/components/common/BGGradient";
@@ -50,9 +50,9 @@ export default function RootLayout({
           {/* <Preloader /> */}
           <ScrollToTop />
           <BgGradient className="from-rose-500 via-rose-500 to-cyan-500" />
-          <MainLayout className="bg-gradient-to-b from-rose-50 via-red-50 to-cyan-50 text-neutral-950 ">
+          <Providers className="bg-gradient-to-b from-rose-50 via-red-50 to-cyan-50 text-neutral-950 ">
             {children}
-          </MainLayout>
+          </Providers>
           <Toaster
             position="top-right"
             reverseOrder={false}

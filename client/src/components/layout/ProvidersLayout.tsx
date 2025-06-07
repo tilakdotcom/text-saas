@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import store from "@/store/store";
 import Header from "../app-ui/Header";
 import Footer from "../app-ui/Footer";
-export function MainLayout({
+export function Providers({
   children,
   className,
 }: {
