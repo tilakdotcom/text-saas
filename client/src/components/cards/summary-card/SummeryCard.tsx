@@ -25,7 +25,7 @@ const SummaryHeader = ({ title, createdAt }: SummaryHeaderProps) => {
         </h3>
         <p className="text-sm text-gray-500">
           {date
-            ? formatDistanceToNow(new Date(date), { addSuffix: true })
+            ? formatDistanceToNow(date, { addSuffix: true })
             : "Unknown time"}
         </p>
       </div>
@@ -56,7 +56,7 @@ export function SummaryCard(summary: SummaryType) {
       initial={"hidden"}
       whileInView={"visible"}
       whileHover={{
-        scale: 1.02,
+        scale: 1.01,
         transition: { duration: 0.2, ease: "easeOut" },
       }}
     >

@@ -9,3 +9,4 @@ export const getSummariesRequest = (page?: string) => `/pdf?page=${page}`;
 
 export const uploadPdfRequest = "/pdf/new";
 export const getSummaryByIdRequest = (id: string) => `/pdf/${id}`;
+export const deleteSummaryByIdRequest = (id: string) => `/pdf/${id}`;

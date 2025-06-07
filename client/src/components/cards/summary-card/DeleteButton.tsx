@@ -13,13 +13,23 @@ import {
 } from "@/components/ui/dialog";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { useAppDispatch, useTypeSelector } from "@/store/store";
+import { deletePdfSummaryById } from "@/store/summary/summarySlice";
+import toast from "react-hot-toast";
 
 export default function DeleteButton({ summaryId }: { summaryId: string }) {
   const [open, setOpen] = useState(false);
-  const isPending = false;
+  const { isLoading } = useTypeSelector((state) => state.summary);
+  const dispatch = useAppDispatch();
 
   const handleDelete = async () => {
-    console.log(summaryId);
+    const response = await dispatch(deletePdfSummaryById(summaryId));
+    // Handle the response here if needed
+    if (deletePdfSummaryById.fulfilled.match(response)) {
+      toast.success("Summary Deleted successful!");
+    } else if (deletePdfSummaryById.rejected.match(response)) {
+      toast.error("Failed to Delete Summary, please try again later");
+    }
   };
 
   return (
@@ -46,7 +56,7 @@ export default function DeleteButton({ summaryId }: { summaryId: string }) {
             variant="outline"
             className={cn(
               "border border-gray-200 bg-gray-50 duration-200 hover:bg-gray-100 hover:text-gray-600",
-              isPending ? "cursor-not-allowed" : "cursor-pointer"
+              isLoading ? "cursor-not-allowed" : "cursor-pointer"
             )}
             onClick={() => setOpen(false)}
           >
@@ -57,11 +67,11 @@ export default function DeleteButton({ summaryId }: { summaryId: string }) {
             variant="destructive"
             className={cn(
               "bg-rose-500 hover:bg-rose-600",
-              isPending ? "cursor-not-allowed" : "cursor-pointer"
+              isLoading ? "cursor-not-allowed" : "cursor-pointer"
             )}
             onClick={handleDelete}
           >
-            {isPending ? "Deleting..." : "Delete"}
+            {isLoading ? "Deleting..." : "Delete"}
           </Button>
         </DialogFooter>
       </DialogContent>

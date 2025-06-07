@@ -1,6 +1,7 @@
 import { Router } from "express";
 import verifyUser from "../../middlewares/auth.middleware";
 import {
+  deletePdfSummaryController,
   getPdfSummariesController,
   getPdfSummaryController,
   pdfUploadController,
@@ -14,6 +15,9 @@ router.use(verifyUser);
 router.route("/new").post(upload.single("pdf"), pdfUploadController);
 
 router.route("/").get(getPdfSummariesController);
-router.route("/:id").get(getPdfSummaryController).delete();
+router
+  .route("/:id")
+  .get(getPdfSummaryController)
+  .delete(deletePdfSummaryController);
 
 export default router;

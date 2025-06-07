@@ -120,9 +120,11 @@ export default function Page() {
                 ))}
             </div>
           )}
-          <div className=" w-full flex justify-center">
-            <PaginatedItems pageCount={count} />
-          </div>
+          {count > 1 && (
+            <div className=" w-full flex justify-center">
+              <PaginatedItems pageCount={count} />
+            </div>
+          )}
         </div>
       </MotionDiv>
     </main>

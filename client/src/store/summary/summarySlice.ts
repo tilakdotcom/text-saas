@@ -1,6 +1,7 @@
 import API from "@/common/config/axios";
 import { InitialStateProps } from "@/common/types/summary";
 import {
+  deleteSummaryByIdRequest,
   getSummariesRequest,
   getSummaryByIdRequest,
   uploadPdfRequest,
@@ -38,6 +39,18 @@ export const getPdfSummaryById = createAsyncThunk(
   async (id: string) => {
     try {
       const response = await API.get(getSummaryByIdRequest(id));
+      return response.data.data;
+    } catch (error) {
+      throw new Error((error as string) || "Error getting");
+    }
+  }
+);
+
+export const deletePdfSummaryById = createAsyncThunk(
+  "deletePdfSummaryById/data",
+  async (id: string) => {
+    try {
+      const response = await API.delete(deleteSummaryByIdRequest(id));
       return response.data.data;
     } catch (error) {
       throw new Error((error as string) || "Error getting");
@@ -97,6 +110,18 @@ const summarySlice = createSlice({
       state.current = action.payload;
     });
     builder.addCase(getPdfSummaryById.rejected, (state, action) => {
+      state.isLoading = false;
+      state.current = null;
+      state.error = (action.error as string) || "Error in  uploading summary";
+    });
+    //delete summmary by id
+    builder.addCase(deletePdfSummaryById.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(deletePdfSummaryById.fulfilled, (state) => {
+      state.isLoading = false;
+    });
+    builder.addCase(deletePdfSummaryById.rejected, (state, action) => {
       state.isLoading = false;
       state.current = null;
       state.error = (action.error as string) || "Error in  uploading summary";
