@@ -7,7 +7,7 @@ import { INTERNAL_SERVER_ERROR } from "../constants/http";
 const poppler = new Poppler();
 const outputFilePrefix = Date.now() + "-page";
 
-export async function convertPDF({
+export async function convertPDFToImage({
   file,
   lastPage,
   userId,

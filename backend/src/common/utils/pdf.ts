@@ -1,10 +1,11 @@
 import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf";
 import appAssert from "../API/AppAssert";
 import { BAD_REQUEST, INTERNAL_SERVER_ERROR } from "../constants/http";
-import { createWorker } from "tesseract.js";
+import fs from "fs";
+import pdf from "pdf-parse";
+import { runOCR } from "./textRecoganise";
 import ApiError from "../API/ApiError";
-import fs from "fs"
-import pdf from "pdf-parse"
+import { convertPDFToImage, getUserImagePaths } from "./image";
 
 export const abstractTextFromPdf = async (pdfPath: string) => {
   appAssert(pdfPath, BAD_REQUEST, "pdf path is not defined");
@@ -15,26 +16,31 @@ export const abstractTextFromPdf = async (pdfPath: string) => {
   return pdfText[0];
 };
 
-export const abstractTextFromPdfOCR = async (pdfPath: string) => {
+export const abstractTextFromPdfOCR = async ({
+  lastPage,
+  pdfPath,
+  userId,
+}: {
+  pdfPath: string;
+  userId: string;
+  lastPage: number;
+}) => {
   appAssert(pdfPath, BAD_REQUEST, "pdf path is not defined");
-  const ocrText = await runOCR(pdfPath);
-
-  return ocrText;
-};
-
-async function runOCR(pdfPath: string) {
   try {
-    const worker = await createWorker("eng");
-
-    const { data } = await worker.recognize(pdfPath);
-
-    await worker.terminate();
-
-    return data.text;
-  } catch (error) {
-    throw new ApiError(INTERNAL_SERVER_ERROR, error as string);
+    let absText: string = "";
+    await convertPDFToImage({ file: pdfPath, lastPage, userId });
+    const images = getUserImagePaths(userId);
+    for (const image of images) {
+      const text = await runOCR(image);
+      console.log("text ", text);
+      absText += text;
+      fs.unlinkSync(image);
+    }
+    return absText;
+  } catch (err) {
+    throw new ApiError(INTERNAL_SERVER_ERROR, err as string);
   }
-}
+};
 
 export async function getPdfPageCount(pdfPath: string) {
   const dataBuffer = fs.readFileSync(pdfPath);

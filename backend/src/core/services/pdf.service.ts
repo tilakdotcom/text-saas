@@ -1,4 +1,3 @@
-import { convertPDF } from "../../common/utils/image";
 import {
   abstractTextFromPdf,
   abstractTextFromPdfOCR,
@@ -21,22 +20,28 @@ export const PdfUploadService = async ({
   fileName,
 }: PdfUploadServiceProps) => {
   let summaryText: string;
+
   const num = await getPdfPageCount(pdf);
-  console.log("pdf pages", num);
-  convertPDF({ file: pdf, lastPage: num, userId });
+
+  const pdfTextOcr = await abstractTextFromPdfOCR({
+    lastPage: num,
+    pdfPath: pdf,
+    userId,
+  });
+
   const pdfParsed = await abstractTextFromPdf(pdf);
   console.log("lang", pdfParsed);
-  if (pdfParsed != undefined && pdfParsed.pageContent.length > 20) {
-    summaryText = pdfParsed.pageContent;
-  } else if (pdfParsed === undefined || pdfParsed.pageContent.length < 20) {
-    const pdfTextOcr = await abstractTextFromPdfOCR(pdf);
-    summaryText = pdfTextOcr;
-  } else {
-    summaryText = "No Text found in pdf";
-  }
+
+  // if (pdfParsed != undefined && pdfParsed.pageContent.length > 20) {
+  //   summaryText = pdfParsed.pageContent;
+  // } else if (pdfParsed === undefined || pdfParsed.pageContent.length < 20) {
+  //   const pdfTextOcr = await abstractTextFromPdfOCR(pdf);
+  //   summaryText = pdfTextOcr;
+  // } else {
+  summaryText = "No Text found in pdf";
+  // }
 
   console.log(summaryText);
-
   // await new Promise((resolve) => setTimeout(resolve, 5000)); // ⏳ wait 5 seconds
 
   //create pdf in database
@@ -44,7 +49,7 @@ export const PdfUploadService = async ({
     data: {
       file_name: fileName,
       original_file_url: "",
-      summary_text: summaryText,
+      summary_text: pdfTextOcr,
       title: formatFileName(fileName),
       userId,
       status: "COMPLETED",
