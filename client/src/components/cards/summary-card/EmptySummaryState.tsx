@@ -16,7 +16,7 @@ export default function EmptySummaryState() {
         <Link href="/upload">
           <Button
             variant={'link'}
-            className="mt-4 bg-linear-to-r from-rose-500 to-rose-700 text-white hover:from-rose-600 hover:to-rose-800 hover:no-underline"
+            className="mt-4 bg-linear-to-r from-main-500 to-main-700 text-white hover:from-main-600 hover:to-main-800 hover:no-underline"
           >
             Create Your First Summary
           </Button>

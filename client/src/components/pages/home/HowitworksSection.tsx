@@ -48,7 +48,7 @@ export default function HowitworksSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-4 text-xl font-bold text-rose-500 uppercase"
+            className="mb-4 text-xl font-bold text-main-500 uppercase"
           >
             How it works
           </MotionH2>
@@ -86,7 +86,7 @@ export default function HowitworksSection() {
                   <MoveRight
                     size={32}
                     strokeWidth={1}
-                    className="text-rose-400"
+                    className="text-main-400"
                   />
                 </MotionDiv>
               )}
@@ -106,10 +106,10 @@ type StepItemProps = {
 
 function StepItem({ icon, label, description }: StepItemProps) {
   return (
-    <div className="group relative w-full rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xs transition-colors hover:border-rose-500/50">
+    <div className="group relative w-full rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xs transition-colors hover:border-main-500/50">
       <div className="flex h-full flex-col gap-4">
-        <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-2xl bg-linear-to-br from-rose-500/10 to-transparent transition-colors group-hover:from-rose-500/20">
-          <div className="text-rose-500">{icon}</div>
+        <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-2xl bg-linear-to-br from-main-500/10 to-transparent transition-colors group-hover:from-main-500/20">
+          <div className="text-main-500">{icon}</div>
         </div>
         <div className="flex flex-1 flex-col justify-between gap-1">
           <h4 className="text-center text-xl font-bold">{label}</h4>

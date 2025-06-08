@@ -43,7 +43,7 @@ export default function DeleteButton({ summaryId }: { summaryId: string }) {
         <Button
           variant={"ghost"}
           size={"icon"}
-          className="border border-gray-200 bg-gray-50 text-gray-400 duration-200 hover:bg-rose-50 hover:text-rose-600"
+          className="border border-gray-200 bg-gray-50 text-gray-400 duration-200 hover:bg-main-50 hover:text-main-600"
         >
           <Trash2 className="h-4 w-4" />
         </Button>
@@ -71,7 +71,7 @@ export default function DeleteButton({ summaryId }: { summaryId: string }) {
           <Button
             variant="destructive"
             className={cn(
-              "bg-rose-500 hover:bg-rose-600",
+              "bg-main-500 hover:bg-main-600",
               isLoading ? "cursor-not-allowed" : "cursor-pointer"
             )}
             onClick={handleDelete}

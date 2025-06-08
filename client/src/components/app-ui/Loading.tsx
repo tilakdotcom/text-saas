@@ -57,7 +57,7 @@ export  function Preloader() {
         <div className="relative h-1 w-48 overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700">
           <MotionDiv
             viewport={{ once: true }}
-            className="absolute inset-y-0 left-0 bg-linear-to-r from-rose-500 to-rose-700"
+            className="absolute inset-y-0 left-0 bg-linear-to-r from-main-500 to-main-700"
             initial={{ width: '0%' }}
             animate={{ width: '100%' }}
             transition={{ duration: 1.5, ease: 'easeInOut' }}

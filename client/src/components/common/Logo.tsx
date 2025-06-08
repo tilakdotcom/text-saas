@@ -56,7 +56,7 @@ export function Logo({
             cx="60"
             cy="60"
             r="48"
-            className="stroke-rose-500 dark:stroke-rose-400"
+            className="stroke-main-500 dark:stroke-main-400"
             strokeWidth="2"
             strokeDasharray="4 2"
           />
@@ -87,7 +87,7 @@ export function Logo({
               width="50"
               height="60"
               rx="3"
-              className="fill-white stroke-rose-500 dark:fill-gray-600 dark:stroke-rose-400"
+              className="fill-white stroke-main-500 dark:fill-gray-600 dark:stroke-main-400"
               strokeWidth="2"
             />
             <line
@@ -95,7 +95,7 @@ export function Logo({
               y1="45"
               x2="80"
               y2="45"
-              className="stroke-rose-400 dark:stroke-rose-300"
+              className="stroke-main-400 dark:stroke-main-300"
               strokeWidth="2"
               strokeLinecap="round"
             />
@@ -104,7 +104,7 @@ export function Logo({
               y1="55"
               x2="80"
               y2="55"
-              className="stroke-rose-400 dark:stroke-rose-300"
+              className="stroke-main-400 dark:stroke-main-300"
               strokeWidth="2"
               strokeLinecap="round"
             />
@@ -113,7 +113,7 @@ export function Logo({
               y1="65"
               x2="70"
               y2="65"
-              className="stroke-rose-400 dark:stroke-rose-300"
+              className="stroke-main-400 dark:stroke-main-300"
               strokeWidth="2"
               strokeLinecap="round"
             />
@@ -123,17 +123,17 @@ export function Logo({
               cx="75"
               cy="75"
               r="18"
-              className="fill-rose-100 stroke-rose-500 dark:fill-rose-900/70 dark:stroke-rose-400"
+              className="fill-main-100 stroke-main-500 dark:fill-main-900/70 dark:stroke-main-400"
               strokeWidth="2"
             />
             <path
               d="M65,75 C65,70 70,65 75,65 C80,65 85,70 85,75 C85,80 80,85 75,85 C70,85 65,80 65,75Z"
-              className="fill-none stroke-rose-500 dark:stroke-rose-400"
+              className="fill-none stroke-main-500 dark:stroke-main-400"
               strokeWidth="1.5"
             />
             <path
               d="M75,65 L75,85 M68,70 L82,80 M82,70 L68,80"
-              className="stroke-rose-500 dark:stroke-rose-400"
+              className="stroke-main-500 dark:stroke-main-400"
               strokeWidth="1.5"
               strokeLinecap="round"
             />
@@ -141,28 +141,28 @@ export function Logo({
               cx="75"
               cy="75"
               r="22"
-              className="stroke-rose-500/30 dark:stroke-rose-400/30"
+              className="stroke-main-500/30 dark:stroke-main-400/30"
               strokeWidth="1.5"
             />
             <circle
               cx="75"
               cy="75"
               r="26"
-              className="stroke-rose-500/20 dark:stroke-rose-400/20"
+              className="stroke-main-500/20 dark:stroke-main-400/20"
               strokeWidth="1"
             />
           </g>
           <path
             d="M90,30 L93,33 L90,36 L87,33 L90,30Z"
-            className="fill-rose-500 dark:fill-rose-400"
+            className="fill-main-500 dark:fill-main-400"
           />
           <path
             d="M40,85 L42,87 L40,89 L38,87 L40,85Z"
-            className="fill-rose-500 dark:fill-rose-400"
+            className="fill-main-500 dark:fill-main-400"
           />
           <path
             d="M60,20 L62,22 L60,24 L58,22 L60,20Z"
-            className="fill-rose-500 dark:fill-rose-400"
+            className="fill-main-500 dark:fill-main-400"
           />
         </svg>
       </MotionDiv>
@@ -171,7 +171,7 @@ export function Logo({
         whileHover={{ scale: 1.003 }}
         className={cn("font-bold", textClass)}
       >
-        <span className="bg-linear-to-r from-rose-600 via-rose-500 to-rose-400 bg-clip-text text-transparent dark:from-rose-400 dark:via-rose-500 dark:to-rose-300">
+        <span className="bg-linear-to-r from-main-600 via-main-500 to-main-400 bg-clip-text text-transparent dark:from-main-400 dark:via-main-500 dark:to-main-300">
           {title}
         </span>
         <span className="ml-1 text-xs font-normal text-gray-600 dark:text-gray-300">

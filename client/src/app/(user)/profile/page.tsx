@@ -33,7 +33,7 @@ const UserSetting = () => {
 
   return (
     <section className="py-6 text-white">
-      <div className="relative isolate overflow-hidden px-6 py-16 shadow-2xl sm:rounded-3xl sm:px-12 md:px-16 lg:px-20 bg-rose-500">
+      <div className="relative isolate overflow-hidden px-6 py-16 shadow-2xl sm:rounded-3xl sm:px-12 md:px-16 lg:px-20 bg-main-500">
         <div className="flex flex-col items-center text-center sm:flex-row sm:text-left sm:items-center gap-6 sm:gap-10">
           <Image
             draggable="false"

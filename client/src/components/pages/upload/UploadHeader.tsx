@@ -9,13 +9,13 @@ export default function UploadHeader() {
       <MotionDiv
         viewport={{ once: true }}
         variants={itemVariants}
-        className="animate-gradient-x group relative overflow-hidden rounded-full bg-linear-to-r from-rose-200 via-rose-500 to-rose-800 p-[1px]"
+        className="animate-gradient-x group relative overflow-hidden rounded-full bg-linear-to-r from-main-200 via-main-500 to-main-800 p-[1px]"
       >
         <Badge
           variant={"secondary"}
           className="relative rounded-full bg-white px-6 py-2 text-base font-medium transition-colors group-hover:bg-gray-50"
         >
-          <Sparkles className="mr-2 h-12 w-12 animate-pulse text-rose-600" />
+          <Sparkles className="mr-2 h-12 w-12 animate-pulse text-main-600" />
           <p className="text-base">AI-Powered Content Creation</p>
         </Badge>
       </MotionDiv>
@@ -29,7 +29,7 @@ export default function UploadHeader() {
         <span className="relative inline-block">
           <span className="relative z-10 px-2">Your PDF&apos;s</span>{" "}
           <span
-            className="animate-rotate absolute inset-0 rounded-lg bg-rose-200/50"
+            className="animate-rotate absolute inset-0 rounded-lg bg-main-200/50"
             aria-hidden="true"
           ></span>
         </span>{" "}

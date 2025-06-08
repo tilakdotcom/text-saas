@@ -27,7 +27,7 @@ export default function PricingCardPro({
       viewport={{ once: true }}
       variants={listVariants}
       whileHover={{ scale: 1.001 }}
-      className="relative w-full max-w-lg rounded-2xl border  p-8 shadow-md hover:shadow-xl  border-rose-500 bg-rose-500/5"
+      className="relative w-full max-w-lg rounded-2xl border  p-8 shadow-md hover:shadow-xl  border-main-500 bg-main-500/5"
     >
       <div
         className={cn(
@@ -86,7 +86,7 @@ export default function PricingCardPro({
           <Link className="w-full no-underline" href="/upload">
             <Button
               variant="link"
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-rose-800 to-rose-500 py-2 text-white no-underline transition-colors duration-1000 hover:from-rose-500 hover:to-rose-800"
+              className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-main-800 to-main-500 py-2 text-white no-underline transition-colors duration-1000 hover:from-main-500 hover:to-main-800"
             >
               Try Now <ArrowRight size={18} />
             </Button>

@@ -31,7 +31,7 @@ export default function DemoSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="mb-4 inline-flex items-center justify-center rounded-2xl border border-gray-500/20 bg-gray-100/80 p-2 backdrop-blur-xs"
           >
-            <Pizza className="h-6 w-6 text-rose-500" />
+            <Pizza className="h-6 w-6 text-main-500" />
           </MotionDiv>
 
           <div className="mb-3 text-center">
@@ -43,7 +43,7 @@ export default function DemoSection() {
               className="mx-auto max-w-2xl px-4 text-3xl font-bold sm:px-4"
             >
               Watch how Sommaire transforms{" "}
-              <span className="bg-gradient-to-r from-rose-500 to-rose-700 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-main-500 to-main-700 bg-clip-text text-transparent">
                 this Next.js course PDF
               </span>{" "}
               into an easy-to-read summary!

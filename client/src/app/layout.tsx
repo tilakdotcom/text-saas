@@ -48,8 +48,8 @@ export default function RootLayout({
         >
           {/* <Preloader /> */}
           <ScrollToTop />
-          <BgGradient className="from-rose-500 via-rose-500 to-cyan-500" />
-          <Providers className="bg-gradient-to-b from-rose-50 via-red-50 to-cyan-50 text-neutral-950 ">
+          <BgGradient className="from-main-500 via-main-500 to-cyan-500" />
+          <Providers className="bg-gradient-to-b from-main-50 via-red-50 to-cyan-50 text-neutral-950 ">
             {children}
           </Providers>
          

@@ -72,7 +72,7 @@ export default function Page() {
               >
                 <Button
                   variant={"link"}
-                  className="group bg-linear-to-r from-rose-500 to-rose-700 transition-all duration-200 hover:scale-105 hover:from-rose-600 hover:to-rose-800 hover:no-underline py-2 px-3"
+                  className="group bg-linear-to-r from-main-500 to-main-700 transition-all duration-200 hover:scale-105 hover:from-main-600 hover:to-main-800 hover:no-underline py-2 px-3"
                 >
                   <Link href="/upload" className="flex items-center text-white">
                     <Plus className="mr-2 h-5 w-5" /> New Summary
@@ -90,7 +90,7 @@ export default function Page() {
               viewport={{ once: true }}
               className="mb-6"
             >
-              <div className="rounded-lg border border-rose-200 bg-rose-50 p-4 text-rose-800">
+              <div className="rounded-lg border border-main-200 bg-main-50 p-4 text-main-800">
                 <p className="flex gap-1 text-sm">
                   You&apos;ve reached the limit of 5 uploads on the Basic plan.
                   Please delete some summaries to make room for new ones or{" "}

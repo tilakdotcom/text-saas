@@ -38,7 +38,7 @@ Genrated By: Sommaire AI`;
   return (
     <Button
       size={"sm"}
-      className="h-8 bg-rose-100 px-3 text-rose-600 hover:bg-rose-50 hover:text-rose-600"
+      className="h-8 bg-main-100 px-3 text-main-600 hover:bg-main-50 hover:text-main-600"
       onClick={handleDownload}
     >
       <Download className="mr-1 h-4 w-4" />

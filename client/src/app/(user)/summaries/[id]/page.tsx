@@ -54,8 +54,8 @@ export default function SummaryPage() {
 
 
       {current && (
-        <div className="relative isolate mb-16 min-h-screen bg-gradient-to-b from-rose-100/60 to-white">
-          <BgGradient className="from-rose-400 via-rose-300 to-orange-200" />
+        <div className="relative isolate mb-16 min-h-screen bg-gradient-to-b from-main-100/60 to-white">
+          <BgGradient className="from-main-400 via-main-300 to-orange-200" />
           <div className="container mx-auto flex flex-col gap-4">
             <div className="px-4 py-6 sm:px-6 sm:py-12 lg:px-8">
               <MotionDiv
@@ -82,11 +82,11 @@ export default function SummaryPage() {
             </div>
 
             <MotionDiv className="relative my-4 sm:my-8 lg:my-16">
-              <div className="relative mx-auto max-w-4xl rounded-2xl border border-rose-100/30 bg-white/80 p-4 shadow-xl backdrop-blur-md transition-all duration-300 hover:bg-white/90 hover:shadow-2xl sm:rounded-3xl sm:p-6 lg:p-8">
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-rose-50/50 via-orange-50/30 to-transparent opacity-50 sm:rounded-3xl" />
+              <div className="relative mx-auto max-w-4xl rounded-2xl border border-main-100/30 bg-white/80 p-4 shadow-xl backdrop-blur-md transition-all duration-300 hover:bg-white/90 hover:shadow-2xl sm:rounded-3xl sm:p-6 lg:p-8">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-main-50/50 via-orange-50/30 to-transparent opacity-50 sm:rounded-3xl" />
 
                 <div className="text-muted-foreground sm:py1.5 absolute top-2 right-2 flex items-center gap-1.5 rounded-full bg-white/90 px-2 py-1 text-xs shadow-xs sm:top-4 sm:right-4 sm:gap-2 sm:px-3 sm:text-sm">
-                  <FileText className="h-3 w-3 text-rose-400 sm:h-4 sm:w-4" />
+                  <FileText className="h-3 w-3 text-main-400 sm:h-4 sm:w-4" />
                   {(wordCount ?? 0).toLocaleString()} words
                 </div>
 
