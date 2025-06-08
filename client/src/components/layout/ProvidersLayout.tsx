@@ -32,12 +32,12 @@ export function Providers({
           toastOptions={{
             duration: 2000,
             style: {
-              borderRadius: "14px",
+              borderRadius: "12px",
               background: "#fff1f2", // soft rose background
               color: "#4b5563", // slate-600 text
-              padding: "16px 20px",
-              fontSize: "14px",
-              boxShadow: "0 8px 24px rgba(0, 0, 0, 0.1)",
+              padding: "10px 14px", // reduced padding
+              fontSize: "13px", // slightly smaller font
+              boxShadow: "0 6px 20px rgba(0, 0, 0, 0.08)",
               border: "1px solid #fda4af", // rose-300 border
             },
             success: {
@@ -49,6 +49,8 @@ export function Providers({
                 background: "#ccfbf1", // light teal
                 color: "#115e59", // dark teal text
                 border: "1px solid #5eead4", // teal-300
+                padding: "10px 14px", // match base
+                fontSize: "13px",
               },
             },
             error: {
@@ -60,6 +62,8 @@ export function Providers({
                 background: "#ffe4e6", // light rose
                 color: "#881337", // dark rose text
                 border: "1px solid #fda4af", // rose-300
+                padding: "10px 14px", // match base
+                fontSize: "13px",
               },
             },
           }}

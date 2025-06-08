@@ -19,13 +19,13 @@ export default function Header() {
         <div className="hidden md:flex space-x-6">
           <NavLink
             href="/"
-            className="text-gray-700 dark:text-gray-300 hover:text-pink-600 transition"
+            className="text-gray-700 dark:text-gray-300 hover:text-main-600 transition"
           >
             Home
           </NavLink>
           <NavLink
             href="/#pricing"
-            className="text-gray-700 dark:text-gray-300 hover:text-pink-600 transition"
+            className="text-gray-700 dark:text-gray-300 hover:text-main-600 transition"
           >
             Pricing
           </NavLink>
@@ -35,13 +35,13 @@ export default function Header() {
         <div className="hidden md:flex space-x-6">
           <NavLink
             href="/dashboard"
-            className="text-gray-700 dark:text-gray-300 hover:text-pink-600 transition"
+            className="text-gray-700 dark:text-gray-300 hover:text-main-600 transition"
           >
             Summaries
           </NavLink>
           <NavLink
             href="/pricing"
-            className="text-gray-700 dark:text-gray-300 hover:text-pink-600 transition"
+            className="text-gray-700 dark:text-gray-300 hover:text-main-600 transition"
           >
             Pricing
           </NavLink>

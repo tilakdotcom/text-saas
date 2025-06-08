@@ -1,3 +1,4 @@
+'use client';
 import React from "react";
 import { cn } from "@/lib/utils";
 import { ArrowRight, CheckIcon } from "lucide-react";
@@ -5,6 +6,7 @@ import Link from "next/link";
 import { listVariants, itemVariants } from "@/common/constants/defaultValues";
 import { MotionDiv } from "@/components/common/FramerMotion";
 import { Button } from "@/components/ui/button";
+import toast from "react-hot-toast";
 
 type PricingCardProProps = {
   name: string;
@@ -22,6 +24,9 @@ export default function PricingCardPro({
   id,
   price,
 }: PricingCardProProps) {
+  const handleOnClick = () => {
+    toast.loading("PRO subscription is not available yet");
+  };
   return (
     <MotionDiv
       viewport={{ once: true }}
@@ -83,8 +88,9 @@ export default function PricingCardPro({
           variants={listVariants}
           className="flex w-full justify-center pt-4"
         >
-          <Link className="w-full no-underline" href="/upload">
+          <Link className="w-full no-underline" href="#">
             <Button
+              onClick={handleOnClick}
               variant="link"
               className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-main-800 to-main-500 py-2 text-white no-underline transition-colors duration-1000 hover:from-main-500 hover:to-main-800"
             >
