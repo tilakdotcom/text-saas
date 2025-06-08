@@ -103,7 +103,7 @@ export const listVariants: Variants = {
 
 // Button hover effect
 export const buttonVariants = {
-  scale: 1.05,
+  scale: 1.01,
   transition: {
     type: "spring",
     damping: 10,

@@ -37,17 +37,17 @@ export default function Page() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
-        className="container mx-auto flex flex-col gap-4"
+        className="mx-auto flex flex-col gap-4 "
       >
         <div className="px-2 py-12 sm:py-24">
           <div className="mb-8 flex justify-between gap-4">
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 ">
               <MotionH1
                 variants={itemVariants}
                 initial={"hidden"}
                 whileInView={"visible"}
                 viewport={{ once: true }}
-                className="bg-linear-to-r from-gray-600 to-gray-900 bg-clip-text text-4xl font-bold tracking-tighter text-transparent"
+                className="bg-linear-to-r from-gray-600 to-gray-900 bg-clip-text text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter text-transparent"
               >
                 Your Summaries
               </MotionH1>
@@ -56,7 +56,7 @@ export default function Page() {
                 initial={"hidden"}
                 animate={"visible"}
                 viewport={{ once: true }}
-                className="text-gray-600"
+                className="text-gray-600 text-sm sm:text-sm md:text-base"
               >
                 Transform your PDFs into concise, actionable insights
               </MotionP>
@@ -66,16 +66,16 @@ export default function Page() {
                 variants={itemVariants}
                 initial={"hidden"}
                 whileInView={"visible"}
-                whileHover={{ scale: 1 }}
+                whileHover={{ scale: 0.97 }}
                 viewport={{ once: true }}
-                className="self-start"
+                className="self-start my-auto"
               >
                 <Button
                   variant={"link"}
-                  className="group bg-linear-to-r from-main-500 to-main-700 transition-all duration-200 hover:scale-105 hover:from-main-600 hover:to-main-800 hover:no-underline py-2 px-3"
+                  className="group bg-linear-to-r rounded-xl from-main-500 to-main-700 transition-all duration-200 hover:from-main-600 hover:to-main-800 hover:no-underline py-1.5 px-3 sm:text-sm"
                 >
                   <Link href="/upload" className="flex items-center text-white">
-                    <Plus className="mr-2 h-5 w-5" /> New Summary
+                    <Plus className="mr-1 h-5 w-5" /> New Summary
                   </Link>
                 </Button>
               </MotionDiv>

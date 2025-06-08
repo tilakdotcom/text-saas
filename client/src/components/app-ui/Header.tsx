@@ -24,7 +24,7 @@ export default function Header() {
             Home
           </NavLink>
           <NavLink
-            href="/#pricing"
+            href="/pricing"
             className="text-gray-700 dark:text-gray-300 hover:text-main-600 transition"
           >
             Pricing
