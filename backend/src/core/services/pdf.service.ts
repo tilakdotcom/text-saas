@@ -1,3 +1,5 @@
+import ApiError from "../../common/API/ApiError";
+import { NOT_FOUND } from "../../common/constants/http";
 import {
   abstractTextFromPdf,
   abstractTextFromPdfOCR,
@@ -5,7 +7,6 @@ import {
   getPdfPageCount,
 } from "../../common/utils/pdf";
 import { getResponseFromGemini } from "../../config/gemini";
-import { getResponseFromOpenAi } from "../../config/openai";
 import prisma from "../../database/dbConnect";
 
 type PdfUploadServiceProps = {
@@ -24,11 +25,10 @@ export const PdfUploadService = async ({
   const num = await getPdfPageCount(pdf);
 
   const pdfParsed = await abstractTextFromPdf(pdf);
-  console.log("lang", pdfParsed);
 
-  if (pdfParsed != undefined && pdfParsed.pageContent.length > 20) {
+  if (pdfParsed != undefined && pdfParsed.pageContent.length > 100) {
     summaryText = pdfParsed.pageContent;
-  } else if (pdfParsed === undefined || pdfParsed.pageContent.length < 20) {
+  } else if (pdfParsed === undefined || pdfParsed.pageContent.length < 100) {
     const pdfTextOcr = await abstractTextFromPdfOCR({
       lastPage: num,
       pdfPath: pdf,
@@ -36,20 +36,22 @@ export const PdfUploadService = async ({
     });
     summaryText = pdfTextOcr;
   } else {
-    summaryText = "No Text found in pdf";
+    return new ApiError(NOT_FOUND, "text not found");
   }
 
-  console.log(summaryText);
+  const aiResponse = await getResponseFromGemini(summaryText);
+
   // await new Promise((resolve) => setTimeout(resolve, 5000)); // wait 5 seconds
 
   //create pdf in database
   const newPdf = await prisma.pdf.create({
     data: {
       file_name: fileName,
-      original_file_url: "",
-      summary_text: summaryText,
+      original_text: summaryText,
+      summary_text: aiResponse,
       title: formatFileName(fileName),
       userId,
+      original_file_url: "",
       status: "COMPLETED",
     },
   });
