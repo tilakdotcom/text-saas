@@ -4,6 +4,7 @@ import { Logo } from "../common/Logo";
 import NavLink from "./NavLink";
 import PlanBadge from "../common/PlanBadge";
 import { Avatar } from "../common/Avatar";
+import { MobileMenu } from "./MobileMenu";
 
 export default function Header() {
   const { isAuthenticated, user, isCheckingAuth } = useTypeSelector(
@@ -64,7 +65,7 @@ export default function Header() {
           </NavLink>
         )}{" "}
         {isAuthenticated && (
-          <div className="flex items-center gap-x-2">
+          <div className="lg:flex items-center gap-x-2 hidden">
             <NavLink href="/upload" className=" text-sm font-medium transition">
               Upload a PDF
             </NavLink>
@@ -72,6 +73,9 @@ export default function Header() {
             <Avatar size={30} src={user?.avatar} href={"/profile"} />
           </div>
         )}
+        <div className="lg:hidden ">
+          <MobileMenu />
+        </div>
       </div>
     </header>
   );

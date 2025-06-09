@@ -1,4 +1,3 @@
-// app/components/ScrollToTop.tsx
 "use client";
 
 import { useEffect, useRef } from "react";
