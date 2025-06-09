@@ -42,7 +42,7 @@ export default function DemoSection() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="mx-auto max-w-2xl px-4 text-3xl font-bold sm:px-4"
             >
-              Watch how Sommaire transforms{" "}
+              Watch how DocWise transforms{" "}
               <span className="bg-gradient-to-r from-main-500 to-main-700 bg-clip-text text-transparent">
                 this Next.js course PDF
               </span>{" "}

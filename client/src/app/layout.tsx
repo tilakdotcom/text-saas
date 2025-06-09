@@ -19,13 +19,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sommaire - AI Powered PDF Summarization",
+  title: "DocWise - AI Powered PDF Summarization",
   description:
     "Save hours of reading time with AI powered PDF summarization. Transform lengthy PDFs into clear, accurate summaries in second with our advanced AI Technology.",
   openGraph: {
     images: [
       {
-        url: "/sommaire.png",
+        url: "/DocWise.png",
       },
     ],
   },

@@ -29,7 +29,7 @@ export function Logo({
   href,
   size = sizeClasses.default,
   textClass = textSizeClasses.default,
-  title = "Sommaire",
+  title = "DocWise",
 }: LogoProps) {
   const logoContent = (
     <div className={cn("flex items-center gap-2 sm:gap-3 md:gap-4", className)}>

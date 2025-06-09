@@ -23,7 +23,7 @@ Generated on: ${new Date(createdAt).toDateString()}
 ${summaryText}
     
 Original FileName: ${fileName}
-Genrated By: Sommaire AI`;
+Genrated By: DocWise AI`;
 
     const blob = new Blob([summaryContent], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
