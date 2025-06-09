@@ -2,21 +2,26 @@
 
 import { loadUser } from "@/lib/localStorage";
 import { checkAuth, setAuthenticated } from "@/store/auth/authSlice";
-import { useAppDispatch } from "@/store/store";
+import { useAppDispatch, useTypeSelector } from "@/store/store";
 import { useEffect } from "react";
+import { Loading } from "../app-ui/Loading";
 
 export default function CheckUser() {
   const dispatch = useAppDispatch();
+  const { isCheckingAuth } = useTypeSelector((state) => state.auth);
 
   useEffect(() => {
-    const user = loadUser(); // ✅ moved inside useEffect
-
+    const user = loadUser();
     if (user === null) {
       dispatch(setAuthenticated(false));
     } else {
       dispatch(checkAuth());
     }
-  }, [dispatch]); // ✅ no need for `user` in deps
+  }, [dispatch]);
+
+  if (isCheckingAuth) {
+    return <Loading />;
+  }
 
   return null;
 }

@@ -4,34 +4,38 @@ import { cn } from "@/lib/utils";
 import { MotionDiv } from "../common/FramerMotion";
 import { Logo, sizeClasses } from "../common/Logo";
 
-export  function Loading({ className }: { className?: string }) {
+export function Loading({ className }: { className?: string }) {
   return (
-    <>
-      <div className="flex justify-center items-center p-1">
-        <MotionDiv
-          className={cn(
-            "size-12 rounded-[50%] border-solid border-4 border-t-blue-500 will-change-transform",
-            className
-          )}
-          animate={{ rotate: 360 }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-      </div>
-    </>
+    <MotionDiv
+      className={cn(
+        "fixed inset-0 z-50 flex items-center justify-center bg-background",
+        className
+      )}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <MotionDiv
+        className="size-12 rounded-full border-4 border-solid border-t-main-500 border-gray-200"
+        animate={{ rotate: 360 }}
+        transition={{
+          duration: 1.5,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
+    </MotionDiv>
   );
 }
 
-export  function Preloader() {
+export function Preloader() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -58,9 +62,9 @@ export  function Preloader() {
           <MotionDiv
             viewport={{ once: true }}
             className="absolute inset-y-0 left-0 bg-linear-to-r from-main-500 to-main-700"
-            initial={{ width: '0%' }}
-            animate={{ width: '100%' }}
-            transition={{ duration: 1.5, ease: 'easeInOut' }}
+            initial={{ width: "0%" }}
+            animate={{ width: "100%" }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
           />
         </div>
       </MotionDiv>

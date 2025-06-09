@@ -26,6 +26,8 @@ export function Providers({
 
           <Footer />
         </Container>
+
+        
         <Toaster
           position="top-right"
           reverseOrder={false}

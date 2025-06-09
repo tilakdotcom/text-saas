@@ -118,6 +118,7 @@ const initialState: initialStateProps = {
   isLoading: false,
   user: loadUser(),
   error: null,
+  isCheckingAuth: true,
 };
 
 const authSlice = createSlice({
@@ -168,15 +169,18 @@ const authSlice = createSlice({
       //check auth
       .addCase(checkAuth.pending, (state) => {
         state.isLoading = true;
+        state.isCheckingAuth = true;
       })
       .addCase(checkAuth.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.isCheckingAuth = false;
         state.isAuthenticated = action.payload?.success;
       })
       .addCase(checkAuth.rejected, (state) => {
         state.isLoading = false;
         state.isAuthenticated = false;
         state.user = null;
+        state.isCheckingAuth = false;
         persistUser(state.user);
       })
       //logout user
