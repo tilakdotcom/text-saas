@@ -65,17 +65,20 @@ export default function Header() {
           </NavLink>
         )}{" "}
         {isAuthenticated && (
-          <div className="lg:flex items-center gap-x-2 hidden">
-            <NavLink href="/upload" className=" text-sm font-medium transition">
+          <div className="flex items-center gap-x-2 ">
+            <NavLink
+              href="/upload"
+              className=" text-sm font-medium transition hidden lg:flex"
+            >
               Upload a PDF
             </NavLink>
             <PlanBadge />
             <Avatar size={30} src={user?.avatar} href={"/profile"} />
+            <div className="lg:hidden">
+              <MobileMenu />
+            </div>
           </div>
         )}
-        <div className="lg:hidden ">
-          <MobileMenu />
-        </div>
       </div>
     </header>
   );
