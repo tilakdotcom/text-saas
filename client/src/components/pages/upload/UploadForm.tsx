@@ -9,7 +9,6 @@ import toast from "react-hot-toast";
 export default function UploadForm({ mode }: { mode: string }) {
   const { isLoading } = useTypeSelector((state) => state.summary);
   const dispatch = useAppDispatch();
-  console.log("mode", mode);
 
   const handleSubmit: SubmitHandler<{ file?: File | undefined }> = async (
     data
@@ -17,7 +16,7 @@ export default function UploadForm({ mode }: { mode: string }) {
     toast.loading("We are Uploading ur pdf");
 
     const response = await dispatch(
-      uploadPdfForSummary({ pdf: data.file as File })
+      uploadPdfForSummary({ pdf: data.file as File, mode })
     );
 
     if (uploadPdfForSummary.fulfilled.match(response)) {

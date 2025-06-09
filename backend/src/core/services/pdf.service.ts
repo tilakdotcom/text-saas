@@ -4,6 +4,7 @@ import {
   formatFileName,
   getPdfPageCount,
 } from "../../common/utils/pdf";
+import { getResponseFromGemini } from "../../config/gemini";
 import prisma from "../../database/dbConnect";
 
 type PdfUploadServiceProps = {
@@ -46,15 +47,17 @@ export const PdfUploadService = async ({
     }
   }
 
-  console.log(summaryText);
+  const aiResponse = await getResponseFromGemini(summaryText);
+
   // await new Promise((resolve) => setTimeout(resolve, 5000)); // wait 5 seconds
 
   //create pdf in database
   const newPdf = await prisma.pdf.create({
     data: {
+      original_text: summaryText,
       file_name: fileName,
       original_file_url: "",
-      summary_text: summaryText,
+      summary_text: aiResponse,
       title: formatFileName(fileName),
       userId,
       status: "COMPLETED",

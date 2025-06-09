@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { CLIENT_ID, CLIENT_URI } from "@/common/constants/getEvn";
 import { Providers } from "@/components/layout/ProvidersLayout";
-// import { Preloader } from "@/components/app-ui/Loading";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import BgGradient from "@/components/common/BGGradient";
 import ScrollToTop from "@/components/app-ui/ScrollToTop";
@@ -22,6 +21,7 @@ export const metadata: Metadata = {
   title: "DocWise - AI Powered PDF Summarization",
   description:
     "Save hours of reading time with AI powered PDF summarization. Transform lengthy PDFs into clear, accurate summaries in second with our advanced AI Technology.",
+  icons: "/doc-icon.svg",
   openGraph: {
     images: [
       {
