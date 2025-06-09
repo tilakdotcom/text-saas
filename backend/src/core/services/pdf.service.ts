@@ -7,6 +7,7 @@ type PdfUploadServiceProps = {
   pdf: string;
   userId: string;
   fileName: string;
+  mode: string
 };
 
 export const PdfUploadService = async ({
@@ -15,7 +16,7 @@ export const PdfUploadService = async ({
   fileName,
 }: PdfUploadServiceProps) => {
   const pdfText = await abstractTextFromPdf(pdf);
-  // const summaryText = await getResponseFromOpenAi(pdfText.pageContent);
+  
   const summaryText = await getResponseFromGemini(pdfText.pageContent);
 
   // await new Promise((resolve) => setTimeout(resolve, 5000)); // ⏳ wait 5 seconds
