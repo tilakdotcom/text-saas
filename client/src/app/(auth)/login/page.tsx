@@ -20,9 +20,11 @@ import toast from "react-hot-toast";
 import { MotionSection } from "@/components/common/FramerMotion";
 import Link from "next/link";
 import GoogleAuth from "@/components/common/GoogleAuth";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const { isLoading } = useTypeSelector((state) => state.auth);
+  const navigate = useRouter();
 
   const dispatch = useAppDispatch();
   const form = useForm<z.infer<typeof loginSchema>>({
@@ -43,7 +45,11 @@ export default function LoginPage() {
 
     // Handle the response here if needed
     if (loginUser.fulfilled.match(response)) {
-      toast.success("Login successful!");
+      toast.success("Login successful!, redirecting...");
+
+      setTimeout(() => {
+        navigate.replace("/dashboard");
+      }, 1000);
     } else if (loginUser.rejected.match(response)) {
       toast.error("Login failed. Please check your credentials and try again.");
     }

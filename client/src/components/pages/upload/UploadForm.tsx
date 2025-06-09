@@ -5,10 +5,12 @@ import { SubmitHandler } from "react-hook-form";
 import { useAppDispatch, useTypeSelector } from "@/store/store";
 import { uploadPdfForSummary } from "@/store/summary/summarySlice";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 export default function UploadForm({ mode }: { mode: string }) {
   const { isLoading } = useTypeSelector((state) => state.summary);
   const dispatch = useAppDispatch();
+  const navigate = useRouter();
 
   const handleSubmit: SubmitHandler<{ file?: File | undefined }> = async (
     data
@@ -21,6 +23,9 @@ export default function UploadForm({ mode }: { mode: string }) {
 
     if (uploadPdfForSummary.fulfilled.match(response)) {
       toast.success("PDF uploaded Successfully");
+      setTimeout(() => {
+        navigate.replace("/dashboard");
+      }, 1000);
     } else if (uploadPdfForSummary.rejected.match(response)) {
       toast.error("someting went wrong, please try again.");
     }

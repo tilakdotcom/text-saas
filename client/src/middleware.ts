@@ -7,7 +7,9 @@ export function middleware(request: NextRequest) {
 
   const isAuthPage = pathname === "/login" || pathname === "/register";
   const isProtectedPage =
-    pathname.startsWith("/dashboard") || pathname.startsWith("/upload");
+    pathname.startsWith("/dashboard") ||
+    pathname.startsWith("/upload") ||
+    pathname.startsWith("/profile");
 
   // Redirect unauthenticated users from protected pages
   if (!token && isProtectedPage) {

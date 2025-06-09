@@ -6,6 +6,7 @@ import {
 } from "../../common/utils/pdf";
 import { getResponseFromGemini } from "../../config/gemini";
 import prisma from "../../database/dbConnect";
+import fs from "fs";
 
 type PdfUploadServiceProps = {
   pdf: string;
@@ -48,6 +49,7 @@ export const PdfUploadService = async ({
   }
 
   const aiResponse = await getResponseFromGemini(summaryText);
+  fs.unlinkSync(pdf);
 
   // await new Promise((resolve) => setTimeout(resolve, 5000)); // wait 5 seconds
 
