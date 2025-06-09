@@ -6,9 +6,10 @@ import { useAppDispatch, useTypeSelector } from "@/store/store";
 import { uploadPdfForSummary } from "@/store/summary/summarySlice";
 import toast from "react-hot-toast";
 
-export default function UploadForm() {
+export default function UploadForm({ mode }: { mode: string }) {
   const { isLoading } = useTypeSelector((state) => state.summary);
   const dispatch = useAppDispatch();
+  console.log("mode", mode);
 
   const handleSubmit: SubmitHandler<{ file?: File | undefined }> = async (
     data
