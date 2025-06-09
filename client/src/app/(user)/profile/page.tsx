@@ -32,13 +32,13 @@ const UserSetting = () => {
   }, [isAuthenticated, navigate]);
 
   return (
-    <section className="py-6 text-white">
+    <section className="py-6 mx-2 text-white max-w-5xl sm:mx-auto">
       <div className="relative isolate overflow-hidden px-6 py-16 shadow-2xl sm:rounded-3xl sm:px-12 md:px-16 lg:px-20 bg-main-500">
         <div className="flex flex-col items-center text-center sm:flex-row sm:text-left sm:items-center gap-6 sm:gap-10">
           <Image
             draggable="false"
             loading="lazy"
-            src={user?.avatar ? user.avatar : "image.png"}
+            src={user?.avatar ? user.avatar : "/image.png"}
             alt="User Avatar"
             height={112}
             width={112}

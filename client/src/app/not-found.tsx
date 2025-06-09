@@ -25,7 +25,7 @@ export default function NotFound() {
         className="relative w-full max-w-[500px] h-[200px] sm:h-[250px] md:h-[300px] bg-center bg-no-repeat bg-contain mb-6"
         style={{ backgroundImage: "url('/not_found.gif')" }}
       >
-        <div className="absolute  bg-pink-700/10 rounded-xl" />
+        <div className="absolute  bg-main-700/10 rounded-xl" />
       </div>
 
       {/* Text + button */}

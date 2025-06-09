@@ -45,13 +45,12 @@ export default function SummaryPage() {
           <LoadingSummary />
         </div>
       )}
-      
+
       {!hasTriedLoading && (
         <div className="min-h-screen max-w-md mx-auto">
           <LoadingSummary />
         </div>
       )}
-
 
       {current && (
         <div className="relative isolate mb-16 min-h-screen bg-gradient-to-b from-main-100/60 to-white">
@@ -77,7 +76,7 @@ export default function SummaryPage() {
                 title={current.title}
                 summaryText={current.summary_text}
                 createdAt={current.createdAt}
-                originalFileUrl={current.original_file_url}
+                originalFileText={current.original_text}
               />
             </div>
 

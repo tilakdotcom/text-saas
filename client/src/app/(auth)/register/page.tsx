@@ -60,7 +60,7 @@ export default function SignupPage() {
 
   return (
     <MotionSection className="flex justify-center py-16 px-4">
-      <div className="flex flex-col sm:flex-row gap-10 max-w-xl w-full bg-pink-50 shadow-lg rounded-2xl overflow-hidden">
+      <div className="flex flex-col sm:flex-row gap-10 max-w-xl w-full bg-main-50 shadow-lg rounded-2xl overflow-hidden">
         <div className="flex flex-col justify-center items-center p-8 w-full">
           <h2 className="text-3xl font-semibold text-gray-900">Login</h2>
           <p className="text-gray-700 mb-6 text-sm">Join us and get started!</p>
@@ -87,7 +87,7 @@ export default function SignupPage() {
                         type="email"
                         autoComplete="email"
                         placeholder="Enter your email"
-                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none placeholder:text-gray-600"
+                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-main-500 focus:outline-none placeholder:text-gray-600"
                         {...field}
                       />
                     </FormControl>
@@ -108,7 +108,7 @@ export default function SignupPage() {
                         type="password"
                         autoComplete="current-password"
                         placeholder="Enter your password"
-                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none placeholder:text-gray-600"
+                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-main-500 focus:outline-none placeholder:text-gray-600"
                         {...field}
                       />
                     </FormControl>
@@ -164,7 +164,7 @@ export default function SignupPage() {
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-2 px-4 rounded-lg font-medium text-white transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 bg-pink-600 hover:bg-pink-700 disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full py-2 px-4 rounded-lg font-medium text-white transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-main-500 bg-main-600 hover:bg-main-700 disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {isLoading ? "Processing..." : "Register"}
               </Button>
@@ -174,7 +174,7 @@ export default function SignupPage() {
                 Already have an Account?{" "}
                 <Link
                   href="/login"
-                  className="text-pink-600 font-medium hover:underline"
+                  className="text-main-600 font-medium hover:underline"
                 >
                   Login
                 </Link>

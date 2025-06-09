@@ -1,10 +1,9 @@
-import { ExternalLink, FileText } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { FileText } from "lucide-react";
 import DownloadSummaryButton from "./DownloadSummaryButton";
 
 type SourceInfoProps = {
   fileName: string;
-  originalFileUrl: string;
+  originalFileText: string;
   title: string;
   summaryText: string;
   createdAt: string;
@@ -12,7 +11,7 @@ type SourceInfoProps = {
 
 export default function SourceInfo({
   fileName,
-  originalFileUrl,
+  originalFileText,
   title,
   summaryText,
   createdAt,
@@ -24,17 +23,13 @@ export default function SourceInfo({
         <span>Source: {fileName}</span>
       </div>
       <div className="flex gap-2">
-        <Button
-          variant="ghost"
-          size="sm"
-          className="h-8 px-3 text-main-600 hover:bg-main-50 hover:text-main-700"
-          asChild
-        >
-          <a href={originalFileUrl} target="_blank" rel="nooperner noreferrer">
-            <ExternalLink className="mr-1 h-4 w-4" />
-            View Original
-          </a>
-        </Button>
+        <DownloadSummaryButton
+          title={title}
+          buttonTittle={"Download Original Text"}
+          summaryText={originalFileText}
+          fileName={fileName}
+          createdAt={createdAt}
+        />
         <DownloadSummaryButton
           title={title}
           summaryText={summaryText}

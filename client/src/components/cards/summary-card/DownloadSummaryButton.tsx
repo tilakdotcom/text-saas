@@ -7,6 +7,7 @@ type DownloadSummaryButtonProps = {
   summaryText: string;
   fileName: string;
   createdAt: string;
+  buttonTittle?: string;
 };
 
 export default function DownloadSummaryButton({
@@ -14,6 +15,7 @@ export default function DownloadSummaryButton({
   summaryText,
   fileName,
   createdAt,
+  buttonTittle,
 }: DownloadSummaryButtonProps) {
   const handleDownload = () => {
     const summaryContent = `# ${title}
@@ -42,7 +44,7 @@ Genrated By: DocWise AI`;
       onClick={handleDownload}
     >
       <Download className="mr-1 h-4 w-4" />
-      Downlaod Summary
+      {buttonTittle ? buttonTittle : "Downlaod Summary"}
     </Button>
   );
 }

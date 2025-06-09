@@ -20,7 +20,7 @@ export default function Footer() {
               <Link
                 href="#"
                 target="_blank"
-                className="underline underline-offset-2 hover:text-pink-600 dark:hover:text-pink-400"
+                className="underline underline-offset-2 hover:text-main-600 dark:hover:text-main-400"
               >
                 Tilak Singh
               </Link>

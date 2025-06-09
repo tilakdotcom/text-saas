@@ -6,6 +6,7 @@ export interface SummaryType {
   summary_text: string;
   status: "pending" | "completed" | "failed";
   title: string;
+  original_text:string
 }
 
 export type InitialStateProps = {
