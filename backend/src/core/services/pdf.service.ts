@@ -10,24 +10,21 @@ type PdfUploadServiceProps = {
   pdf: string;
   userId: string;
   fileName: string;
-  mode: string
+  mode: "image" | "text";
 };
 
 export const PdfUploadService = async ({
   pdf,
   userId,
   fileName,
-  mode
+  mode,
 }: PdfUploadServiceProps) => {
   let summaryText: string;
 
   const num = await getPdfPageCount(pdf);
 
   const pdfParsed = await abstractTextFromPdf(pdf);
-
-  if (pdfParsed != undefined && pdfParsed.pageContent.length > 20) {
-    summaryText = pdfParsed.pageContent;
-  } else if (pdfParsed === undefined || pdfParsed.pageContent.length < 20) {
+  if (mode === "image") {
     const pdfTextOcr = await abstractTextFromPdfOCR({
       lastPage: num,
       pdfPath: pdf,
@@ -35,7 +32,18 @@ export const PdfUploadService = async ({
     });
     summaryText = pdfTextOcr;
   } else {
-    summaryText = "No Text found in pdf";
+    if (pdfParsed != undefined && pdfParsed.pageContent.length > 20) {
+      summaryText = pdfParsed.pageContent;
+    } else if (pdfParsed === undefined || pdfParsed.pageContent.length < 20) {
+      const pdfTextOcr = await abstractTextFromPdfOCR({
+        lastPage: num,
+        pdfPath: pdf,
+        userId,
+      });
+      summaryText = pdfTextOcr;
+    } else {
+      summaryText = "No Text found in pdf";
+    }
   }
 
   console.log(summaryText);
