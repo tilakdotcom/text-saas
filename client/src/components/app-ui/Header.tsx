@@ -6,7 +6,14 @@ import PlanBadge from "../common/PlanBadge";
 import { Avatar } from "../common/Avatar";
 
 export default function Header() {
-  const { isAuthenticated, user } = useTypeSelector((state) => state.auth);
+  const { isAuthenticated, user, isCheckingAuth } = useTypeSelector(
+    (state) => state.auth
+  );
+  if (isCheckingAuth) {
+    return (
+      <header className="h-20 flex items-center justify-center animate-pulse bg-opacity-80 backdrop-blur-md  "></header>
+    );
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full h-20 flex items-center justify-between px-4 md:px-7 bg-opacity-80 backdrop-blur-md  overflow-hidden transform duration-500">

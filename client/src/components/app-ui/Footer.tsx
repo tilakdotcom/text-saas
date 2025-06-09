@@ -46,13 +46,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:underline">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link href="/subscription" className="hover:underline">
-                  Subscription
+                <Link href="/upload" className="hover:underline">
+                  Upload
                 </Link>
               </li>
             </ul>
@@ -60,22 +55,34 @@ export default function Footer() {
 
           <div>
             <h4 className="mb-3 font-semibold text-gray-800 uppercase dark:text-white">
-              Legal
+              Developer
             </h4>
             <ul className="space-y-2 text-gray-600 dark:text-gray-400">
               <li>
-                <Link href="/privacy-policy" className="hover:underline">
-                  Privacy Policy
+                <Link
+                  href="https://tilakdotcom.vercel.app/"
+                  target="_blank"
+                  className="hover:underline"
+                >
+                  Portfolio
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:underline">
-                  Terms & Conditions
+                <Link
+                  href="https://github.com/tilakdotcom"
+                  target="_blank"
+                  className="hover:underline"
+                >
+                  GitHub
                 </Link>
               </li>
               <li>
-                <Link href="/refund-policy" className="hover:underline">
-                  Cancellation & Refund
+                <Link
+                  href="https://www.linkedin.com/in/tilakdotcom"
+                  target="_blank"
+                  className="hover:underline"
+                >
+                  LinkedIn
                 </Link>
               </li>
             </ul>
