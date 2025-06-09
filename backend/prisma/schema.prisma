@@ -62,6 +62,7 @@ model Pdf {
   updatedAt         DateTime  @default(now()) @updatedAt
   file_name         String
   original_file_url String
+  original_text     String?
   summary_text      String
   title             String
   status            pdfStatus @default(PENDING)

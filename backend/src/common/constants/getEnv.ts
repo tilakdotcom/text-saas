@@ -29,3 +29,4 @@ export const CLIENT_SECRET = getEnv("VITE_CLIENT_SECRET");
 //ai
 export const OPEN_AI_KEY = getEnv("OPEN_AI_KEY");
 export const GEMINI_API_KEY = getEnv("GEMINI_API_KEY");
+export const GEMINI_API_KEY_2 = getEnv("GEMINI_API_KEY_2")
