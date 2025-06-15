@@ -15,9 +15,12 @@ const UserSetting = () => {
 
   const handleLogout = async () => {
     try {
-      await dispatch(logoutUser());
+      await dispatch(logoutUser()).unwrap();
       navigate.push("/");
-      toast.success("Logged out successfully!");
+      setTimeout(() => {
+        toast.success("Logged out successfully!");
+      }, 1000);
+      return;
     } catch (err) {
       if (err instanceof Error) {
         toast.error(err.message || "Logout failed! Please try again.");
