@@ -23,10 +23,11 @@ export const CLOUDINARY_API_KEY = getEnv("CLOUDINARY_API_KEY");
 export const CLOUDINARY_API_SECRET = getEnv("CLOUDINARY_API_SECRET");
 
 //google-Login
-export const CLIENT_ID = getEnv("VITE_CLIENT_ID");
-export const CLIENT_SECRET = getEnv("VITE_CLIENT_SECRET");
+export const CLIENT_ID = getEnv("CLIENT_ID");
+export const CLIENT_SECRET = getEnv("CLIENT_SECRET");
+export const REDIRECT_URI = getEnv("REDIRECT_URI");
 
 //ai
 export const OPEN_AI_KEY = getEnv("OPEN_AI_KEY");
 export const GEMINI_API_KEY = getEnv("GEMINI_API_KEY");
-export const GEMINI_API_KEY_2 = getEnv("GEMINI_API_KEY_2")
+export const GEMINI_API_KEY_2 = getEnv("GEMINI_API_KEY_2");
