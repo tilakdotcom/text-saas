@@ -34,7 +34,6 @@ export const PdfUploadService = async ({
     });
     summaryText = pdfTextOcr;
   } else {
-    throw new ApiError(NOT_FOUND, "text not found");
     if (pdfParsed != undefined && pdfParsed.pageContent.length > 20) {
       summaryText = pdfParsed.pageContent;
     } else if (pdfParsed === undefined || pdfParsed.pageContent.length < 20) {
