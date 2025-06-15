@@ -36,7 +36,7 @@ export const PdfUploadService = async ({
     });
     summaryText = pdfTextOcr;
   } else {
-    return new ApiError(NOT_FOUND, "text not found");
+    throw new ApiError(NOT_FOUND, "text not found");
   }
 
   const aiResponse = await getResponseFromGemini(summaryText);
