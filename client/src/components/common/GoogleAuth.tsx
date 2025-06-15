@@ -2,18 +2,23 @@ import { loginWithGoogleUser } from "@/store/auth/authSlice";
 import { useAppDispatch, useTypeSelector } from "@/store/store";
 import { useGoogleLogin } from "@react-oauth/google";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 export default function GoogleAuth() {
   const { isLoading } = useTypeSelector((state) => state.auth);
   const dispatch = useAppDispatch();
+  const navigate = useRouter();
 
   async function handleOnGoogle(authResult: object) {
     const response = await dispatch(loginWithGoogleUser(authResult));
 
     // Handle the response here if needed
     if (loginWithGoogleUser.fulfilled.match(response)) {
-      toast.success("Login successful!");
+      toast.success("Login successful! redirecting...");
+      setTimeout(() => {
+        navigate.push("dashboard");
+      }, 1000);
     } else if (loginWithGoogleUser.rejected.match(response)) {
       toast.error("Login failed please try again");
     }
