@@ -30,7 +30,7 @@ export const demoText: string = `# DocWise: AI-Powered Document Summarizer 🧠�
 🎯 DocWise is an intelligent, web - based tool that simplifies complex documents into clear, concise summaries—powered by state - of - the - art AI.
 
 # Website Details
-• 🌐 Platform: DocWise (https://DocWise-kv.vercel.app)
+• 🌐 Platform: DocWise (https://DocWise-ai.vercel.app)
 • 👥 For: Students, Professionals, Researchers, and Content Creators
 
 # Key Highlights
