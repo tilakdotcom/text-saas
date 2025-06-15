@@ -1,3 +1,4 @@
+import { modeSchema } from "../../common/schemas/pdf";
 import asyncHandler from "../../middlewares/asyncHandler.middleware";
 import { validateFilePdf } from "../../middlewares/file.middleware";
 import {
@@ -11,12 +12,14 @@ export const pdfUploadController = asyncHandler(async (req, res) => {
   const body = {
     pdf: validateFilePdf(req.file as Express.Multer.File),
     userId: req?.userId,
+    mode: modeSchema.parse(req.body.mode),
   };
 
   const { summary, userId } = await PdfUploadService({
     pdf: body.pdf.path,
     userId: body.userId as string,
     fileName: body.pdf.fileName,
+    mode: body.mode,
   });
 
   res.status(201).json({

@@ -26,40 +26,48 @@ export function Providers({
 
           <Footer />
         </Container>
+
+        
         <Toaster
           position="top-right"
           reverseOrder={false}
           toastOptions={{
             duration: 2000,
             style: {
-              borderRadius: "14px",
-              background: "#fff1f2", // soft rose background
-              color: "#4b5563", // slate-600 text
-              padding: "16px 20px",
-              fontSize: "14px",
-              boxShadow: "0 8px 24px rgba(0, 0, 0, 0.1)",
-              border: "1px solid #fda4af", // rose-300 border
+              borderRadius: "11px",
+              background: "#e0ecff", // softer royal blue-50
+              color: "#1e3a8a", // blue-900 (deep)
+              padding: "6px 12px",
+              fontSize: "13px",
+              boxShadow: "0 4px 16px rgba(30, 58, 138, 0.15)", // stronger blue tone shadow
+              border: "1px solid #60a5fa", // blue-400 border → more contrast
             },
             success: {
               iconTheme: {
-                primary: "#14b8a6", // teal-500
-                secondary: "#ccfbf1", // teal-100
+                primary: "#2563eb", // blue-600
+                secondary: "#bfdbfe", // blue-200 (lighter than before)
               },
               style: {
-                background: "#ccfbf1", // light teal
-                color: "#115e59", // dark teal text
-                border: "1px solid #5eead4", // teal-300
+                background: "#dbeafe", // blue-100
+                color: "#1e40af", // blue-800
+                border: "1px solid #60a5fa", // blue-400
+                padding: "6px 12px",
+                fontSize: "13px",
+                boxShadow: "0 4px 16px rgba(30, 58, 138, 0.12)",
               },
             },
             error: {
               iconTheme: {
-                primary: "#f43f5e", // rose-500
-                secondary: "#ffe4e6", // rose-100
+                primary: "#1e40af", // blue-800
+                secondary: "#e0ecff", // lighter blue-50
               },
               style: {
-                background: "#ffe4e6", // light rose
-                color: "#881337", // dark rose text
-                border: "1px solid #fda4af", // rose-300
+                background: "#e0ecff", // lighter blue-50
+                color: "#1e3a8a", // blue-900
+                border: "1px solid #60a5fa", // blue-400
+                padding: "6px 12px",
+                fontSize: "13px",
+                boxShadow: "0 4px 16px rgba(30, 58, 138, 0.12)",
               },
             },
           }}

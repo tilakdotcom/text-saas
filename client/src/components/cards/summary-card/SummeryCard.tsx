@@ -18,7 +18,7 @@ const SummaryHeader = ({ title, createdAt }: SummaryHeaderProps) => {
   const date = new Date(createdAt);
   return (
     <div className="flex items-start gap-2 sm:gap-4">
-      <FileText className="mt-1 h-6 w-6 text-rose-400 sm:h-8 sm:w-8" />
+      <FileText className="mt-1 h-6 w-6 text-main-400 sm:h-8 sm:w-8" />
       <div className="min-w-0 flex-1">
         <h3 className="w-4/5 truncate text-base font-semibold text-gray-900 xl:text-lg">
           {title}

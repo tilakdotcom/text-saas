@@ -28,14 +28,14 @@ export default function HeroSection() {
       <MotionDiv
         viewport={{ once: true }}
         variants={itemVariants}
-        className="animate-gradient-x group relative cursor-default overflow-hidden rounded-full bg-linear-to-r from-rose-200 via-rose-500 to-rose-800 p-[1px]"
+        className="animate-gradient-x group relative cursor-default overflow-hidden rounded-full bg-linear-to-r from-main-200 via-main-500 to-main-800 p-[1px]"
       >
         <Badge
           variant={"secondary"}
           className="relative rounded-full bg-white px-6 py-2 text-base font-medium transition-colors duration-200 group-hover:bg-gray-50"
         >
-          <Sparkles className="mr-2 h-12 w-12 animate-pulse text-rose-600" />
-          <p className="text-base text-rose-600">Powered by AI</p>
+          <Sparkles className="mr-2 h-12 w-12 animate-pulse text-main-600" />
+          <p className="text-base text-main-600">Powered by AI</p>
         </Badge>
       </MotionDiv>
 
@@ -56,7 +56,7 @@ export default function HeroSection() {
             concise
           </MotionSpan>{" "}
           <span
-            className="animate-rotate absolute inset-0 rounded-lg bg-rose-200/50"
+            className="animate-rotate absolute inset-0 rounded-lg bg-main-200/50"
             aria-hidden="true"
           />
         </span>{" "}
@@ -76,10 +76,10 @@ export default function HeroSection() {
       >
         <Button
           variant={"link"}
-          className="mt-6 rounded-full bg-linear-to-r from-slate-900 to-rose-500 px-8 py-6 text-base font-bold text-white shadow-lg transition-colors duration-1000 hover:bg-linear-to-r hover:from-rose-500 hover:to-slate-900 hover:no-underline sm:px-10 sm:py-7 sm:text-lg lg:mt-16 lg:px-12 lg:py-8 lg:text-xl"
+          className="mt-6 rounded-full bg-linear-to-r from-slate-900 to-main-500 px-8 py-6 text-base font-bold text-white shadow-lg transition-colors duration-1000 hover:bg-linear-to-r hover:from-main-500 hover:to-slate-900 hover:no-underline sm:px-10 sm:py-7 sm:text-lg lg:mt-16 lg:px-12 lg:py-8 lg:text-xl"
         >
-          <Link href="/#pricing" className="flex items-center gap-2">
-            <span>Try Sommaire</span>
+          <Link href="/pricing" className="flex items-center gap-2">
+            <span>Try DocWise</span>
             <ArrowRight className="animate-pulse" />
           </Link>
         </Button>

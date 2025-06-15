@@ -18,7 +18,7 @@ export default function NavigationControl({
   onSectionSelect,
 }: NavigationControlProps) {
   return (
-    <div className="bg-background/80 absolute right-0 bottom-0 left-0 border-t border-rose-500/10 p-4 backdrop-blur-xs">
+    <div className="bg-background/80 absolute right-0 bottom-0 left-0 border-t border-main-500/10 p-4 backdrop-blur-xs">
       <div className="flex items-center justify-between">
         <Button
           variant={"ghost"}
@@ -26,8 +26,8 @@ export default function NavigationControl({
           onClick={onPrevious}
           disabled={currentSection === 0}
           className={cn(
-            "h-12 w-12 rounded-full border border-rose-500/10 bg-linear-to-br from-rose-500 to-rose-600 backdrop-blur-xs transition-all duration-200",
-            currentSection === 0 ? "opacity-50" : "hover:bg-rose-500/20"
+            "h-12 w-12 rounded-full border border-main-500/10 bg-linear-to-br from-main-500 to-main-600 backdrop-blur-xs transition-all duration-200",
+            currentSection === 0 ? "opacity-50" : "hover:bg-main-500/20"
           )}
         >
           <ChevronLeft className="h-6 w-6" />
@@ -41,8 +41,8 @@ export default function NavigationControl({
               className={cn(
                 "h-2 w-2 rounded-full transition-all duration-300",
                 currentSection === index
-                  ? "bg-linear-to-r from-rose-500 to-rose-600"
-                  : "bg-rose-500/20 hover:bg-rose-500/30"
+                  ? "bg-linear-to-r from-main-500 to-main-600"
+                  : "bg-main-500/20 hover:bg-main-500/30"
               )}
             />
           ))}
@@ -54,10 +54,10 @@ export default function NavigationControl({
           onClick={onNext}
           disabled={currentSection === totalSection - 1}
           className={cn(
-            "h-12 w-12 rounded-full border border-rose-500/10 bg-linear-to-br from-rose-500 to-rose-600 backdrop-blur-xs transition-all duration-200",
+            "h-12 w-12 rounded-full border border-main-500/10 bg-linear-to-br from-main-500 to-main-600 backdrop-blur-xs transition-all duration-200",
             currentSection === totalSection - 1
               ? "opacity-50"
-              : "hover:bg-rose-500/20"
+              : "hover:bg-main-500/20"
           )}
         >
           <ChevronRight className="h-6 w-6" />

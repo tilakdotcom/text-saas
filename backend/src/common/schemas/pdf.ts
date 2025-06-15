@@ -17,3 +17,5 @@ export const pdfSchema = z.object({
   filename: z.string(),
   path: z.string(),
 });
+
+export const modeSchema = z.enum(["image", "text"]);

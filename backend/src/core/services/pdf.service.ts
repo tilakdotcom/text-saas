@@ -1,5 +1,3 @@
-import ApiError from "../../common/API/ApiError";
-import { NOT_FOUND } from "../../common/constants/http";
 import {
   abstractTextFromPdf,
   abstractTextFromPdfOCR,
@@ -8,27 +6,27 @@ import {
 } from "../../common/utils/pdf";
 import { getResponseFromGemini } from "../../config/gemini";
 import prisma from "../../database/dbConnect";
+import fs from "fs";
 
 type PdfUploadServiceProps = {
   pdf: string;
   userId: string;
   fileName: string;
+  mode: "image" | "text";
 };
 
 export const PdfUploadService = async ({
   pdf,
   userId,
   fileName,
+  mode,
 }: PdfUploadServiceProps) => {
   let summaryText: string;
 
   const num = await getPdfPageCount(pdf);
 
   const pdfParsed = await abstractTextFromPdf(pdf);
-
-  if (pdfParsed != undefined && pdfParsed.pageContent.length > 100) {
-    summaryText = pdfParsed.pageContent;
-  } else if (pdfParsed === undefined || pdfParsed.pageContent.length < 100) {
+  if (mode === "image") {
     const pdfTextOcr = await abstractTextFromPdfOCR({
       lastPage: num,
       pdfPath: pdf,
@@ -37,21 +35,34 @@ export const PdfUploadService = async ({
     summaryText = pdfTextOcr;
   } else {
     throw new ApiError(NOT_FOUND, "text not found");
+    if (pdfParsed != undefined && pdfParsed.pageContent.length > 20) {
+      summaryText = pdfParsed.pageContent;
+    } else if (pdfParsed === undefined || pdfParsed.pageContent.length < 20) {
+      const pdfTextOcr = await abstractTextFromPdfOCR({
+        lastPage: num,
+        pdfPath: pdf,
+        userId,
+      });
+      summaryText = pdfTextOcr;
+    } else {
+      summaryText = "No Text found in pdf";
+    }
   }
 
   const aiResponse = await getResponseFromGemini(summaryText);
+  fs.unlinkSync(pdf);
 
   // await new Promise((resolve) => setTimeout(resolve, 5000)); // wait 5 seconds
 
   //create pdf in database
   const newPdf = await prisma.pdf.create({
     data: {
-      file_name: fileName,
       original_text: summaryText,
+      file_name: fileName,
+      original_file_url: "",
       summary_text: aiResponse,
       title: formatFileName(fileName),
       userId,
-      original_file_url: "",
       status: "COMPLETED",
     },
   });

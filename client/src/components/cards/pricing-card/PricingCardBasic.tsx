@@ -32,7 +32,7 @@ export default function PricingCardBasic({
       <div
         className={cn(
           "relative z-10 flex h-full flex-col gap-6 rounded-2xl p-4 lg:p-8",
-          id === "pro" && "border-2 border-rose-500 bg-rose-500/5"
+          id === "pro" && "border-2 border-main-500 bg-main-500/5"
         )}
       >
         <MotionDiv
@@ -84,8 +84,8 @@ export default function PricingCardBasic({
             href={paymentLink}
             className={cn(
               "flex w-full items-center justify-center gap-2 rounded-full border-2 py-2 text-white transition-all duration-700",
-              "bg-gradient-to-r from-rose-600 to-rose-400 hover:from-rose-500 hover:to-rose-700",
-              id === "pro" ? "border-rose-900" : "border-rose-200"
+              "bg-gradient-to-r from-main-600 to-main-400 hover:from-main-500 hover:to-main-700",
+              id === "pro" ? "border-main-900" : "border-main-200"
             )}
           >
             Try Now <ArrowRight size={18} />

@@ -130,6 +130,32 @@
   --chart-5: hsl(340 75% 55%);
 }
 
+@theme default {
+  /* custom-color */
+
+  /* --color-main-50: #fff1f2;
+  --color-main-100: #ffe4e6;
+  --color-main-200: #fecdd3;
+  --color-main-300: #fda4af;
+  --color-main-400: #fb7185;
+  --color-main-500: #f43f5e;
+  --color-main-600: #e11d48;
+  --color-main-700: #be123c;
+  --color-main-800: #9f1239;
+  --color-main-900: #881337; */
+  
+--color-main-100: #e0f0ff;
+--color-main-200: #b8dbff;
+--color-main-300: #8cc6ff;
+--color-main-400: #5eaefe;
+--color-main-500: #3498fd;
+--color-main-600: #1d88f5;
+--color-main-700: #156ed3;
+--color-main-800: #0f54a6;
+--color-main-900: #0a3c7d;
+--color-main-950: #061d3a;
+}
+
 @layer base {
   * {
     @apply border-border;

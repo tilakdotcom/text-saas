@@ -25,7 +25,7 @@ export default function PricingSection() {
           variants={itemVariants}
           className="flex w-full flex-col items-center justify-center pb-12 text-center"
         >
-          <h2 className="mb-4 text-3xl font-extrabold uppercase text-rose-500 tracking-wide">
+          <h2 className="mb-4 text-3xl font-extrabold uppercase text-main-500 tracking-wide">
             Pricing
           </h2>
           <p className="max-w-xl text-base text-gray-600 dark:text-gray-400">

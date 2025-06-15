@@ -16,7 +16,7 @@ export default function NotFound() {
       <BgGradient />
 
       {/* Responsive 404 text */}
-      <h1 className="text-[60px] sm:text-[80px] md:text-[100px] font-bold text-rose-500 drop-shadow-lg mb-4 text-center">
+      <h1 className="text-[60px] sm:text-[80px] md:text-[100px] font-bold text-main-500 drop-shadow-lg mb-4 text-center">
         404
       </h1>
 
@@ -25,7 +25,7 @@ export default function NotFound() {
         className="relative w-full max-w-[500px] h-[200px] sm:h-[250px] md:h-[300px] bg-center bg-no-repeat bg-contain mb-6"
         style={{ backgroundImage: "url('/not_found.gif')" }}
       >
-        <div className="absolute  bg-pink-700/10 rounded-xl" />
+        <div className="absolute  bg-main-700/10 rounded-xl" />
       </div>
 
       {/* Text + button */}
@@ -38,7 +38,15 @@ export default function NotFound() {
         </p>
         <Link
           href="/"
-          className="mt-4 inline-block rounded-xl bg-rose-500 px-5 py-3 text-white font-medium text-base sm:text-lg transition duration-300 hover:bg-rose-600 hover:scale-105"
+          className="
+    mt-6 inline-block
+    rounded-lg bg-main-500
+    px-5 py-3
+    text-white text-base sm:text-lg font-semibold
+    shadow
+    transition duration-300 ease-in-out
+    transform hover:scale-[1.02] hover:bg-main-600
+  "
         >
           Go to Home
         </Link>

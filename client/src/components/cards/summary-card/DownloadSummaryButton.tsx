@@ -7,6 +7,7 @@ type DownloadSummaryButtonProps = {
   summaryText: string;
   fileName: string;
   createdAt: string;
+  buttonTittle?: string;
 };
 
 export default function DownloadSummaryButton({
@@ -14,6 +15,7 @@ export default function DownloadSummaryButton({
   summaryText,
   fileName,
   createdAt,
+  buttonTittle,
 }: DownloadSummaryButtonProps) {
   const handleDownload = () => {
     const summaryContent = `# ${title}
@@ -23,7 +25,7 @@ Generated on: ${new Date(createdAt).toDateString()}
 ${summaryText}
     
 Original FileName: ${fileName}
-Genrated By: Sommaire AI`;
+Genrated By: DocWise AI`;
 
     const blob = new Blob([summaryContent], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
@@ -38,11 +40,11 @@ Genrated By: Sommaire AI`;
   return (
     <Button
       size={"sm"}
-      className="h-8 bg-rose-100 px-3 text-rose-600 hover:bg-rose-50 hover:text-rose-600"
+      className="h-8 bg-main-100 px-3 text-main-600 hover:bg-main-50 hover:text-main-600"
       onClick={handleDownload}
     >
       <Download className="mr-1 h-4 w-4" />
-      Downlaod Summary
+      {buttonTittle ? buttonTittle : "Downlaod Summary"}
     </Button>
   );
 }

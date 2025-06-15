@@ -11,10 +11,11 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const uploadPdfForSummary = createAsyncThunk(
   "uplaod/data",
-  async ({ pdf }: { pdf: File }) => {
+  async ({ pdf, mode }: { pdf: File; mode: string }) => {
     try {
       const formData = new FormData();
       formData.append("pdf", pdf);
+      formData.append("mode", mode);
       const response = await API.post(uploadPdfRequest, formData);
       return response.data.data.summary;
     } catch (error) {

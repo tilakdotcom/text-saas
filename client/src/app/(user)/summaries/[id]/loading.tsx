@@ -16,8 +16,8 @@ function HeaderSkeleton() {
 
 export default function LoadingSummary() {
   return (
-    <div className="relative isolate min-h-screen bg-gradient-to-b from-rose-100/60 to-white">
-      <BgGradient className="from-rose-400 via-rose-300 to-orange-200" />
+    <div className="relative isolate min-h-screen bg-gradient-to-b from-main-100/60 to-white">
+      <BgGradient className="from-main-400 via-main-300 to-orange-200" />
       <div className="container mx-auto flex flex-col gap-4">
         <div className="px-4 py-6 sm:px-6 sm:py-12 lg:px-8 lg:py-24">
           <div className="flex flex-col gap-8">
@@ -36,8 +36,8 @@ export default function LoadingSummary() {
           </div>
 
           <div className="relative overflow-hidden mt-8">
-            <div className="relative border border-rose-100/30 bg-white/80 p-8 backdrop-blur-2xl rounded-3xl shadow-xl">
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-rose-50/50 via-orange-50/30 to-transparent opacity-50" />
+            <div className="relative border border-main-100/30 bg-white/80 p-8 backdrop-blur-2xl rounded-3xl shadow-xl">
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-main-50/50 via-orange-50/30 to-transparent opacity-50" />
 
               <div className="absolute top-4 right-4 flex flex-col items-end gap-2">
                 <Skeleton className="h-3 w-3 sm:h-4 sm:w-4" />

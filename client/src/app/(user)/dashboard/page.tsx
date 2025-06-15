@@ -37,17 +37,17 @@ export default function Page() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
-        className="container mx-auto flex flex-col gap-4"
+        className="mx-auto flex flex-col gap-4 "
       >
         <div className="px-2 py-12 sm:py-24">
           <div className="mb-8 flex justify-between gap-4">
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 ">
               <MotionH1
                 variants={itemVariants}
                 initial={"hidden"}
                 whileInView={"visible"}
                 viewport={{ once: true }}
-                className="bg-linear-to-r from-gray-600 to-gray-900 bg-clip-text text-4xl font-bold tracking-tighter text-transparent"
+                className="bg-linear-to-r from-gray-600 to-gray-900 bg-clip-text text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter text-transparent"
               >
                 Your Summaries
               </MotionH1>
@@ -56,7 +56,7 @@ export default function Page() {
                 initial={"hidden"}
                 animate={"visible"}
                 viewport={{ once: true }}
-                className="text-gray-600"
+                className="text-gray-600 text-sm sm:text-sm md:text-base"
               >
                 Transform your PDFs into concise, actionable insights
               </MotionP>
@@ -66,16 +66,16 @@ export default function Page() {
                 variants={itemVariants}
                 initial={"hidden"}
                 whileInView={"visible"}
-                whileHover={{ scale: 1 }}
+                whileHover={{ scale: 0.97 }}
                 viewport={{ once: true }}
-                className="self-start"
+                className="self-start my-auto"
               >
                 <Button
                   variant={"link"}
-                  className="group bg-linear-to-r from-rose-500 to-rose-700 transition-all duration-200 hover:scale-105 hover:from-rose-600 hover:to-rose-800 hover:no-underline py-2 px-3"
+                  className="group bg-linear-to-r rounded-xl from-main-500 to-main-700 transition-all duration-200 hover:from-main-600 hover:to-main-800 hover:no-underline py-1.5 px-3 sm:text-sm"
                 >
                   <Link href="/upload" className="flex items-center text-white">
-                    <Plus className="mr-2 h-5 w-5" /> New Summary
+                    <Plus className="mr-1 h-5 w-5" /> New Summary
                   </Link>
                 </Button>
               </MotionDiv>
@@ -90,7 +90,7 @@ export default function Page() {
               viewport={{ once: true }}
               className="mb-6"
             >
-              <div className="rounded-lg border border-rose-200 bg-rose-50 p-4 text-rose-800">
+              <div className="rounded-lg border border-main-200 bg-main-50 p-4 text-main-800">
                 <p className="flex gap-1 text-sm">
                   You&apos;ve reached the limit of 5 uploads on the Basic plan.
                   Please delete some summaries to make room for new ones or{" "}

@@ -4,9 +4,17 @@ import { Logo } from "../common/Logo";
 import NavLink from "./NavLink";
 import PlanBadge from "../common/PlanBadge";
 import { Avatar } from "../common/Avatar";
+import { MobileMenu } from "./MobileMenu";
 
 export default function Header() {
-  const { isAuthenticated, user } = useTypeSelector((state) => state.auth);
+  const { isAuthenticated, user, isCheckingAuth } = useTypeSelector(
+    (state) => state.auth
+  );
+  if (isCheckingAuth) {
+    return (
+      <header className="h-20 flex items-center justify-center animate-pulse bg-opacity-80 backdrop-blur-md  "></header>
+    );
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full h-20 flex items-center justify-between px-4 md:px-7 bg-opacity-80 backdrop-blur-md  overflow-hidden transform duration-500">
@@ -19,13 +27,13 @@ export default function Header() {
         <div className="hidden md:flex space-x-6">
           <NavLink
             href="/"
-            className="text-gray-700 dark:text-gray-300 hover:text-pink-600 transition"
+            className="text-gray-700 dark:text-gray-300 hover:text-main-600 transition"
           >
             Home
           </NavLink>
           <NavLink
-            href="/#pricing"
-            className="text-gray-700 dark:text-gray-300 hover:text-pink-600 transition"
+            href="/pricing"
+            className="text-gray-700 dark:text-gray-300 hover:text-main-600 transition"
           >
             Pricing
           </NavLink>
@@ -35,13 +43,13 @@ export default function Header() {
         <div className="hidden md:flex space-x-6">
           <NavLink
             href="/dashboard"
-            className="text-gray-700 dark:text-gray-300 hover:text-pink-600 transition"
+            className="text-gray-700 dark:text-gray-300 hover:text-main-600 transition"
           >
             Summaries
           </NavLink>
           <NavLink
             href="/pricing"
-            className="text-gray-700 dark:text-gray-300 hover:text-pink-600 transition"
+            className="text-gray-700 dark:text-gray-300 hover:text-main-600 transition"
           >
             Pricing
           </NavLink>
@@ -57,12 +65,18 @@ export default function Header() {
           </NavLink>
         )}{" "}
         {isAuthenticated && (
-          <div className="flex items-center gap-x-2">
-            <NavLink href="/upload" className=" text-sm font-medium transition">
+          <div className="flex items-center gap-x-2 ">
+            <NavLink
+              href="/upload"
+              className=" text-sm font-medium transition hidden lg:flex"
+            >
               Upload a PDF
             </NavLink>
             <PlanBadge />
             <Avatar size={30} src={user?.avatar} href={"/profile"} />
+            <div className="lg:hidden">
+              <MobileMenu />
+            </div>
           </div>
         )}
       </div>

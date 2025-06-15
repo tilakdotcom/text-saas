@@ -70,7 +70,7 @@ export const UploadFormInput = ({
             {/* Submit Button */}
             <Button
               disabled={isLoading}
-              className="bg-rose-600 hover:cursor-pointer hover:bg-rose-700 text-xs sm:text-sm py-2"
+              className="bg-main-600 hover:cursor-pointer hover:bg-main-700 text-xs sm:text-sm py-2"
             >
               {isLoading ? (
                 <>

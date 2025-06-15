@@ -34,7 +34,7 @@ const CustomPagination = ({
       <button
         onClick={handlePrevious}
         disabled={currentPage === 1}
-        className="border border-rose-700 rounded-md hover:bg-rose-700 transition px-3 py-2 text-rose-300 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed "
+        className="border border-main-700 rounded-md hover:bg-main-700 transition px-3 py-2 text-main-300 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed "
       >
         &lt; Prev
       </button>
@@ -47,10 +47,10 @@ const CustomPagination = ({
             dispatch(setCurrentPage(page));
             onPageChange(page);
           }}
-          className={`border border-rose-700 rounded-md hover:bg-rose-700 transition px-3 py-2 ${
+          className={`border border-main-700 rounded-md hover:bg-main-700 transition px-3 py-2 ${
             page === currentPage
-              ? "bg-rose-700 text-white"
-              : "text-rose-300 hover:text-white"
+              ? "bg-main-700 text-white"
+              : "text-main-300 hover:text-white"
           }`}
         >
           {page}
@@ -61,7 +61,7 @@ const CustomPagination = ({
       <button
         onClick={handleNext}
         disabled={currentPage === totalPages}
-        className="border border-rose-700 rounded-md hover:bg-rose-700 transition px-3 py-2 text-rose-300 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+        className="border border-main-700 rounded-md hover:bg-main-700 transition px-3 py-2 text-main-300 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
       >
         Next &gt;
       </button>
