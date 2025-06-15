@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: "/DocWise.png",
+        url: `${CLIENT_URI}/DocWise.png`,
       },
     ],
   },
@@ -42,7 +42,6 @@ export default function RootLayout({
 }>) {
   return (
     <GoogleOAuthProvider clientId={CLIENT_ID}>
-      {" "}
       <html lang="en">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
