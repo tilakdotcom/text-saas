@@ -13,7 +13,7 @@ import uploadFileToCloudinary from "../../common/utils/cloudinary";
 import oauthGoogle from "../../config/google";
 import { userInfoURL } from "../../common/constants/URL";
 import axios from "axios";
-import { REDIRECT_URI } from "../../common/constants/getEnv";
+import { CLIENT_URI, REDIRECT_URI } from "../../common/constants/getEnv";
 
 type CreateUserData = {
   email: string;
@@ -164,7 +164,7 @@ export const loginWithGoogleService = async ({
     code,
     redirect_uri:
       process.env.NODE_ENV === "production"
-        ? "https://docWice-ai.vercel.app"
+        ? CLIENT_URI
         : "http://localhost:3000",
   });
   oauthGoogle.setCredentials(googleRes.tokens);
