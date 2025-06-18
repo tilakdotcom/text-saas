@@ -1,3 +1,4 @@
+import { NODE_ENV, REDIRECT_URI } from "@/common/constants/getEvn";
 import { loginWithGoogleUser } from "@/store/auth/authSlice";
 import { useAppDispatch, useTypeSelector } from "@/store/store";
 import { useGoogleLogin } from "@react-oauth/google";
@@ -36,6 +37,10 @@ export default function GoogleAuth() {
     onError: handleOnError,
     onSuccess: handleOnGoogle,
     flow: "auth-code",
+    redirect_uri:
+      NODE_ENV === "production"
+        ? REDIRECT_URI
+        : "http://localhost:5000/api/v1/auth/google-login",
   });
   return (
     /* From Uiverse.io by OfficialRushO */

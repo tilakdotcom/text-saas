@@ -13,6 +13,7 @@ import uploadFileToCloudinary from "../../common/utils/cloudinary";
 import oauthGoogle from "../../config/google";
 import { userInfoURL } from "../../common/constants/URL";
 import axios from "axios";
+import { REDIRECT_URI } from "../../common/constants/getEnv";
 
 type CreateUserData = {
   email: string;
@@ -159,7 +160,13 @@ export const loginWithGoogleService = async ({
   code,
   userAgent,
 }: LoginWithGogleProps) => {
-  const googleRes = await oauthGoogle.getToken(code);
+  const googleRes = await oauthGoogle.getToken({
+    code,
+    redirect_uri:
+      process.env.NODE_ENV === "production"
+        ? REDIRECT_URI
+        : "http://localhost:5000/api/v1/auth/google-login",
+  });
   oauthGoogle.setCredentials(googleRes.tokens);
   appAssert(
     googleRes.tokens?.access_token,
