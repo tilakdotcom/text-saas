@@ -98,6 +98,7 @@ export const loginWithGoogleUser = createAsyncThunk(
 
   async (authResult: AuthResult) => {
     try {
+      console.log("authResult : ", authResult )
       const response = await API.get(
         loginWithGoogleRequest(authResult.code as string)
       );

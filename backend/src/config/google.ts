@@ -9,9 +9,7 @@ import {
 const oauthGoogle = new google.auth.OAuth2(
   CLIENT_ID,
   CLIENT_SECRET,
-  NODE_ENV === "production"
-    ? REDIRECT_URI
-    : "http://localhost:5000/api/v1/auth/google-login"
+  "postmessage"
 );
 
 export default oauthGoogle;

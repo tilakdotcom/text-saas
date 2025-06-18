@@ -164,8 +164,8 @@ export const loginWithGoogleService = async ({
     code,
     redirect_uri:
       process.env.NODE_ENV === "production"
-        ? REDIRECT_URI
-        : "http://localhost:5000/api/v1/auth/google-login",
+        ? "https://docWice-ai.vercel.app"
+        : "http://localhost:3000",
   });
   oauthGoogle.setCredentials(googleRes.tokens);
   appAssert(
