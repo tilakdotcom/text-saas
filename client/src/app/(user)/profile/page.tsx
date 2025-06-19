@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 const UserSetting = () => {
   const dispatch = useAppDispatch();
   const navigate = useRouter();
-  const { isLoading, isAuthenticated, user } = useTypeSelector(
+  const { isLoading, isAuthenticated, user, isCheckingAuth } = useTypeSelector(
     (state) => state.auth
   );
 
@@ -33,6 +33,14 @@ const UserSetting = () => {
   useEffect(() => {
     if (!isAuthenticated) navigate.push("/login");
   }, [isAuthenticated, navigate]);
+
+  if (!isCheckingAuth && !isAuthenticated)
+    return {
+      redirect: {
+        destination: "/login?callbackUrl=/dashboard",
+        permanent: false,
+      },
+    };
 
   return (
     <section className="py-6 mx-2 text-white max-w-5xl sm:mx-auto">

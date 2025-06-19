@@ -6,11 +6,23 @@ import UploadForm from "@/components/pages/upload/UploadForm";
 import { containerVariants } from "@/common/constants/defaultValues";
 import { MotionDiv } from "@/components/common/FramerMotion";
 import BgGradient from "@/components/common/BGGradient";
+import { useTypeSelector } from "@/store/store";
 
 export const maxDuration = 60;
 
 export default function Page() {
   const [uploadMode, setUploadMode] = useState<"text" | "image">("text");
+  const { isAuthenticated, isCheckingAuth } = useTypeSelector(
+    (state) => state.auth
+  );
+
+  if (!isCheckingAuth && !isAuthenticated)
+    return {
+      redirect: {
+        destination: "/login?callbackUrl=/dashboard",
+        permanent: false,
+      },
+    };
 
   return (
     <section className="">

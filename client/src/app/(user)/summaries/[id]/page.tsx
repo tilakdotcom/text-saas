@@ -16,6 +16,9 @@ import LoadingSummary from "./loading";
 export default function SummaryPage() {
   const dispatch = useAppDispatch();
   const { current, isLoading } = useTypeSelector((state) => state.summary);
+  const { isAuthenticated, isCheckingAuth } = useTypeSelector(
+    (state) => state.auth
+  );
   const params = useParams();
 
   const [hasTriedLoading, setHasTriedLoading] = useState(false);
@@ -34,6 +37,13 @@ export default function SummaryPage() {
       });
     }
   }, [dispatch, id]);
+  if (!isCheckingAuth && !isAuthenticated)
+    return {
+      redirect: {
+        destination: "/login?callbackUrl=/dashboard",
+        permanent: false,
+      },
+    };
 
   const wordCount = current?.summary_text.length && current.summary_text.length;
   const readingTime = Math.ceil((wordCount || 0) / 200);

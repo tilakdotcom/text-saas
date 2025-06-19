@@ -16,6 +16,9 @@ import { PaginatedItems } from "@/components/app-ui/Pagination";
 
 export default function Page() {
   const { summaries } = useTypeSelector((state) => state.summary);
+  const { isCheckingAuth, isAuthenticated } = useTypeSelector(
+    (state) => state.auth
+  );
   const [count, setCount] = useState<number>(1);
   const dispatch = useAppDispatch();
 
@@ -28,6 +31,14 @@ export default function Page() {
     };
     fetchSummaries();
   }, [dispatch]);
+
+  if (!isCheckingAuth && !isAuthenticated)
+    return {
+      redirect: {
+        destination: "/login?callbackUrl=/dashboard",
+        permanent: false,
+      },
+    };
 
   return (
     <main className="min-h-screen sm:px-8">
